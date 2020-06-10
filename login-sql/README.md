@@ -9,6 +9,8 @@ Features:
 
 MODEL
  - java bean class for SQL/db interaction
+ 
 VIEW
  - JSP / JSF / servlet
+ 
 CONTROLLER
