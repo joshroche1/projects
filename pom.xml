@@ -39,7 +39,7 @@
   <dependency>
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
-    <version>x.y.z</version>
+    <version>8.0.20</version>
   </dependency>
   <dependency>
     <groupId>com.sun.faces</groupId>
