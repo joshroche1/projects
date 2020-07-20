@@ -1,0 +1,18 @@
+---
+- hosts: aws-csr1000v
+  remote_user: ec2-user
+  tasks:
+  - name: show run command
+    ios_command:
+      commands: show running-config
+  - name: show version and interfaces
+    ios_command:
+      commands:
+      - show version
+      - show interfaces
+  - name: evaluate output
+    ios_command: 
+      commands:
+      - show version
+      wait_for:
+      - result[0] contains IOS
