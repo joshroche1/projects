@@ -10,53 +10,62 @@
   float: left;
   padding: 15px;
 }
+body {
+  background-color: #f0ffff;
+}
 html {
   font-family: "Lucida Sans", sans-serif;
 }
 div.card {
-  padding: 10px;
+  padding: 5px;
   box-shadow 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .header {
-  background-image: linear-gradient(rgba(128,128,128,1), rgba(220,220,220,1));
-  padding: 15px;
-  box-shadow 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: #4682b4;
+  color: #ffffff;
+  padding: 5px;
+  margin: 5px;
+  border-box: 2px solid #000000;
 }
 .menu ul {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: 1px;
+  padding: 1px;
 }
 
 .menu li {
   padding: 8px;
   margin-bottom: 7px;
-  background-color: rgba(128,128,128,1);
+  background-color: #5f9ea0;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .menu li:hover {
-  background-color: #ffffff;
+  background-color: #00ffff;
 }
 .aside {
-  background-color: rgba(220,220,220,1);
-  padding: 15px;
+  background-color: #708090;
+  padding: 5px;
+  margin: 5px;
   color: #ffffff;
   text-align: center;
   font-size: 14px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .footer {
-  background-image: linear-gradient(rgba(220,220,220,1), rgba(128,128,128,1));
+  background-color: #4682b4;
+  color: #ffffff;
   text-align: center;
   font-size: 12px;
-  padding: 15px;
+  padding: 5px;
+  margin: 5px;
+  border-box: 2px solid #000000;
 }
 .flex-container {
   display: flex;
   flex-flow: row wrap;
 }
 .flex-container > div {
-  margin: 10px;
+  margin: 5px;
 }
 /* For mobile phones: */
 [class*="col-"] {
