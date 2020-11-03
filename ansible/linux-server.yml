@@ -1,0 +1,10 @@
+---
+- hosts:
+  - HOST_ALIAS_1
+  remote_user: USERNAME
+  tasks:
+  - name: NAME_OF_TASK
+    command: SHELL_CMD
+    register: VARIABLE
+    
+  - debug: var=VARIABLE.stdout_lines
