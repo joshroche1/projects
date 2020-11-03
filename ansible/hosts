@@ -1,0 +1,5 @@
+[GROUPNAME]
+alias ansible_host=IPorDNS ansible_user=UESRNAME ansible_ssh_private_key_file=/path/to/private/key.pem
+
+[cloudservers]
+jarzure ansible_host=jarzure.eastus.cloudapp.azure.com ansible_user=ubuntu ansible_ssh_private_key_file=/home/josh/.ssh/aws-1.pem
