@@ -8,3 +8,44 @@
     register: VARIABLE
     
   - debug: var=VARIABLE.stdout_lines
+
+tasks:
+  - name: list directory
+    command: ls -al
+    register: myvar
+
+  - name: set a variable from output
+    ansible.builtin.set_fact:
+      myvar: "{{ some_variable | from_json }}"
+
+
+JSON:
+{
+  "servers": {
+    "group1": [
+      {
+        "host": "jarzure.eastus.cloudapp.azure.com"
+      }
+    ],
+    "group2": [
+      {
+        "host": "aws1.amazon.com"
+      },
+      {
+        "host": "aws2.amazon.com",
+        "description": "backup server"
+      }
+    ]
+  }
+}
+  - name: list all host info
+    ansible.builtin.debug:
+      var: item
+    loop: "{{ servers | community.general.json_query('servers.group[*].host') }}"
+
+  - ansible.builtin.name: list host description for aws2.amazon.com
+    debug:
+      var: item
+    loop: "{{ servers | community.general.json_query(description_query ) }}"
+    vars:
+      description_query: "servers.group2[?host==aws2.amazon.com].description"
