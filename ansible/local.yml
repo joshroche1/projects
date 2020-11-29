@@ -1,0 +1,10 @@
+---
+- hosts:
+  - local_group
+  tasks: 
+  - name: TASK NAME
+    ansible-builtin.debug:
+      var: ping
+  - local_action: lineinfile line="{{ ansible_host }}{{ ansible_all_ipv4_addresses }}" path=local.yml.log
+  
+  # ensure local.yml.log is already created (touch local.yml.log)
