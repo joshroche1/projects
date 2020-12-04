@@ -14,7 +14,7 @@
     template:
       src: templates/template-hostinfo.xml
       dest: logs/info/{{ ansible_hostname }}.xml
-      owner: {{ ansible_user }}
-      group: {{ ansible_user }}
-      mode: 0644
+      owner: josh
+      group: josh
+      mode: 0755
     delegate_to: localhost
