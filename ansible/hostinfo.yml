@@ -1,0 +1,20 @@
+---
+- hosts:
+  - local
+  var:
+    host:
+      - ansible_hostname
+      - ansible_host
+      - ansible_user
+      - ansible_distribution
+      - ansible_distribution_version
+  tasks:
+    - name: template info to file
+  local_action:
+    template:
+      src: templates/template-hostinfo.xml
+      dest: logs/info/{{ ansible_hostname }}.xml
+      owner: {{ ansible_user }}
+      group: {{ ansible_user }}
+      mode: 0644
+    delegate_to: localhost
