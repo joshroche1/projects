@@ -1,10 +1,34 @@
 ---
 - hosts:
-  - local_group
+  - local
+  - cloud
+  become: yes
   tasks: 
-  - name: TASK NAME
-    ansible-builtin.debug:
-      var: ping
-  - local_action: lineinfile line="{{ ansible_date_time.iso8601 }} {{ ansible_host }} {{ ansible_all_ipv4_addresses }}" path=local.yml.log
-  
-  # ensure local.yml.log is already created (touch local.yml.log)
+  - name: delete log
+    command: rm /home/josh/ansible/logs/local.yml.log
+	run_once: true
+	delegate_to: localhost
+  - name: touch log
+    command: touch /home/josh/ansible/logs/local.yml.log
+	run_once: true
+	delegate_to: localhost
+  - name: log info
+    delegate_to: localhost
+    lininfile:
+	  path: /home/josh/ansible/logs/local.yml.log
+	  insertafter: EOF
+	  state: present
+	  mode: 0755
+	  line: "{{ ansible_date_time.iso8601 }} {{ ansible_fqdn }} {{ ansible_user }} {{ ansible_distribution }} {{ ansible_distribution_release }} {{ ansible_distribution_version }} {{ ansible_all_ipv4_addresses }}"
+	loop:
+	  - local
+	  - cloud
+  - name: copy file
+    run_once: true
+	delegate_to: localhost
+	copy:
+	  src: /home/josh/ansible/logs/local.yml.log
+	  dest: /var/www/html/info/local.yml.log
+	  owner: root
+	  group: root
+	  mode: '0644'
