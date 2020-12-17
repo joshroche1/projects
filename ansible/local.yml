@@ -6,29 +6,29 @@
   tasks: 
   - name: delete log
     command: rm /home/josh/ansible/logs/local.yml.log
-	run_once: true
-	delegate_to: localhost
+    run_once: true
+    delegate_to: localhost
   - name: touch log
     command: touch /home/josh/ansible/logs/local.yml.log
-	run_once: true
-	delegate_to: localhost
+    run_once: true
+    delegate_to: localhost
   - name: log info
     delegate_to: localhost
     lininfile:
-	  path: /home/josh/ansible/logs/local.yml.log
-	  insertafter: EOF
-	  state: present
-	  mode: 0755
-	  line: "{{ ansible_date_time.iso8601 }} {{ ansible_fqdn }} {{ ansible_user }} {{ ansible_distribution }} {{ ansible_distribution_release }} {{ ansible_distribution_version }} {{ ansible_all_ipv4_addresses }}"
-	loop:
-	  - local
-	  - cloud
+      path: /home/josh/ansible/logs/local.yml.log
+      insertafter: EOF
+      state: present
+      mode: 0755
+      line: "{{ ansible_date_time.iso8601 }} {{ ansible_fqdn }} {{ ansible_user }} {{ ansible_distribution }} {{ ansible_distribution_release }} {{ ansible_distribution_version }} {{ ansible_all_ipv4_addresses }}"
+    loop:
+    - local
+    - cloud
   - name: copy file
     run_once: true
-	delegate_to: localhost
-	copy:
-	  src: /home/josh/ansible/logs/local.yml.log
-	  dest: /var/www/html/info/local.yml.log
-	  owner: root
-	  group: root
-	  mode: '0644'
+    delegate_to: localhost
+    copy:
+      src: /home/josh/ansible/logs/local.yml.log
+      dest: /var/www/html/info/local.yml.log
+      owner: root
+      group: root
+      mode: '0644'
