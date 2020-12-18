@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//joshroche
+BEGIN:VEVENT
+UID:20201030T165800Z@2003:fa:570f:3b19:31b6:c42a:6067:e716
+TRANSP:TRANSPARENT
+DTSTART:20201031T080000Z
+DTEND:20201101T123000Z
+DTSTAMP:20201030T164400Z
+ORGANIZER;CN=Josh Roche:mailto:josh_roche@hotmail.com
+SUMMARY:Josh's Day
+DESCRIPTION:<p>Here's where the info is:</p><a href="https://jarzure.eastus.cloudapp.azure.com" target="_blank">\nhttps://jarzure.eastus.cloudapp.azure.com</a><br><p>Bring snacks.</p>
+LOCATION:Reichswaldring 15, 67686 Mackenbach
+END:VEVENT
+END:VCALENDAR
