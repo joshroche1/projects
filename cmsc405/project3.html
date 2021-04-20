@@ -158,7 +158,7 @@ function installJSONModel() {
     object.position.set( -centerX, -centerY, -centerZ );
     console.log("Loading finished, scaling object by " + scale);
     console.log("Center at ( " + centerX + ", " + centerY + ", " + centerZ + " )");
-    model = new THREE.Object3D(); /* Create the wrapper, model, to scale and rotate the object. */
+    model = new THREE.Object3D();
     model.add(object);
     model.scale.set(scale,scale,scale);
     if (modelNum == 2) {  // Suzanne
@@ -169,7 +169,7 @@ function installJSONModel() {
     scene.add(model);
     render();
   }
-  document.getElementById("bttn").focus();  // to prevent key presses from going to the radio buttons
+  document.getElementById("resetButton").focus();
   if (model)
     scene.remove(model);
   var loader = new THREE.JSONLoader();
