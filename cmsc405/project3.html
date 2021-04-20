@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+CMSC 405 Project 3
+Unique Threejs scene
+ - min 640 x 480
+ - at least 6 different shapes
+ - multiple lighting effects
+ - controls for components/animation
+
+scene with transparent pythagorean solids
+-->
+<head>
+<title>CMCS 405 Project 3</title>
+<link rel="stylesheet" href="w3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="three.min.js"></script>
+<script src="OrbitControls.js"></script>
+<script>
+"use strict";
+
+var canvas, renderer, scene, camera;
+var skybox, skyboxTexture;
+var model;
+var rotateX = 0;
+var rotateY = 0;
+var controls;
+var cloudy = false;
+var ambientLight, hemisphereLight, directionalLight;
+
+var skyboxTextureFolder = [  
+    "cubemap-textures/park", 
+    "cubemap-textures/pond",
+    "cubemap-textures/Yokohama-at-night",
+    "cubemap-textures/Colosseum"
+];
+var jsonModelURL = [  
+    "models-json/arrowhead.js",
+    "models-json/horse.js",
+    "models-json/Suzanne.js"
+]
+var baseColor = [  
+    0xFFFFFF,
+    0xAAAAFF,
+    0xFFAAAA,
+    0xAAFFAA
+];
+var currentColor = 0xFFFFFF; 
+
+function render() { renderer.render(scene, camera); }
+
+function createSkyBox(texture) {
+  document.getElementById("bttn").focus();
+  if (skybox)
+    scene.remove(skybox);
+  var textureURLs = [];
+  textureURLs.push( skyboxTextureFolder[textureNumber] + "/posx.jpg" );
+  textureURLs.push( skyboxTextureFolder[textureNumber] + "/negx.jpg" );
+  textureURLs.push( skyboxTextureFolder[textureNumber] + "/posy.jpg" );
+  textureURLs.push( skyboxTextureFolder[textureNumber] + "/negy.jpg" );
+  textureURLs.push( skyboxTextureFolder[textureNumber] + "/posz.jpg" );
+  textureURLs.push( skyboxTextureFolder[textureNumber] + "/negz.jpg" );
+  skyboxTexture = THREE.ImageUtils.loadTextureCube( textureURLs, THREE.CubeRefractionMapping, render );
+  var shader = THREE.ShaderLib[ "cube" ];
+  shader.uniforms[ "tCube" ].value = skyboxTexture;
+  var material = new THREE.ShaderMaterial( {
+    fragmentShader: shader.fragmentShader,
+    vertexShader: shader.vertexShader,
+    uniforms: shader.uniforms,
+    depthWrite: false,
+    side: THREE.BackSide
+  });
+  skybox = new THREE.Mesh( new THREE.BoxGeometry( 100, 100, 100 ), material );
+  scene.add(skybox);
+  if (model) {
+    if (model.material) { 
+      model.material = makeRefractionMaterial();
+      model.material.needsUpdate = true;
+    } else { 
+      model.children[0].material = makeRefractionMaterial();
+      model.children[0].needsUpdate = true;
+    }
+  }
+  render();
+}
+
+function makeRefractionMaterial() {
+  var mat = new THREE.MeshBasicMaterial( { 
+    color: currentColor,
+    envMap: skyboxTexture,
+    refractionRatio: .6
+               // The refractionRatio must have value in the range 0 to 1.
+               // The default value, very close to 1, give almost invisible glass.
+  });
+  if (cloudy)
+    mat.reflectivity = 0.7; // determines the fraction of light that is transmitted
+  return mat;
+}
+
+function installModel() {
+  document.getElementById("bttn").focus();
+  if (model)
+    scene.remove(model);
+  var geometry;
+  /*
+  switch (modelNum) {
+    case 0: geometry = new THREE.BoxGeometry(1,1,1); break;
+    case 1: geometry = new THREE.CylinderGeometry(0.5,0.5,1,32,1); break;
+    case 2: geometry = new THREE.TorusGeometry(0.4,0.25,64,32); break;
+    case 3: geometry = new THREE.SphereGeometry(0.6,32,16); break;
+  }
+  */
+  var material = makeRefractionMaterial();
+  /* ADDITIONS */
+  geometry = new THREE.Object3D();
+  model2 = new THREE.Mesh(new THREE.SphereGeometry(1,32,16), material);
+  model2.position(-1,0,0);
+  /* */
+  // model = new THREE.Mesh(geometry, material);
+  rotateX = rotateY = 0;
+  scene.add(geometry);
+  render();
+}
+
+function installJSONModel() {
+  function modelLoadedCallback(geometry) {
+    var material = makeRefractionMaterial();
+    var object = new THREE.Mesh(geometry, material);
+    var xmin = Infinity;   /* Determine the ranges of x, y, and z in the vertices of the geometry. */
+    var xmax = -Infinity;
+    var ymin = Infinity;
+    var ymax = -Infinity;
+    var zmin = Infinity;
+    var zmax = -Infinity;
+    for (var i = 0; i < geometry.vertices.length; i++) {
+      var v = geometry.vertices[i];
+      if (v.x < xmin)
+        xmin = v.x;
+      else if (v.x > xmax)
+        xmax = v.x;
+      if (v.y < ymin)
+        ymin = v.y;
+      else if (v.y > ymax)
+        ymax = v.y;
+      if (v.z < zmin)
+        zmin = v.z;
+      else if (v.z > zmax)
+        zmax = v.z;
+    }
+    var centerX = (xmin+xmax)/2;
+    var centerY = (ymin+ymax)/2; 
+    var centerZ = (zmin+zmax)/2;
+    var max = Math.max(centerX - xmin, xmax - centerX);
+    max = Math.max(max, Math.max(centerY - ymin, ymax - centerY) );
+    max = Math.max(max, Math.max(centerZ - zmin, zmax - centerZ) );
+    var scale = 1/max;
+    object.position.set( -centerX, -centerY, -centerZ );
+    console.log("Loading finished, scaling object by " + scale);
+    console.log("Center at ( " + centerX + ", " + centerY + ", " + centerZ + " )");
+    model = new THREE.Object3D(); /* Create the wrapper, model, to scale and rotate the object. */
+    model.add(object);
+    model.scale.set(scale,scale,scale);
+    if (modelNum == 2) {  // Suzanne
+      geometry.computeVertexNormals();
+      object.rotation.x = Math.PI/2
+    }
+    rotateX = rotateY = 0;
+    scene.add(model);
+    render();
+  }
+  document.getElementById("bttn").focus();  // to prevent key presses from going to the radio buttons
+  if (model)
+    scene.remove(model);
+  var loader = new THREE.JSONLoader();
+  loader.load(jsonModelURL[modelNum], modelLoadedCallback);
+  render();
+}
+
+function setObjectColor() {
+  currentColor = baseColor[colorNum];
+  if (model) {
+    if (model.material) {
+      model.material = makeRefractionMaterial();
+      model.material.needsUpdate = true;
+    } else { 
+      model.children[0].material = makeRefractionMaterial();
+      model.children[0].needsUpdate = true;
+    }
+  }
+  render();
+}
+
+function doCloudyCheckbox() {
+  cloudy = document.getElementById("cloudyCheck").checked;
+  if (model) {
+    if (model.material) {
+      model.material = makeRefractionMaterial();
+      model.material.needsUpdate = true;
+    } else {
+      model.children[0].material = makeRefractionMaterial();
+      model.children[0].needsUpdate = true;
+    }
+  }
+  render();
+}
+
+function sceneLighting(selection) {
+
+ambientLight = new THREE.AmbientLight(!!!COLOR, 0.5);
+scene.add(ambientLight);
+
+directionalLight = new THREE.DirectionalLight(!COLOR, 0.5);
+directionalLight.position = THREE.Vector3(0.25, 1, 0);
+scene.add(directionalLight);
+
+hemisphereLight = new THREE.HemisphereLight(@COLOR, !COLORground, 0.5);
+scene.add(hemisphereLight);
+
+}
+
+function resetRotation() {
+  rotateX = rotateY = 0;
+  model.rotation.set(0,0,0);
+  controls.reset();
+  render();
+}
+
+function doKey() {
+  var rotationChanged = true;
+  switch (evt.keyCode) {
+    case 37: rotateY -= 0.05; break;        // left arrow
+    case 39: rotateY +=  0.05; break;       // right arrow
+    case 38: rotateX -= 0.05; break;        // up arrow
+    case 40: rotateX += 0.05; break;        // down arrow
+    case 13: rotateX = rotateY = 0; break;  // return
+    case 36: rotateX = rotateY = 0; break;  // home
+    default: rotationChanged = false;
+  }
+  if (rotationChanged) {
+    model.rotation.set(rotateX,rotateY,0); 
+    render();
+    evt.preventDefault();
+  }
+}
+
+function installOrbitControls(camera, canvas, callback) {
+  controls = new THREE.OrbitControls(camera,canvas);
+  controls.noPan = true;
+  controls.noZoom = true;
+  controls.staticMoving = true;
+  function move() {
+    controls.update();
+    callback();
+  }
+  function down() {
+    document.addEventListener("mousemove", move, false);
+  }
+  function up() {
+    document.removeEventListener("mousemove", move, false);
+  }
+  function touch(event) {
+    if (event.touches.length == 1) {
+      move();
+    }
+  }
+  canvas.addEventListener("mousedown", down, false);
+  canvas.addEventListener("touchmove", touch, false);
+}
+
+function init() {
+  try {
+    canvas = document.getElementById("glcanvas");
+    renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      antialias: true
+    });
+  } catch (e) {
+    document.getElementById("message").innerHTML = "WebGL is required to run this application";
+    return;
+  }
+  scene = new THREE.scene();
+  camera = new THREE.PerspectiveCamera(50, canvas.width/canvas.height, 0.1, 100);
+  camera.position.z = 3;
+  scene.add(camera); 
+  createSkybox(0);
+  installJSONModel(0);
+  installOrbitControls(camera, canvas, render);
+  render();
+  document.addEventListener("keydown", doKey, false);
+  document.getElementById("object1").checked = true;
+  document.getElementById("object2").checked = true;
+  document.getElementById("object3").checked = true;
+  document.getElementById("object4").checked = true;
+  document.getElementById("object5").checked = true;
+  document.getElementById("object6").checked = true;
+  document.getElementById("directionalLight").checked = true;
+  document.getElementById("hemisphereLight").checked = true;
+  document.getElementById("ambientLight").checked = true;
+  document.getElementById("brightness").value = 50;
+  document.getElementById("cloudyCheck").checked = false;
+}
+
+</script>
+</head>
+<body onload="init()">
+<noscript>
+<p style="color: #A00; font-weight: bold">This page requires JavaScript</p>
+</noscript>
+
+<h1>Welcome</h1>
+
+<p style="color:#AA0000; font-weight: bold" id="message">Drag on the scene to rotate the view.</p>
+<p style="color:#AA0000; font-weight: bold" >Arrow keys rotate the object about its x- and y-axes.<br>
+Return key or HOME key sets both rotations to zero.</p>
+
+<div style="float:left">
+  <canvas width=640 height=480 id="glcanvas" />
+</div>
+
+<div style="float:left; margin-left:30px;">
+<label for="object1">Object 1</label>
+<input type="checkbox" id="object1" onchange="installModel(0)"><br>
+<label for="object2">Object 2</label>
+<input type="checkbox" id="object2" onchange="installModel(1)"><br>
+<label for="object3">Object 3</label>
+<input type="checkbox" id="object3" onchange="installModel(2)"><br>
+<label for="object4">Object 4</label>
+<input type="checkbox" id="object4" onchange="installModel(3)"><br>
+<label for="object5">Object 5</label>
+<input type="checkbox" id="object5" onchange="installModel(4)"><br>
+<label for="object6">Object 6</label>
+<input type="checkbox" id="object6" onchange="installModel(4)">
+<br>
+<label for="directionalLight">Directional Light</label>
+<input type="checkbox" id="directionalLight" onchange="sceneLight(directional)">
+<input type="radio" name="directionalColor" id="dl_white" onchange="sceneLight("directional", "white")"><label for="dl_red">White</label>
+<input type="radio" name="directionalColor" id="dl_red" onchange="sceneLight("directional", "red")"><label for="dl_red">Red</label>
+<input type="radio" name="directionalColor" id="dl_green" onchange="sceneLight("directional", "green")"><label for="dl_red">Green</label>
+<input type="radio" name="directionalColor" id="dl_blue" onchange="sceneLight("directional", "blue")"><label for="dl_red">Blue</label>
+<br>
+<label for="hemisphereLight">Hemispherical Light</label>
+<input type="checkbox" id="hemisphereLight" onchange="sceneLight(hemisphere)">
+<input type="radio" name="hemisphereColor" id="hl_white" onchange="sceneLight("hemisphere", "white")"><label for="hl_red">White</label>
+<input type="radio" name="hemisphereColor" id="hl_red" onchange="sceneLight("hemisphere", "red")"><label for="hl_red">Red</label>
+<input type="radio" name="hemisphereColor" id="hl_green" onchange="sceneLight("hemisphere", "green")"><label for="hl_red">Green</label>
+<input type="radio" name="hemisphereColor" id="hl_blue" onchange="sceneLight("hemisphere", "blue")"><label for="hl_red">Blue</label>
+<br>
+<label for="ambientLight">Ambient Light</label>
+<input type="checkbox" id="ambientLight" onchange="sceneLight(ambient)">
+<input type="radio" name="ambientColor" id="al_white" onchange="sceneLight("ambient", "white")"><label for="al_red">White</label>
+<input type="radio" name="ambientColor" id="al_red" onchange="sceneLight("ambient", "red")"><label for="al_red">Red</label>
+<input type="radio" name="ambientColor" id="al_green" onchange="sceneLight("ambient", "green")"><label for="al_red">Green</label>
+<input type="radio" name="ambientColor" id="al_blue" onchange="sceneLight("ambient", "blue")"><label for="al_red">Blue</label>
+<br>
+<label for="cloudyCheck">Cloudy/Clear</label>
+<input type="checkbox" id="cloudyCheck" onchange="doCloudyCheckbox()">
+<br>  
+<label for="brightness">Adjust Brightness</label>
+<input type="range" id="brightness" name="brightness" min="0" max="100" onchange="adjustBrightness(brightness)">
+<br>
+<button id="resetButton" onclick="resetRotation()">Reset Rotation</button>
+</div>
+
+</body>
+</html>
