@@ -1,6 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
 <!--
 CMSC 405 Project 3
 Unique Threejs scene
@@ -15,7 +13,7 @@ scene with transparent pythagorean solids
 <title>CMCS 405 Project 3</title>
 <link rel="stylesheet" href="w3.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="three.min.js"></script>
+<script src="three.js"></script>
 <script src="OrbitControls.js"></script>
 <script>
 "use strict";
@@ -102,7 +100,6 @@ function installModel() {
   document.getElementById("bttn").focus();
   if (model)
     scene.remove(model);
-  var geometry;
   /*
   switch (modelNum) {
     case 0: geometry = new THREE.BoxGeometry(1,1,1); break;
@@ -113,13 +110,26 @@ function installModel() {
   */
   var material = makeRefractionMaterial();
   /* ADDITIONS */
-  geometry = new THREE.Object3D();
-  model2 = new THREE.Mesh(new THREE.SphereGeometry(1,32,16), material);
+model1 = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 32), material);
+  model1.position(-1,0,0);
+  scene.add(model1);
+model2 = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), material);
   model2.position(-1,0,0);
+  scene.add(model2);
+model3 = new THREE.Mesh(new THREE.DodecahedronGeometry(1, 0), material);
+  model3.position(-1,0,0);
+  scene.add(model3);
+model4 = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 0), material);
+  model4.position(-1,0,0);
+  scene.add(model4);
+model5 = new THREE.Mesh(new THREE.TorusKnotGeometry(1, 0.4, 64, 8), material);
+  model5.position(-1,0,0);
+  scene.add(model5);
+model6 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.4, 8, 6), material);
+  model6.position(-1,0,0);
+  scene.add(model6);
   /* */
-  // model = new THREE.Mesh(geometry, material);
   rotateX = rotateY = 0;
-  scene.add(geometry);
   render();
 }
 
@@ -158,7 +168,7 @@ function installJSONModel() {
     object.position.set( -centerX, -centerY, -centerZ );
     console.log("Loading finished, scaling object by " + scale);
     console.log("Center at ( " + centerX + ", " + centerY + ", " + centerZ + " )");
-    model = new THREE.Object3D();
+    model = new THREE.Object3D(); /* Create the wrapper, model, to scale and rotate the object. */
     model.add(object);
     model.scale.set(scale,scale,scale);
     if (modelNum == 2) {  // Suzanne
@@ -169,7 +179,7 @@ function installJSONModel() {
     scene.add(model);
     render();
   }
-  document.getElementById("resetButton").focus();
+  document.getElementById("bttn").focus();  // to prevent key presses from going to the radio buttons
   if (model)
     scene.remove(model);
   var loader = new THREE.JSONLoader();
@@ -308,59 +318,63 @@ function init() {
 <p style="color: #A00; font-weight: bold">This page requires JavaScript</p>
 </noscript>
 
+<header class="w3-container w3-teal">
 <h1>Welcome</h1>
+</header>
 
-<p style="color:#AA0000; font-weight: bold" id="message">Drag on the scene to rotate the view.</p>
-<p style="color:#AA0000; font-weight: bold" >Arrow keys rotate the object about its x- and y-axes.<br>
+<div class="w3-card w3-padding w3-margin">
+<h2 class="w3-text-red" id="message">Drag on the scene to rotate the view.</h2>
+<p>Arrow keys rotate the object about its x- and y-axes.<br>
 Return key or HOME key sets both rotations to zero.</p>
+</div>
 
-<div style="float:left">
+<div class="w3-card w3-half w3-margin w3-padding">
   <canvas width=640 height=480 id="glcanvas" />
 </div>
 
-<div style="float:left; margin-left:30px;">
-<label for="object1">Object 1</label>
-<input type="checkbox" id="object1" onchange="installModel(0)"><br>
-<label for="object2">Object 2</label>
-<input type="checkbox" id="object2" onchange="installModel(1)"><br>
-<label for="object3">Object 3</label>
-<input type="checkbox" id="object3" onchange="installModel(2)"><br>
-<label for="object4">Object 4</label>
-<input type="checkbox" id="object4" onchange="installModel(3)"><br>
-<label for="object5">Object 5</label>
-<input type="checkbox" id="object5" onchange="installModel(4)"><br>
-<label for="object6">Object 6</label>
-<input type="checkbox" id="object6" onchange="installModel(4)">
-<br>
-<label for="directionalLight">Directional Light</label>
-<input type="checkbox" id="directionalLight" onchange="sceneLight(directional)">
-<input type="radio" name="directionalColor" id="dl_white" onchange="sceneLight("directional", "white")"><label for="dl_red">White</label>
-<input type="radio" name="directionalColor" id="dl_red" onchange="sceneLight("directional", "red")"><label for="dl_red">Red</label>
-<input type="radio" name="directionalColor" id="dl_green" onchange="sceneLight("directional", "green")"><label for="dl_red">Green</label>
-<input type="radio" name="directionalColor" id="dl_blue" onchange="sceneLight("directional", "blue")"><label for="dl_red">Blue</label>
-<br>
-<label for="hemisphereLight">Hemispherical Light</label>
-<input type="checkbox" id="hemisphereLight" onchange="sceneLight(hemisphere)">
-<input type="radio" name="hemisphereColor" id="hl_white" onchange="sceneLight("hemisphere", "white")"><label for="hl_red">White</label>
-<input type="radio" name="hemisphereColor" id="hl_red" onchange="sceneLight("hemisphere", "red")"><label for="hl_red">Red</label>
-<input type="radio" name="hemisphereColor" id="hl_green" onchange="sceneLight("hemisphere", "green")"><label for="hl_red">Green</label>
-<input type="radio" name="hemisphereColor" id="hl_blue" onchange="sceneLight("hemisphere", "blue")"><label for="hl_red">Blue</label>
-<br>
-<label for="ambientLight">Ambient Light</label>
-<input type="checkbox" id="ambientLight" onchange="sceneLight(ambient)">
-<input type="radio" name="ambientColor" id="al_white" onchange="sceneLight("ambient", "white")"><label for="al_red">White</label>
-<input type="radio" name="ambientColor" id="al_red" onchange="sceneLight("ambient", "red")"><label for="al_red">Red</label>
-<input type="radio" name="ambientColor" id="al_green" onchange="sceneLight("ambient", "green")"><label for="al_red">Green</label>
-<input type="radio" name="ambientColor" id="al_blue" onchange="sceneLight("ambient", "blue")"><label for="al_red">Blue</label>
-<br>
-<label for="cloudyCheck">Cloudy/Clear</label>
-<input type="checkbox" id="cloudyCheck" onchange="doCloudyCheckbox()">
-<br>  
-<label for="brightness">Adjust Brightness</label>
-<input type="range" id="brightness" name="brightness" min="0" max="100" onchange="adjustBrightness(brightness)">
-<br>
-<button id="resetButton" onclick="resetRotation()">Reset Rotation</button>
+<div class="w3-card w3-third w3-margin w3-padding">
+<table class="w3-table"><tr>
+<td><input type="checkbox" id="object1" onchange="installModel(0)">
+<label for="object1">Object 1</label></td>
+<td><input type="checkbox" id="object2" onchange="installModel(1)">
+<label for="object2">Object 2</label></td>
+<td><input type="checkbox" id="object3" onchange="installModel(2)">
+<label for="object3">Object 3</label></td></tr><tr>
+<td><input type="checkbox" id="object4" onchange="installModel(3)">
+<label for="object4">Object 4</label></td>
+<td><input type="checkbox" id="object5" onchange="installModel(4)">
+<label for="object5">Object 5</label></td>
+<td><input type="checkbox" id="object6" onchange="installModel(5)">
+<label for="object6">Object 6</label></td></tr>
+<tr><td><input type="checkbox" id="directionalLight" onchange="sceneLight(directional)">
+<label for="directionalLight">Directional Light</label></td>
+<td><input type="radio" name="directionalColor" id="dl_white" onchange="sceneLight("directional", "white")"><label for="dl_white">White</label></td>
+<td><input type="radio" name="directionalColor" id="dl_red" onchange="sceneLight("directional", "red")"><label for="dl_red">Red</label></td>
+<td><input type="radio" name="directionalColor" id="dl_green" onchange="sceneLight("directional", "green")"><label for="dl_green">Green</label></td>
+<td><input type="radio" name="directionalColor" id="dl_blue" onchange="sceneLight("directional", "blue")"><label for="dl_blue">Blue</label></td></tr>
+<tr><td><input type="checkbox" id="hemisphereLight" onchange="sceneLight(hemisphere)">
+<label for="hemisphereLight">Hemispherical Light</label></td>
+<td><input type="radio" name="hemisphereColor" id="hl_white" onchange="sceneLight("hemisphere", "white")"><label for="hl_white">White</label></td>
+<td><input type="radio" name="hemisphereColor" id="hl_red" onchange="sceneLight("hemisphere", "red")"><label for="hl_red">Red</label></td>
+<td><input type="radio" name="hemisphereColor" id="hl_green" onchange="sceneLight("hemisphere", "green")"><label for="hl_green">Green</label></td>
+<td><input type="radio" name="hemisphereColor" id="hl_blue" onchange="sceneLight("hemisphere", "blue")"><label for="hl_blue">Blue</label></td></tr>
+<tr><td><input type="checkbox" id="ambientLight" onchange="sceneLight(ambient)">
+<label for="ambientLight">Ambient Light</label></td>
+<td><input type="radio" name="ambientColor" id="al_white" onchange="sceneLight("ambient", "white")"><label for="al_white">White</label></td>
+<td><input type="radio" name="ambientColor" id="al_red" onchange="sceneLight("ambient", "red")"><label for="al_red">Red</label></td>
+<td><input type="radio" name="ambientColor" id="al_green" onchange="sceneLight("ambient", "green")"><label for="al_green">Green</label></td>
+<td><input type="radio" name="ambientColor" id="al_blue" onchange="sceneLight("ambient", "blue")"><label for="al_blue">Blue</label></td></tr>
+<tr><td><input type="checkbox" id="cloudyCheck" onchange="doCloudyCheckbox()">
+<label for="cloudyCheck">Cloudy/Clear</label></td></tr>
+<tr><td><label for="brightness">Adjust Brightness</label></td>
+<td><input type="range" id="brightness" name="brightness" min="0" max="100" onchange="adjustBrightness(brightness)"></td></tr>
+<tr><td><button id="resetButton" onclick="resetRotation()">Reset Rotation</button></td></tr>
+</table>
 </div>
+
+<footer class="w3-container w3-bottom w3-teal">
+Joshua A. Roche
+</footer>
 
 </body>
 </html>
