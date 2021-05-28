@@ -1,0 +1,6 @@
+lxd init
+lxc list
+lxc launch ubuntu:focal ubuntu2104
+lxc exec CONTAINER -- passwd USER
+lxc console CONTAINER | ctrl+a, q
+iptables -t nat -A PREROUTING -p tcp -i eth0 --dport 220# -j DNAT --to-destination #.#.#.#:220#
