@@ -18,7 +18,6 @@ cat > /etc/samba/smb.conf << EOL
 	passwd chat = *Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .
 	pam password change = yes
 	map to guest = Bad User
-	userhare allow guest = no
 	min protocol = SMB2
 [homes]
 	read only = no
