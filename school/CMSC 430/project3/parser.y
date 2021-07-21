@@ -1,6 +1,3 @@
-/* Compiler Theory and Design
-   Duane J. Jarc */
-
 %{
 
 #include <iostream>
