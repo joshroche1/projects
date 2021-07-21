@@ -1,6 +1,3 @@
-// CMSC 430
-// Duane J. Jarc
-
 // This file contains the bodies of the evaluation functions
 
 #include <string>
@@ -61,7 +58,19 @@ int evaluateArithmetic(int left, Operators operator_, int right)
 		case MULTIPLY:
 			result = left * right;
 			break;
+		case EXPONENT:
+			double x = left;
+			double y = right;
+			result = pow(x, y);
+			break;
 	}
+	return result;
+}
+
+int evaluateCondtional(Operators operator_, condition_1, condition_2, condition_3)	// FIX THIS
+{
+	int result;
+	
 	return result;
 }
 
