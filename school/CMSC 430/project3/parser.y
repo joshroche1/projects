@@ -71,8 +71,7 @@ statement_:
 statement:
 	expression |
 	IF '(' relation ')' THEN statement ELSE statement ENDIF ';' |
-	CASE expression IS case OTHERS ARROW statement ';' ENDCASE ';' ;
-	
+	CASE expression IS case OTHERS ARROW statement ';' ENDCASE ';' |	
 	REDUCE operator reductions ENDREDUCE {$$ = $3;} ;
 
 case:
@@ -90,8 +89,8 @@ reductions:
 
 expression:
 	expression ANDOP relation {$$ = $1 && $3;} |
-	expression NOTOP relation {$$ = $1 && $3;} |
-	expression OROP relation {$$ = $1 && $3;} |
+	expression NOTOP relation {$$ = $1 != $3;} |
+	expression OROP relation {$$ = $1 || $3;} |
 	relation ;
 
 relation:
