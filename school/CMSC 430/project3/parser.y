@@ -33,14 +33,14 @@ int result;
 }
 
 %token <iden> IDENTIFIER
-%token <value> INT_LITERAL
+%token <value> INT_LITERAL REAL_LITERAL BOOL_LITERAL
 
-%token <oper> ADDOP MULOP RELOP
-%token ANDOP
+%token <oper> ADDOP MULOP RELOP EXPOP
+%token ANDOP OROP NOTOP
 
-%token BEGIN_ BOOLEAN END ENDREDUCE FUNCTION INTEGER IS REDUCE RETURNS
+%token BEGIN_ BOOLEAN CASE ELSE END ENDCASE ENDIF ENDREDUCE FUNCTION IF INTEGER IS REDUCE RETURNS THEN WHEN 
 
-%type <value> body statement_ statement reductions expression relation term
+%type <value> body statement_ statement reductions expression relation term case 
 	factor primary
 %type <oper> operator
 
@@ -61,6 +61,7 @@ variable:
 
 type:
 	INTEGER |
+	REAL |
 	BOOLEAN ;
 
 body:
@@ -72,11 +73,19 @@ statement_:
 	
 statement:
 	expression |
+	IF '(' relation ')' THEN statement ELSE statement ENDIF ';' |
+	CASE expression IS case OTHERS ARROW statement ';' ENDCASE ';' ;
+	
 	REDUCE operator reductions ENDREDUCE {$$ = $3;} ;
+
+case:
+	WHEN INT_LITERAL ARROW statement ;
 
 operator:
 	ADDOP |
-	MULOP ;
+	MULOP |
+	EXPOP |
+	;
 
 reductions:
 	reductions statement_ {$$ = evaluateReduction($<oper>0, $1, $2);} |
@@ -84,6 +93,8 @@ reductions:
 
 expression:
 	expression ANDOP relation {$$ = $1 && $3;} |
+	expression NOTOP relation {$$ = $1 && $3;} |
+	expression OROP relation {$$ = $1 && $3;} |
 	relation ;
 
 relation:
@@ -96,11 +107,14 @@ term:
       
 factor:
 	factor MULOP primary {$$ = evaluateArithmetic($1, $2, $3);} |
+	factor EXPOP primary {$$ = evaluateArithmetic($1, $2, $3);} |
 	primary ;
 
 primary:
 	'(' expression ')' {$$ = $2;} |
 	INT_LITERAL |
+	REAL_LITERAL |
+	BOOL_LITERAL |
 	IDENTIFIER {if (!symbols.find($1, $$)) appendError(UNDECLARED, $1);} ;
 
 %%
