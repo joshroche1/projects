@@ -9,19 +9,16 @@ using namespace std;
 #include "values.h"
 #include "listing.h"
 
-int evaluateReduction(Operators operator_, int head, int tail)
-{
+int evaluateReduction(Operators operator_, int head, int tail) {
 	if (operator_ == ADD)
 		return head + tail;
 	return head * tail;
 }
 
 
-int evaluateRelational(int left, Operators operator_, int right)
-{
+int evaluateRelational(int left, Operators operator_, int right) {
 	int result;
-	switch (operator_)
-	{
+	switch (operator_) {
 		case LESS:
 			result = left < right;
 			break;
@@ -47,11 +44,9 @@ int evaluateRelational(int left, Operators operator_, int right)
 	return result;
 }
 
-int evaluateArithmetic(int left, Operators operator_, int right)
-{
+int evaluateArithmetic(int left, Operators operator_, int right) { 
 	int result;
-	switch (operator_)
-	{
+	switch (operator_) {
 		case ADD:
 			result = left + right;
 			break;
@@ -67,10 +62,21 @@ int evaluateArithmetic(int left, Operators operator_, int right)
 	return result;
 }
 
-int evaluateCondtional(Operators operator_, condition_1, condition_2, condition_3)	// FIX THIS
-{
+int evaluateCondtional(Operators operator_, condition_1, condition_2, condition_3) {
 	int result;
-	
+	switch (operator_) {
+		case IF:
+			if (condition_1) {
+				result = condition_2;
+			} else {
+				if (condition_3 != null) {
+					result = condition_3;
+				} else {
+					result = null;
+				}
+			}
+		case CASE:
+	}
 	return result;
 }
 
