@@ -28,6 +28,24 @@ int evaluateRelational(int left, Operators operator_, int right)
 		case LESS:
 			result = left < right;
 			break;
+		case GREATER:
+			result = left > right;
+			break;
+		case EQUAL:
+			result = (left == right);
+			break;
+		case LESSEQUAL:
+			result = (left <= right);
+			break;
+		case GREATEREQUAL:
+			result = (left >= right);
+			break;
+		case NOTEQUAL:
+			result = (left /= right);
+			break;
+		default:
+			result = false;
+			break;
 	}
 	return result;
 }
