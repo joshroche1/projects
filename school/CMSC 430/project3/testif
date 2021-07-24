@@ -1,0 +1,12 @@
+-- test if
+
+function testcondition returns integer;
+	a: integer is 5;
+	b: integer is 10;
+begin
+	if a > b then
+		1 + 2
+	else
+		10 + 11
+	endif;;
+end;

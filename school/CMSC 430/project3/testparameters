@@ -1,0 +1,8 @@
+-- test parameters
+
+function testparameter a: integer returns integer;
+	b: integer is 5;
+begin
+	a = 10;
+	b - a;
+end;

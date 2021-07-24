@@ -1,0 +1,7 @@
+-- test subtraction
+
+function testadd returns integer;
+
+begin
+	4 - 3;
+end;

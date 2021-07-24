@@ -1,0 +1,8 @@
+-- test equal
+
+function testrelation returns boolean;
+	a: integer is 5;
+	b: integer is 5;
+begin
+	a == b;
+end;

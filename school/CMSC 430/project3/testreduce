@@ -1,0 +1,11 @@
+-- test reduce
+
+function testreduce returns integer;
+
+begin
+	reduce *
+		5;
+		10;
+		15;
+	endreduce;
+end;

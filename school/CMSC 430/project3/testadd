@@ -1,0 +1,7 @@
+-- test addition
+
+function testadd returns integer;
+
+begin
+	2 + 3;
+end;

@@ -1,0 +1,12 @@
+-- test case
+
+function testcondition returns integer;
+	a: integer is 5;
+	b: integer is 10;
+begin
+	case b / a is
+		when 1 => a + b;
+		when 2 => a * b;
+		others => 1;
+	endcase;
+end;
