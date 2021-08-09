@@ -1,12 +1,11 @@
 #!/bin/bash
-# run as root
+
 cd /opt
-apt-get update
-apt-get upgrade -y
-apt-get install default-jdk maven
-wget https://downloads.apache.org/tomee/tomee-8.0.4/apache-tomee-8.0.4-webprofile.tar.gz
-tar xvzf apache-tomee-8.0.4-webprofile.tar.gz
-mv apache-tomee-webprofile-8.0.4/ tomee/
+apt-get update && apt-get upgrade -y
+apt-get install openjdk-16-jdk maven
+wget https://downloads.apache.org/tomee/tomee-9.0.0-M7/apache-tomee-9.0.0-M7-webprofile.tar.gz
+tar xvzf apache-tomee-9.0.0-M7-webprofile.tar.gz
+mv apache-tomee-webprofile-9.0.0-M7/ tomee/
 iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080
 iptables -A PREROUTING -t nat -i eth0 -p tcp --dport 443 -j REDIRECT --to-port 8443
 iptables-save
