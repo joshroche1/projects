@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cp server.xml /opt
+cp tomcat-users.xml /opt
+cp context.xml /opt
 cd /opt
 apt-get update && apt-get upgrade -y
 apt-get install openjdk-16-jdk maven
@@ -14,11 +17,10 @@ mkdir /home/tomee
 chown -R tomee: /home/tomee
 cp tomee.service /etc/systemd/system/
 systemctl daemon-reload 
-systemctl tomee start 
-cd /opt/tomee/bin 
-keytool -genkey -alias tomee -keyalg RSA $PASSWORD
+./opt/tomee/bin/keytool -genkey -alias tomee -keyalg RSA -storepass ApacheTomEE
 cp server.xml /opt/tomee/conf/server.xml
 cp tomcat-users.xml /opt/tomee/conf/tomcat-users.xml
-cp context.xml /opt/tomee/webapp/manager/META-INF/context.xml
-cp context.xml /opt/tomee/webapp/host-manager/META-INF/context.xml
-systemctl restart tomee 
+cp context.xml /opt/tomee/webapps/manager/META-INF/context.xml
+cp context.xml /opt/tomee/webapps/host-manager/META-INF/context.xml
+chown -R tomee: tomee/
+systemctl start tomee 
