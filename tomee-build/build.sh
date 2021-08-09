@@ -16,8 +16,10 @@ useradd -p $(openssl passwd -crypt ApacheTomEE) tomee
 mkdir /home/tomee
 chown -R tomee: /home/tomee
 cp tomee.service /etc/systemd/system/
-systemctl daemon-reload 
-./opt/tomee/bin/keytool -genkey -alias tomee -keyalg RSA -storepass ApacheTomEE
+systemctl daemon-reload
+cd /opt/tomee/bin
+keytool -genkey -alias tomee -keyalg RSA -storepass ApacheTomEE
+cd /opt
 cp server.xml /opt/tomee/conf/server.xml
 cp tomcat-users.xml /opt/tomee/conf/tomcat-users.xml
 cp context.xml /opt/tomee/webapps/manager/META-INF/context.xml
