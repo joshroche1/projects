@@ -13,20 +13,7 @@
     }
   </style>
 </head>
-<body id="bodyid">
-
-<script>
-var myIndex = 0;
-changeBackground();
-
-function changeBackground() {
-  var image = ["url("/webpages/resources/img/1.jpeg")","url("/webpages/resources/img/2.jpeg")","url("/webpages/resources/img/3.jpeg")","url("/webpages/resources/img/4.jpeg")","url("/webpages/resources/img/5.jpeg")","url("/webpages/resources/img/6.jpeg")","url("/webpages/resources/img/7.jpeg")","url("/webpages/resources/img/8.jpeg")","url("/webpages/resources/img/9.jpeg")","url("/webpages/resources/img/10.jpeg")"];
-  myIndex++;
-  if (myIndex > image.length) {myIndex = 0}
-  document.getElementById('bodyid').style.background-image = image[myIndex];
-  setTimeout(changeBackground,9000);
-}
-</script>
+<body>
 
 <div class="w3-display-topleft w3-button w3-card w3-round-xlarge w3-teal">
   <span onclick="document.getElementById('topmenu').style.display='block'">&#9776;</span>
