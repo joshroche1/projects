@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+</h:head>
+<h:body>
+
+<ui:composition>
+
+<div class="w3-display-topleft w3-button w3-card w3-round-xlarge w3-teal">
+  <span onclick="document.getElementById('topmenu').style.display='block'">&#9776;</span>
+</div>
+<div id="topmenu" class="w3-display-topmiddle w3-card w3-round-large w3-twothird w3-teal">
+  <button onclick="document.getElementById('leftpanel').style.display='block'" class="w3-button w3-round-large">Left Panel</button>
+  <button onclick="document.getElementById('midpanel').style.display='block'" class="w3-button w3-round-large">Middle Panel</button>
+  <button onclick="document.getElementById('rightpanel').style.display='block'" class="w3-button w3-round-large">Right Panel</button>
+  <span onclick="document.getElementById('topmenu').style.display='none'" class="w3-display-right w3-button">X</span>
+</div>
+
+<div class="w3-cell-row" style="margin-top:90px;margin-bottom:90px;">
+  <div id="leftpanel" class="w3-display-left w3-container w3-cell w3-card w3-teal w3-round-large">
+    <span onclick="document.getElementById('leftpanel').style.display='none'" class="w3-button">X</span>
+    <h3>Left Panel</h3>
+  </div>
+  <div id="midpanel" class="w3-display-middle w3-card w3-container w3-cell w3-teal w3-round-large">
+    <span onclick="document.getElementById('midpanel').style.display='none'" class="w3-button">X</span>
+    <h3>Middle Panel</h3>
+  </div>
+  <div id="rightpanel" class="w3-display-right w3-container w3-cell w3-card w3-teal w3-round-large">
+    <span onclick="document.getElementById('rightpanel').style.display='none'" class="w3-button">X</span>
+    <h3>Right Panel</h3>
+  </div>
+</div>
+
+</ui:composition>
+
+</h:body>
+</html>
