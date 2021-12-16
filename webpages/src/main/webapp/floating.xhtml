@@ -15,30 +15,35 @@
 </head>
 <body>
 
-<div class="w3-display-topleft w3-card w3-round-xlarge w3-teal">
-  <button onclick="#" class="w3-button">&#9776;</button>
+<div class="w3-display-topleft w3-button w3-card w3-round-xlarge w3-teal">
+  <button onclick="document.getElementById('topmenu').style.display='block'">&#9776;</button>
 </div>
-<div class="w3-display-topmiddle w3-card w3-round-large w3-twothird w3-teal">
-  <a href="/webpages/"><button class="w3-button w3-round-large">HOME</button></a>
-  <a href="http://192.168.2.243:8080/manager"><button class="w3-button w3-round-large">Tomcat</button></a>
+<div id="topmenu" class="w3-display-topmiddle w3-card w3-round-large w3-twothird w3-teal">
+  <button onclick="document.getElementById('leftpanel').style.display='block'" class="w3-button w3-round-large">Left Panel</button>
+  <button onclick="document.getElementById('midpanel').style.display='block'" class="w3-button w3-round-large">Middle Panel</button>
+  <button onclick="document.getElementById('rightpanel').style.display='block'" class="w3-button w3-round-large">Right Panel</button>
+  <button onclick="document.getElementById('topmenu').style.display='none'" class="w3-button">X</button>
 </div>
 
 <div class="w3-cell-row" style="margin-top:90px;margin-bottom:90px;">
-  <div class="w3-left w3-container w3-cell w3-card w3-teal w3-round-large">
+  <div id="leftpanel" class="w3-left w3-container w3-cell w3-card w3-teal w3-round-large">
+    <button onclick="document.getElementById('leftpanel').style.display='none'" class="w3-display-topright w3-button">X</button>
     <h3>Left Panel</h3>
   </div>
-  <div class="w3-card w3-container w3-cell w3-teal w3-round-large">
+  <div id="midpanel" class="w3-card w3-container w3-cell w3-teal w3-round-large">
+    <button onclick="document.getElementById('midpanel').style.display='none'" class="w3-display-topright w3-button">X</button>
     <h3>Middle Panel</h3>
   </div>
-  <div class="w3-right w3-container w3-cell w3-card w3-teal w3-round-large">
+  <div id="rightpanel" class="w3-right w3-container w3-cell w3-card w3-teal w3-round-large">
+    <button onclick="document.getElementById('rightpanel').style.display='none'" class="w3-display-topright w3-button">X</button>
     <h3>Right Panel</h3>
   </div>
 </div>
 
 <div class="w3-display-bottommiddle w3-round-large w3-twothird w3-teal">
-  <button class="w3-bar-item w3-button w3-round-large">BUTTON 1</button>
-  <button class="w3-bar-item w3-button w3-round-large">BUTTON 2</button>
-  <button class="w3-bar-item w3-button w3-round-large">BUTTON 3</button>
+  <a href="/webpages/"><button class="w3-button w3-round-large">HOME</button></a>
+  <a href="http://192.168.2.243:8080/manager"><button class="w3-button w3-round-large">Tomcat</button></a>
+  <button class="w3-bar-item w3-button w3-round-large">About</button>
 </div>
 
 </body>
