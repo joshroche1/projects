@@ -14,7 +14,7 @@
 <div class="w3-container w3-theme-d2">
   <span onclick="closeSidebar()" class="w3-button w3-display-topright w3-large">X</span>
 </div>
-<a class="w3-bar-item w3-button" href="/index.xhtml">HOME</a>
+<a class="w3-bar-item w3-button" href="index.xhtml">HOME</a>
 <a class="w3-bar-item w3-button" href="http://192.168.2.243:8080">Tomcat</a>
 <a class="w3-bar-item w3-button" href="#">About</a>
 </nav>
@@ -62,8 +62,29 @@
           <tr><td><label>Number</label></td><td><input type="number" min="0" max="100" /></td></tr>
           <tr><td><label>Range</label></td><td><input type="range" min="0" max="100" /></td></tr>
           <tr><td><label>Telephone</label></td><td><input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" /></td></tr>
+          <tr><td><button type="button" onclick="document.getElementById('modal1').style.display='block'" class="w3-button w3-round-large w3-green">SUBMIT</button>
+            <button type="reset" class="w3-button w3-round-large">RESET</button></td><td></td></tr>
         </form>
       </table>
+      <div id="modal1" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+          <div class="w3-center"><br>
+            <span onclick="document.getElementById('modal1').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+          </div>
+          <form class="w3-container" action="#">
+            <div class="w3-section">
+              <label><b>Username</b></label>
+              <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+              <label><b>Password</b></label>
+              <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+              <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
+            </div>
+          </form>
+          <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('modal1').style.display='none'" type="button" class="w3-button w3-red w3-round-large">CLOSE</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
