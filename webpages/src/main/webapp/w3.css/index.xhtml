@@ -14,8 +14,8 @@
 <div class="w3-container w3-theme-d2">
   <span onclick="closeSidebar()" class="w3-button w3-display-topright w3-large">X</span>
 </div>
-<a class="w3-bar-item w3-button" href="#">Containers</a>
-<a class="w3-bar-item w3-button" href="#">Forms</a>
+<a class="w3-bar-item w3-button" href="/index.xhtml">HOME</a>
+<a class="w3-bar-item w3-button" href="http://192.168.2.243:8080">Tomcat</a>
 <a class="w3-bar-item w3-button" href="#">About</a>
 </nav>
 
@@ -36,60 +36,34 @@
     <h3>Forms</h3>
     <p>Form items and fields.</p>
     <div class="w3-container">
-      <form>
-        <div>
-        <label>Text</label>
-        <input type="text" />
-        </div><div>
-        <label>Text Area</label>
-        <textarea rows="10" cols="30" />
-        </div><div>
-        <label>Radio</label>
-        <input type="radio" value="Radio 1" />
-        <input type="radio" value="Radio 2" />
-        </div><div>
-        <label>Checkbox</label>
-        <input type="checkbox" name="checkval" value="Check 1" />
-        <input type="checkbox" name="checkval" value="Check 2" />
-        </div><div>
-        <label>Select</label>
-        <select>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-        </select>
-        </div><div>
-        <label>Color</label>
-        <input type="color" />
-        </div><div>
-        <label>Date</label>
-        <input type="date" />
-        <input type="datetime-local" />
-        </div><div>
-        <label>Email</label>
-        <input type="email" />
-        </div><div>
-        <label>File</label>
-        <input type="file" />
-        </div><div>
-        <label>Month</label>
-        <input type="month" />
-        </div><div>
-        <label>Number</label>
-        <input type="number" min="0" max="100" />
-        </div><div>
-        <label>Password</label>
-        <input type="password" />
-        </div><div>
-        <label>Range</label>
-        <input type="range" min="0" max="100" />
-        </div><div>
-        <label>Checkbox</label>
-        <input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" />
-        </div><div>
-        <label>Time</label>
-        <input type="time" />
-        </div>
-      </form>
+      <table class="w3-table">
+        <form action="#">
+          <tr><td><label>Text</label></td><td><input type="text" /></td></tr>
+          <tr><td><label>Text Area</label></td><td><textarea rows="10" cols="30" /></td></tr>
+          <tr><td><label>Radio</label></td><td>
+            <input type="radio" name="radio" value="Radio 1" />
+            <input type="radio" name="radio" value="Radio 2" /></td></tr>
+          <tr><td><label>Checkbox</label></td><td>
+            <input type="checkbox" name="checkval" value="Check 1" />
+            <input type="checkbox" name="checkval" value="Check 2" /></td></tr>
+          <tr><td><label>Select</label></td><td>
+            <select>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+            </select></td></tr>
+          <tr><td><label>Color</label></td><td><input type="color" /></td></tr>
+          <tr><td><label>Date</label></td><td><input type="date" />
+            <label>Local</label><input type="datetime-local" />
+            <label>Month</label><input type="month" />
+            <label>Time</label><input type="time" /></td></tr>
+          <tr><td><label>Email</label></td><td><input type="email" /></td></tr>
+          <tr><td><label>Password</label></td><td><input type="password" /></td></tr>
+          <tr><td><label>File</label></td><td><input type="file" /></td></tr>
+          <tr><td><label>Number</label></td><td><input type="number" min="0" max="100" /></td></tr>
+          <tr><td><label>Range</label></td><td><input type="range" min="0" max="100" /></td></tr>
+          <tr><td><label>Telephone</label></td><td><input type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" /></td></tr>
+        </form>
+      </table>
     </div>
   </div>
 </div>
