@@ -5,11 +5,11 @@ HOSTNAME="smbclient"
 WORKGROUP="JAR"
 REALM="JAR.NET"
 PDCIPADDR=192.168.2.240
-
+PASSWORD='P@55w0rd!'
 #
 apt-get update; apt-get upgrade -y; apt-get install samba krb5-user krb5-config winbind libpam-winbind libnss-winbind -y -q
-# kinit Administrator
-# klist
+echo '$PASSWORD' | kinit Administrator
+klist
 mv /etc/samba/smb.conf /etc/samba/smb.conf.OLD
 echo '[global]' > /etc/samba/smb.conf
 echo 'workgroup = $WORKGROUP' >> /etc/samba/smb.conf
