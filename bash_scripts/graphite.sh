@@ -34,3 +34,4 @@ chown _graphite:_graphite /var/log/graphite/info.log
 chown _graphite:_graphite /var/log/graphite/exception.log
 
 django-admin createsuperuser --settings=graphite.settings
+ln -s /usr/lib/python3/dist-packages/django/contrib/admin/static/admin/ /usr/share/graphite-web/static/admin
