@@ -14,8 +14,16 @@
 
 <ui:composition>
 
-<header class="w3-container">
-  ...
+<header class="w3-container w3-teal">
+  <div class="w3-container">
+    <h1>HEADER</h1>
+    <h3>subheader</h3>
+  </div>
+
+<ui:insert name="navigation">
+  <ui:include src="/templates/navigation.xhtml"></ui:include>
+</ui:insert>
+
 </header>
 
 </ui:composition>
