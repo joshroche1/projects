@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Simple CSS Webpage Template</title>
+</head>
+<body>
+
+<header style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <h1 class="content">HEADER</h1>
+  <ul>
+    <li><a href="#">HOME</a></li>
+    <li><a href="#">CONTACT</a></li>
+    <li><a href="#">ABOUT</a></li>
+    <li style="float: right;"><a href="#">TOP NAVIGATION</a></li>
+  </ul>
+</header>
+
+<div class="row" style="position: relative; top: 150px;">
+
+
+<div class="col-2 col-s-2">
+  <div class="content">
+    <h3>SIDE NAVIGATION</h3>
+    <ul class="menu">
+      <li><a href="#">TOP SECTION</a></li>
+      <li><a href="#">MID SECTION</a></li>
+      <li><a href="#">BOTTOM SECTION</a></li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="col-8 col-s-10">
+
+
+<section class="content">
+  <h3>TOP SECTION</h3>
+  <table>
+    <tr><th>ITEM 1</th><th>ITEM 2</th><th>ITEM 3</th><th>ITEM 4</th><th>ITEM 5</th></tr>
+    <tr><td>A1</td><td>B1</td><td>C1</td><td>D1</td><td>E1</td></tr>
+    <tr><td>A2</td><td>B2</td><td>C2</td><td>D2</td><td>E2</td></tr>
+    <tr><td>A3</td><td>B3</td><td>C3</td><td>D3</td><td>E3</td></tr>
+    <tr><td>A4</td><td>B4</td><td>C4</td><td>D4</td><td>E4</td></tr>
+  </table>
+</section>
+<section class="content">
+  <h3>MID SECTION</h3>
+  <form action="#" style="display: inline-block; background-color: lightgray; width: 100%;">
+    FORM
+    <div class="content" style="width: 45%; float: left;">
+      <label for="usernameinput" class="col-6">Username</label>
+      <input type="text" id="usernameinput" name="usernameinput" class="col-6" />
+      <label for="passwordinput" class="col-6">Password</label>
+      <input type="password" id="passwordinput" name="passwordinput" class="col-6" />
+      <label for="emailinput" class="col-6">Email</label>
+      <input type="email" id="emailinput" name="emailinput" class="col-6" />
+      <label for="ageinput" class="col-6">Age</label>
+      <input type="number" id="ageinput" name="ageinput" min="1" max="150" class="col-6" />
+      <label for="range1" class="col-6">Range</label>
+      <input type="range" id="range1" name="range1" min="1" max="100" class="col-5" />
+      <label for="telnum" class="col-6">Phone</label>
+      <input type="tel" id="telnum" name="telnum" pattern="[0-9]{3}-[0-9]{11}" class="col-6" />
+      <label for="urlinput" class="col-6">URL</label>
+      <input type="url" id="urlinput" name="urlinput" class="col-6" />
+      <label for="textarea1" class="col-6">Description</label>
+      <textarea id="textarea1" name="textarea" rows="3" cols="15" class="col-6" />
+    </div>
+    <div class="content" style="width: 45%; float: right;">
+      <div>
+        <label for="select1" class="col-6">Select Letter</label>
+        <select id="select1" name="select1" class="col-6">
+          <option value="a">A</option>
+          <option value="b">B</option>
+          <option value="c">C</option>
+        </select>
+      </div>
+      <div>
+        <label>Radio Group</label><br />
+        <input type="radio" id="radio1" name="radiogroup" value="1" />
+        <label for="radio1">Radio 1</label><br />
+        <input type="radio" id="radio2" name="radiogroup" value="2" />
+        <label for="radio2">Radio 2</label><br />
+        <input type="radio" id="radio3" name="radiogroup" value="3" />
+        <label for="radio3">Radio 3</label>
+      </div>
+      <div>
+        <label>Checkboxes</label><br />
+        <input type="checkbox" id="check1" name="check1" value="1" />
+        <label for="check1">Checkbox 1</label><br />
+        <input type="checkbox" id="check2" name="check2" value="2" />
+        <label for="check2">Checkbox 2</label><br />
+        <input type="checkbox" id="check3" name="check3" value="3" />
+        <label for="check3">Checkbox 3</label>
+      </div>
+      <div>
+        <label for="dateinput"  class="col-6">Select a date</label>
+        <input type="date" id="dateinput" name="dateinput" class="col-6" />
+      </div>
+      <input type="submit" value="Submit" />
+      <input type="reset" />
+    </div>
+  </form>
+</section>
+<section>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vestibulum molestie quam, eu tempor neque tempor id. Sed consectetur dui at augue porta ornare. Nam sapien diam, lacinia et velit vel, eleifend cursus arcu. Nunc vel aliquet felis, ac maximus urna. Vestibulum a bibendum ex, eget ultricies ligula. Curabitur vel nulla at tellus volutpat malesuada. Donec eget vestibulum diam. Vestibulum rutrum eget turpis quis imperdiet. Maecenas nec nibh risus. Nunc aliquet egestas consectetur.</p>
+  <p>Aliquam imperdiet dapibus quam. Aliquam erat volutpat. Nullam lobortis auctor tortor. Nam sit amet sem ante. Nullam est tortor, fringilla sit amet ligula ac, pellentesque posuere mi. Nulla cursus lacinia justo, nec rutrum lacus interdum non. Suspendisse potenti. Donec pretium neque lacus, et placerat augue rutrum eu. Sed sed rutrum arcu. Etiam tristique, nibh ut eleifend consequat, libero justo sodales nibh, non vehicula orci odio pretium sapien. Proin vulputate dui id felis vehicula, ut tincidunt augue volutpat. Sed auctor mauris ut sapien interdum porttitor.</p>
+  <p>Curabitur eu maximus justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus iaculis vulputate aliquam. Fusce est nisi, pellentesque vel semper ac, placerat sed libero. Fusce malesuada et quam et tincidunt. Proin ornare ipsum et vulputate molestie. Sed nec leo ornare, posuere libero ut, condimentum mi. Cras elementum faucibus lectus, et accumsan metus congue in. Nam ultrices, ligula ac pellentesque pulvinar, purus velit consectetur mi, non suscipit erat lacus id est. Sed eget lacus orci. Donec pretium sed purus eu volutpat. Nunc dignissim ut felis at tincidunt. Curabitur lacus odio, maximus vestibulum volutpat sit amet, congue id metus.</p>
+  <p>Cras lacinia non enim a eleifend. Aliquam gravida nisi non orci pellentesque volutpat. Nam pretium, mauris nec suscipit tempus, sem dui iaculis nulla, non porttitor lectus est sit amet quam. Donec auctor tincidunt tellus nec aliquet. Integer at neque at erat pellentesque laoreet. In at risus pellentesque, faucibus mauris ut, cursus turpis. Nam cursus pulvinar massa, eget interdum ligula maximus sit amet. Suspendisse dui tortor, cursus ac pretium ac, iaculis nec magna. Maecenas nec elit congue, ultrices nibh eget, porttitor lectus. Praesent mauris massa, tristique ac ultricies vel, iaculis a augue. Aenean eleifend erat id vulputate vehicula. Phasellus rutrum lorem ut bibendum auctor. Sed lobortis tortor sed urna pellentesque, nec auctor nulla venenatis. Proin rutrum sit amet ipsum eget congue. Vestibulum ullamcorper risus vel consectetur consequat.</p>
+  <p>Etiam ac sapien turpis. Nullam varius lacus ac nulla tristique dignissim. Sed dictum tincidunt risus, aliquet volutpat sem tristique in. Nunc dictum odio diam, nec tempus quam sollicitudin in. Maecenas interdum elit purus, vitae gravida purus posuere quis. Nunc dapibus viverra justo, ac ultricies lorem interdum ac. Nunc porta ante a mauris auctor cursus. Nam dapibus, nisl ultrices tristique placerat, nisl tellus gravida orci, non dapibus augue nibh eget est. Pellentesque placerat convallis varius. Etiam sed libero elementum, interdum risus id, luctus risus. Morbi ornare ante eu pulvinar efficitur. Phasellus interdum non nisl ut pellentesque.</p>
+</section>
+<section class="content">
+  <h3>BOTTOM SECTION</h3>
+  <div class="flex-container">
+    <div style="background-color: lightgray;">BOX 1</div>
+    <div style="background-color: lightgray;">BOX 2</div>
+    <div style="background-color: lightgray;">BOX 3</div>
+    <div style="background-color: lightgray;">BOX 4</div>
+    <div style="background-color: lightgray;">BOX 5</div>
+    <div style="background-color: lightgray;">BOX 6</div>
+    <div style="background-color: lightgray;">BOX 7</div>
+    <div style="background-color: lightgray;">BOX 8</div>
+    <div style="background-color: lightgray;">BOX 9</div>
+  </div>
+</section>
+
+
+</div>
+
+
+<div class="col-2 col-s-12">
+  <div class="content">
+    <h3>ASIDE CONTENT</h3>
+    <ul>
+      <li>ITEM 1</li>
+      <li>ITEM 2</li>
+      <li>ITEM 3</li>
+    </ul>
+  </div>
+</div>
+
+
+</div>
+<br /><br /><br /><br /><br />
+
+<footer class="col-12">
+  <h2>FOOTER</h2>
+</footer>
+
+</body>
+</html>
+
