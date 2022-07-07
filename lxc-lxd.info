@@ -1,4 +1,8 @@
 lxd init
+
+# show available images from images.linuxcontainers.org
+lxc image list images:
+
 lxc list
 lxc launch ubuntu:focal ubuntu2104
 lxc exec CONTAINER -- passwd USER
