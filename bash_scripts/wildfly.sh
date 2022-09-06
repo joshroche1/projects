@@ -8,6 +8,7 @@ tar xvzf wildfly-26.1.1.Final.tar.gz
 mv wildfly-26.1.1.Final wildfly
 cd wildfly/bin
 ./add-user.sh --user admin --password admin --silent --enable
+adduser --disabled-password --shell /usr/sbin/nologin --gecos "" wildfly
 
 echo '
 [Unit]
@@ -17,7 +18,7 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=root
+User=wildfly
 ExecStart=/opt/wildfly/bin/standalone.sh
 Restart=always
 RestartSec=20
