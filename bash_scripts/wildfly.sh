@@ -11,15 +11,20 @@ cd wildfly/bin
 
 echo '
 [Unit]
-Description=Wildfly Application Server
-After=network.target
+Description=WildFly application server
+Wants=network-online.target 
+After=network-online.target
 
 [Service]
-Type=forking
+Type=simple
+User=root
 ExecStart=/opt/wildfly/bin/standalone.sh
+Restart=always
+RestartSec=20
 
 [Install]
-WantedBy=multi-user.target' > wildfly.service
+WantedBy=multi-user.target
+' > wildfly.service
 
 cp wildfly.service /etc/systemd/system
 systemctl daemon-reload
