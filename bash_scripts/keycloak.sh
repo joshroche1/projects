@@ -14,4 +14,5 @@ wget https://github.com/keycloak/keycloak/releases/download/19.0.1/keycloak-19.0
 
 tar xvzf keycloak-19.0.1.tar.gz
 mv keycloak-19.0.1 keycloak
-cd keycloak
+cd keycloak/bin
+./kc.sh build --db=postgres
