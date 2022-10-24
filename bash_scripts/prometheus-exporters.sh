@@ -2,6 +2,22 @@
 
 cd /opt
 echo 'Fetching Exporters for Prometheus'
+<<<<<<< HEAD
+echo 'PostgreSQL'
+wget https://github.com/prometheus-community/postgres_exporter/releases/download/v0.11.1/postgres_exporter-0.11.1.linux-amd64.tar.gz
+echo 'HAProxy'
+wget https://github.com/prometheus/haproxy_exporter/releases/download/v0.13.0/haproxy_exporter-0.13.0.linux-amd64.tar.gz
+echo 'NGINX metrics (git)'
+git clone https://github.com/knyar/nginx-lua-prometheus.git
+echo 'NGINX VTS'
+wget https://github.com/hnlq715/nginx-vts-exporter/archive/refs/tags/v0.10.7.tar.gz
+echo 'SSH Exporter - run commands on remote hosts'
+wget https://github.com/Nordstrom/ssh_exporter/releases/download/v2.0.0/ssh_exporter-linux-amd64
+echo 'x509 Certificate'
+wget https://github.com/enix/x509-certificate-exporter/releases/download/v3.6.0-beta.2/x509-certificate-exporter-linux-amd64.tar.gz
+echo 'Pimoroni enviroPi (git)'
+git clone https://github.com/terradolor/prometheus-enviro-exporter.git
+=======
 
 echo 'PostgreSQL'
 wget https://github.com/prometheus-community/postgres_exporter/releases/download/v0.11.1/postgres_exporter-0.11.1.linux-amd64.tar.gz
@@ -24,6 +40,7 @@ wget https://github.com/enix/x509-certificate-exporter/releases/download/v3.6.0-
 echo 'Pimoroni enviroPi (git)'
 git clone https://github.com/terradolor/prometheus-enviro-exporter.git
 
+>>>>>>> 754adfa5b45003366d869c9eec2e34d49d68f299
 echo ''
 wget 
 
