@@ -7,6 +7,9 @@ maintained, monitored, updated over 600 cloud servers; bare metal and virtual sy
 installed, managed, monitored, and updated 8 PostgreSQL databases
 installed, monitored, and maintained Apache Tomcat and NGINX application and web servers
 Expanded and managed a worldwide distributed Icinga 2 monitoring system
+developed automation for operational tasks using Ansible, Python, and Shell Scripting
+
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 joshua.a.roche@gmail.com
 www.linkedin.com/in/joshua-roche-77385b61 
