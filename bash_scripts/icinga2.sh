@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Icinga 2 and Icinga Web 2 with PostgreSQL
+#
+# ADD: graphitewriter icingaweb2-module-statusmap icingaweb2-module-reactbundle icingaweb2-module-pdfexport icingaweb2-module-map 
+# icingaweb2-module-ipl icingaweb2-module-doc icingaweb2-module-cube icingaweb2-module-businessprocess icingaweb2-module-audit
+
 apt-get update
 apt-get -y install apt-transport-https wget gnupg
 
