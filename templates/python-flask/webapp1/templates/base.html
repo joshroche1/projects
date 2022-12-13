@@ -6,6 +6,10 @@
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+  
+{% if request.MOBILE %}
+{% else %}
+{% endif %}
 
 <header>
   {% block header %}{% endblock %}
