@@ -1,7 +1,5 @@
 # Python 3 Flask Web Application Template
 
-###
-
 ## Dependencies:
 
 - python3
