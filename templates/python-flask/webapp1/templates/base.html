@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<header>
+  {% block header %}{% endblock %}
+</header>
+
+<div class="row">
+
+  {% for message in get_flashed_messages() %}
+  <div>{{ message }}</div>
+  {% endfor %}
+
+  <div class="col-3 col-s-3 menu">
+    <ul>
+      {% if g.user %}
+      <li>{{ g.user.username }}</li>
+      {% endif %}
+      <li>ITEM 1</li>
+      <li>ITEM 2</li>
+    </ul>
+  </div>
+
+  <div class="col-6 col-s-12">
+  {% block content %}{% endblock %}
+  </div>
+
+  <div class="col-3 col-s-12 aside">
+    ASIDE
+  </div>
+
+</div>
+
+<footer>
+  {% block footer %}{% endblock %}
+</footer>
+
+</body>
+</html>
