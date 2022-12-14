@@ -15,32 +15,32 @@ html {
   font-family: "Lucida Sans", sans-serif;
 }
 header {
-  background-color: white;
+  background-color: #fff;
   position: fixed;
-  z-index: 1;
+  /*z-index: 1;*/
   top: 0;
   width: 100%;
 }
-header ul {
+header ul, footer ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #000;
 }
-header li {
+header li, footer li {
   display: inline;
   float: left;
 }
-header li a {
-  color: white;
+header li a, footer li a {
+  color: #fff;
   display: block;
   padding: 8px;
   text-decoration: none;
   text-align: center;
 }
-header li a:hover {
-  background-color: mediumseagreen;
+header li a:hover, footer li a:hover {
+  background-color: #3CB371;
 }
 section {
   margin: 16px;
@@ -50,25 +50,42 @@ label {
   padding: 8px;
   display: inline-block;
 }
+input {
+  padding: 8px;
+}
+select, textarea {
+  background-color: #f2f2f2;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=text], input[type=password], input[type=datetime-local], input[type=date], input[type=month], input[type=week], input[type=time], input[type=email], input[type=number], input[type=url], input[type=tel] {
+  background-color: #f2f2f2;
+  width: 100%;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  resize: vertical;
+}
 input[type=button], input[type=submit], input[type=reset] {
-  background-color: #04AA6D;
+  background-color: #3CB371; /* MEDIUMSEAGREEN */
   border: none;
-  color: white;
-  padding: 8px 16px;
+  border-radius: 4px;
+  color: #fff; /* WHITE */
   text-decoration: none;
-  margin: 4px 2px;
   cursor: pointer;
 }
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
-  background-color: white;
-  color: green;
+  background-color: #fff;
+  color: #008000; /* GREEN */
 }
 table {
   border-collapse: collapse;
   width: 100%;
 }
 table td, table th {
-  border: 1px solid #ddd;
+  border: 1px solid #808080; /* GRAY */
   padding: 8px;
 }
 tr:nth-child(even){background-color: #f2f2f2;}
@@ -77,11 +94,12 @@ th {
   padding-top: 8px;
   padding-bottom: 8px;
   text-align: left;
-  background-color: #04AA6D;
-  color: white;
+  background-color: #3CB371;
+  color: #fff;
 }
 footer {
-  background-color: white;
+  background-color: #000;
+  color: #fff;
   position: fixed;
   z-index: 1;
   bottom: 0;
@@ -110,12 +128,16 @@ footer {
   text-decoration: none;  
 }
 .menu li a:hover {
-  background-color: mediumseagreen;
-  color: white;
+  background-color: #3CB371;
+  color: #fff;
 }
 .content {
   margin: 4px;
   padding: 8px;
+}
+.bordered {
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
 }
 
 /* For mobile phones: */
