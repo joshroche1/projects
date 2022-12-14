@@ -12,5 +12,5 @@ pip3 install flask-mobility
 #
 sudo -u postgres createuser -l -P webapp
 sudo -u postgres createdb -O webapp webapp
-echo 'local     webapp     webapp                         scram-sha-256' >> /etc/postgresql/15/pg_hba.conf
+echo 'local   webapp          webapp                                  scram-sha-256' >> /etc/postgresql/15/pg_hba.conf
 systemctl restart postgresql
