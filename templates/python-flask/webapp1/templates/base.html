@@ -2,48 +2,46 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!--
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-  
-<nav class="navbar navbar-expand bg-dark">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a href="" class="nav-link text-white">{% block header %}{% endblock %}</a>
-      </li>
-      {% if g.user %}
-      <li class="nav-item">
-        <a href="" class="nav-link text-white">{{ g.user.username }}</a>
-      </li>
-      {% else %}
-      <li class="nav-item">
-        <a href="" class="nav-link text-white">LOGIN</a>
-      </li>
-      {% endif %}
-    </ul>
-  </div>
-</nav>
 
-<div class="container-fluid">
-  <div class="row">
-    <section class="col">
-    {% for message in get_flashed_messages() %}
-      <div class="container border rounded"><pre><code>{{ message }}</code></pre></div>
-    {% endfor %}
 
-    {% block content %}{% endblock %}
-    </section>
-  </div>
+<header>
+  <ul>
+    <li><a href="{{ url_for('views.index') }}">{% block header %}{% endblock %}</a></li>
+    {% if g.user %}
+    <li><a href="{{ url_for('auth.logout') }}">{{ g.user.username }}</a></li>
+    {% else %}
+    <li><a href="{{ url_for('auth.login') }}">LOGIN</a></li>
+    {% endif %}
+  </ul>
+</header>
+
+
+<div class="row" style="margin-top:48px;">
+
+<section class="bordered">
+  <pre><code>MESSAGES:</code></pre>
+</section>
+{% for message in get_flashed_messages() %}
+<section class="bordered">
+  <pre><code>{{ message }}</code></pre>
+</section>
+{% endfor %}
+
+<div class="content">
+  {% block content %}{% endblock %}
 </div>
 
-{% block footer %}{% endblock %}
+</div>
+
+<div style="height:48px;"></div>
+<footer>
+  {% block footer %}{% endblock %}
+</footer>
+
 
 </body>
 </html>
