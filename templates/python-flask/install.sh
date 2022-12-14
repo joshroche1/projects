@@ -8,5 +8,9 @@ apt install -y python3 python3-pip \
 pip3 install flask-mobility
 #
 # OTHER DB OPTIONS
-#apt install postgresql
+#apt install -y postgresql
 #
+sudo -u postgres createuser -l -P webapp
+sudo -u postgres createdb -O webapp webapp
+echo 'local     webapp     webapp                         scram-sha-256' >> /etc/postgresql/15/pg_hba.conf
+systemctl restart postgresql
