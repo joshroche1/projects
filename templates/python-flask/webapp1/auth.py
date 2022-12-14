@@ -16,7 +16,7 @@ def login_required(view):
   @functools.wraps(view)
   def wrapped_view(**kwargs):
     if g.user is None:
-      return redirect(url_for("views.auth.login"))
+      return redirect(url_for("auth.login"))
     return view(**kwargs)
   return wrapped_view
 
@@ -56,6 +56,7 @@ def login():
   if request.method == "POST":
     user_name = request.form["username"]
     pass_word = request.form["password"]
+    pass_hash = generate_password_hash(pass_word)
     error = None
     user = User.query.filter_by(username=user_name).one()
     passhash = user.password
@@ -69,7 +70,7 @@ def login():
       session["user_id"] = user.id
       return redirect(url_for("views.index"))
     flash(error)
-    return redirect(url_for("views.auth.login"))
+    return redirect(url_for("auth.login"))
   return render_template("auth/login.html")
 
 @bp.route("/logout")
