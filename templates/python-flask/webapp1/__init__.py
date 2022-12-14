@@ -8,7 +8,7 @@ def create_app(test_config=None):
   app = Flask(__name__, instance_relative_config=True)
   app.config.from_mapping(
     SECRET_KEY="dev",
-    DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
+    #DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
   )
   if test_config is None:
     app.config.from_pyfile("config.py", silent=True)
@@ -34,6 +34,9 @@ def create_app(test_config=None):
 
   from webapp1 import views
   app.register_blueprint(views.bp)
+  
+  from webapp1 import auth
+  app.register_blueprint(auth.bp)
 
   app.add_url_rule("/", endpoint="views.index")
 
