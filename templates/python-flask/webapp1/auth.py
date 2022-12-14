@@ -56,7 +56,6 @@ def login():
   if request.method == "POST":
     user_name = request.form["username"]
     pass_word = request.form["password"]
-    pass_hash = generate_password_hash(pass_word)
     error = None
     user = User.query.filter_by(username=user_name).one()
     passhash = user.password
