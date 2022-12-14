@@ -15,6 +15,6 @@ CREATE TABLE users (
 INSERT INTO users (username, password, email)
 VALUES (
   'admin',
-  'pbkdf2:sha256:260000$52GzsAuSP28X9AZ4$19d8484d9c15c83ccff1662f2cfc7ff3aa99410d0259d6a593e228016a7c1421',
+  'pbkdf2:sha256:260000$9EC3IpQ3g0KFeqcQ$77baab1421c7ffd936d3ef32dbb42eb8cd5b49af2d12605fc94b2b77732f5e79',
   'admin@admin.adm'
 );
