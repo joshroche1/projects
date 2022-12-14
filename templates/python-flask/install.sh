@@ -16,3 +16,5 @@ sudo -u postgres createdb -O webapp webapp
 sed -i '80 i local   webapp          webapp                                  scram-sha-256' /etc/postgresql/15/main/pg_hba.conf
 systemctl restart postgresql
 #
+psql -U webapp -d webapp < webapp1/schema.sql
+#
