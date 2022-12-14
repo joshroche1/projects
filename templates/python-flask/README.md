@@ -10,6 +10,10 @@
 - (pip) flask-mobility
 - (pip) dotenv
 
+To use PostgreSQL:
+- postgresql
+- (pip) psycopg2
+
 ### To run:
 
 - flask run --host=0.0.0.0
