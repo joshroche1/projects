@@ -6,7 +6,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from sqlalchemy import text
 
 from webapp1.database import db_session
-from webapp.models import User
+from webapp1.models import User
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
