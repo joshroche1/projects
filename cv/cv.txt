@@ -1,15 +1,3 @@
-Operations Engineer
-1 March 2022 - Present (40hr/week)
-AnyDesk Software GmbH
-Stuttgart, Germany
-[JOB DESCRIPTION]
-maintained, monitored, updated over 600 cloud servers; bare metal and virtual systems with over 20 different cloud hosting providers across the globe
-installed, managed, monitored, and updated 8 PostgreSQL databases
-installed, monitored, and maintained Apache Tomcat and NGINX application and web servers
-Expanded and managed a worldwide distributed Icinga 2 monitoring system
-Developed automation for operational tasks using Ansible, Python, and Shell Scripting
-Built internal websites used for custom application distribution designed for internal productivity
-
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 joshua.a.roche@gmail.com
@@ -33,7 +21,20 @@ Focused and diligent professional with 20 years of Active Military experience wi
 
  
 Professional Experience 
- 
+
+Operations Engineer
+1 March 2022 - Present (40hr/week)
+AnyDesk Software, GmbH
+Stuttgart, Germany
+Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation. 
+
+    • Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers across the globe
+    • Installed, managed, monitored, and updated 8 PostgreSQL databases
+    • Installed, monitored, and maintained Apache Tomcat and NGINX application and web servers
+    • Expanded and managed a worldwide distributed Icinga 2 monitoring system
+    • Developed automation for operational tasks using Ansible, Python, and Shell Scripting
+    • Built internal websites used for custom application distribution designed for internal productivity
+
 Tier II AWS Systems Administrator
 13 September 2021 – 1 March 2020 (40hr/week)
 Superlative Technologies, Inc./JayCo Systems, GmbH
