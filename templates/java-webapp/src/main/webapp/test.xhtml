@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/base-user.xhtml">
+
+<ui:define name="content">
+<!-- -->
+
+
+<div class="content">
+  <p:fieldset legend="TEST Setup Cloud Service Connection"  toggleable="true" toggleSpeed="500">
+    <h:form id="form-test-cloud-service-setup">
+      <p:panelGrid layout="grid" columns="2">
+        <p:column><p:outputLabel for="cloud-service" value="Cloud Service" /></p:column>
+        <p:column>
+          <p:selectOneMenu value="#">
+            <f:selectItem itemLabel="Amazon Web Services" itemValue="aws" />
+            <f:selectItem itemLabel="Microsoft Azure" itemValue="azure" />
+            <f:selectItem itemLabel="Google Cloud" itemValue="google" />
+            <f:selectItem itemLabel="Oracle Cloud" itemValue="oracle" />
+            <f:selectItem itemLabel="IBM Cloud" itemValue="ibm" />
+            <f:selectItem itemLabel="Hetzner Cloud" itemValue="hetzner" />
+            <f:selectItem itemLabel="Other" itemValue="other" />
+          </p:selectOneMenu>
+        </p:column>
+        
+        <p:column><p:outputLabel for="username" value="Username" /></p:column>
+        <p:column><p:inputText id="username" value="" placeholder="Account Username" autocomplete="off" /></p:column>
+
+        <p:column><p:outputLabel for="password1" value="Password" /></p:column>
+        <p:column>
+          <p:password id="password1" value="#{beanUser.password}" autocomplete="off" toggleMask="true" redisplay="true" match="password2" placeholder="Enter a password" /><br />
+          <p:password id="password2" value="#{beanUser.password}" autocomplete="off" toggleMask="true" redisplay="true" placeholder="Verify password" />
+        </p:column>
+        
+        <p:column><p:outputLabel for="auth-token" value="Authentication Token" /></p:column>
+        <p:column><p:password id="auth-token" value="" autocomplete="off" toggleMask="true" redisplay="true" placeholder="Enter an Authorization Token" /></p:column>
+
+        <p:column><p:outputLabel for="sshpublickey" value="SSH Public Key" /></p:column>
+        <p:column><p:inputTextarea id="sshpublickey" value="" rows="2" placeholder="Enter an SSH Public Key" /></p:column>
+
+        <p:column></p:column>
+        <p:column>
+          <p:commandButton id="addCloudService" action="#" icon="pi pi-plus" onclick="return confirm('Add this Cloud Service configuration?');" styleClass="ui-button-success" />
+          <p:tooltip for="addCloudService" value="Add Cloud Service" position="top" />
+          <p:commandButton type="reset" icon="pi pi-times" />
+        </p:column>
+        <p:column><p:outputLabel for="username" value="Username" /></p:column>
+        <p:column></p:column>
+        
+      </p:panelGrid>
+    </h:form>
+  </p:fieldset>
+  <p:fieldset legend="TEST Cloud Service Panel"  toggleable="true" toggleSpeed="500">
+    <p:panelGrid layout="grid" columns="4">
+      <p:column><h:outputText id="cloud-service" value="AWS" /></p:column>
+      <p:column><p:outputLabel for="username" value="Username" /></p:column>
+      <p:column><h:outputText id="username" value="USER" /></p:column>
+      <p:column></p:column>
+      <p:column>
+        <p:fieldset legend="Compute Service">
+          <h:form id="form-test-cloud-compute">
+            <i class="pi pi-desktop" />
+            <p:outputLabel for="compute-instructions" value="Compute Command" />
+            <p:inputText id="compute-instructions" value="" placeholder="Enter command" />
+            <p:commandButton id="compute-command" action="#" icon="pi pi-play" onclick="return confirm('Run this command?');" styleClass="ui-button-success" />
+            <p:tooltip for="compute-command" value="Run Compute Command" position="top" />
+            <p:commandButton type="reset" icon="pi pi-undo" />
+          </h:form>
+        </p:fieldset>
+      </p:column>
+      <p:column>
+        <p:fieldset legend="Networking Service">
+          <h:form id="form-test-cloud-network">
+            <i class="pi pi-sitemap" />
+            <p:outputLabel for="network-instructions" value="Network Command" />
+            <p:inputText id="network-instructions" value="" placeholder="Enter command" />
+            <p:commandButton id="network-command" action="#" icon="pi pi-play" onclick="return confirm('Run this command?');" styleClass="ui-button-success" />
+            <p:tooltip for="network-command" value="Run Network Command" position="top" />
+            <p:commandButton type="reset" icon="pi pi-undo" />
+          </h:form>
+        </p:fieldset>
+      </p:column>
+      <p:column>
+        <p:fieldset legend="Storage Service">
+          <h:form id="form-test-cloud-storage">
+            <i class="pi pi-server" />
+            <p:outputLabel for="storage-instructions" value="Storage Command" />
+            <p:inputText id="storage-instructions" value="" placeholder="Enter command" />
+            <p:commandButton id="storage-command" action="#" icon="pi pi-play" onclick="return confirm('Run this command?');" styleClass="ui-button-success" />
+            <p:tooltip for="storage-command" value="Run Storage Command" position="top" />
+            <p:commandButton type="reset" icon="pi pi-undo" />
+          </h:form>
+        </p:fieldset>
+      </p:column>
+      <p:column>
+        <p:fieldset legend="Other Coomands">
+          <h:form id="form-test-cloud-command">
+            <i class="pi pi-cog" />
+            <p:outputLabel for="cloud-instructions" value="Cloud Command" />
+            <p:inputText id="cloud-instructions" value="" placeholder="Enter command" />
+            <p:commandButton id="cloud-command" action="#" icon="pi pi-play" onclick="return confirm('Run this command?');" styleClass="ui-button-success" />
+            <p:tooltip for="cloud-command" value="Run Command" position="top" />
+            <p:commandButton type="reset" icon="pi pi-undo" />
+          </h:form>
+        </p:fieldset>
+      </p:column>
+    </p:panelGrid>
+  </p:fieldset>
+</div>
+
+
+<!-- -->
+</ui:define>
+</ui:composition>

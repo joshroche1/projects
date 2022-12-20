@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/base.xhtml">
+
+<ui:define name="content">
+
+<div>
+  <h:form id="form-login">
+    <p:panel>
+      <h:message for="form-login" />
+      <p:panelGrid columns="3" layout="grid">
+        <p:column>
+          <i class="pi pi-id-card" style="font-size: 4rem" />
+        </p:column>
+        <p:column>
+          <p:inputText id="username" value="#" placeholder="Username" autocomplete="off" />
+          <br />
+          <p:password id="password" value="#" placeholder="Password" autocomplete="off" toggleMask="true" redisplay="true" />
+        </p:column>
+        <p:column>
+          <p:commandButton action="#" value="LOGIN" />
+          <p:commandButton type="reset" value="RESET" />
+        </p:column>
+      </p:panelGrid>
+    </p:panel>
+  </h:form>
+</div>
+
+
+</ui:define>
+</ui:composition>
