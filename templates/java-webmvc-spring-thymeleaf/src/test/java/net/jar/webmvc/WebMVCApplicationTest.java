@@ -1,38 +1,64 @@
 package net.jar.webmvc;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-
 import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.FormLoginRequestBuilder;
 import org.springframework.test.web.servlet.MockMvc;
 
-@WebMvcTest(controllers = GreetingController.class)
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders.formLogin;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
+import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.unauthenticated;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest
+@AutoConfigureMockMvc
 public class WebMVCApplicationTest {
+@Autowired
+  private MockMvc mockMvc;
 
-	@Autowired
-	private MockMvc mockMvc;
+  @Test
+  public void loginWithValidUserThenAuthenticated() throws Exception {
+    FormLoginRequestBuilder login = formLogin()
+      .user("user")
+      .password("password");
 
-	@Test
-	public void homePage() throws Exception {
-		// N.B. jsoup can be useful for asserting HTML content
-		mockMvc.perform(get("/index.html"))
-				.andExpect(content().string(containsString("Get your greeting")));
-	}
+    mockMvc.perform(login)
+      .andExpect(authenticated().withUsername("user"));
+  }
 
-	@Test
-	public void greeting() throws Exception {
-		mockMvc.perform(get("/greeting"))
-				.andExpect(content().string(containsString("Hello, World!")));
-	}
+  @Test
+  public void loginWithInvalidUserThenUnauthenticated() throws Exception {
+    FormLoginRequestBuilder login = formLogin()
+      .user("invalid")
+      .password("invalidpassword");
 
-	@Test
-	public void greetingWithUser() throws Exception {
-		mockMvc.perform(get("/greeting").param("name", "Greg"))
-				.andExpect(content().string(containsString("Hello, Greg!")));
-	}
+    mockMvc.perform(login)
+      .andExpect(unauthenticated());
+  }
 
+  @Test
+  public void accessUnsecuredResourceThenOk() throws Exception {
+    mockMvc.perform(get("/"))
+      .andExpect(status().isOk());
+  }
+
+  @Test
+  public void accessSecuredResourceUnauthenticatedThenRedirectsToLogin() throws Exception {
+    mockMvc.perform(get("/hello"))
+      .andExpect(status().is3xxRedirection())
+      .andExpect(redirectedUrlPattern("**/login"));
+  }
+
+  @Test
+  @WithMockUser
+  public void accessSecuredResourceAuthenticatedThenOk() throws Exception {
+    mockMvc.perform(get("/hello"))
+        .andExpect(status().isOk());
+  }
 }
