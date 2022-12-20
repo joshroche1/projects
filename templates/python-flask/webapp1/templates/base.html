@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+
+<header>
+  <ul>
+    <li><a href="{{ url_for('views.index') }}">{% block header %}{% endblock %}</a></li>
+    {% if g.user %}
+    <li><a href="{{ url_for('auth.logout') }}">{{ g.user.username }}</a></li>
+    {% else %}
+    <li><a href="{{ url_for('auth.login') }}">LOGIN</a></li>
+    {% endif %}
+  </ul>
+</header>
+
+
+<div class="row" style="margin-top:48px;">
+
+<section class="bordered">
+  <pre><code>MESSAGES:</code></pre>
+</section>
+{% for message in get_flashed_messages() %}
+<section class="bordered">
+  <pre><code>{{ message }}</code></pre>
+</section>
+{% endfor %}
+
+<div class="content">
+  {% block content %}{% endblock %}
+</div>
+
+</div>
+
+<div style="height:48px;"></div>
+<footer>
+  {% block footer %}{% endblock %}
+</footer>
+
+
+</body>
+</html>
