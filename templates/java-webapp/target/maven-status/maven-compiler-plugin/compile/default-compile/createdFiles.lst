@@ -1,0 +1,7 @@
+net/jar/webapp/View/UserBean.class
+net/jar/webapp/Configuration.class
+net/jar/webapp/Model/User.class
+net/jar/webapp/Controller/Datasource.class
+net/jar/webapp/Controller/auth/SessionUtils.class
+net/jar/webapp/Controller/auth/AuthorizationFilter.class
+net/jar/webapp/Controller/auth/LoginUtil.class

@@ -14,7 +14,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-import net.jar.webapp.Controller.SessionUtils;
 import net.jar.webapp.Configuration;
 
 
@@ -33,7 +32,7 @@ public class Datasource {
   private ResultSet rs = null;
   
   
-  public DBUtil() {
+  public Datasource() {
     initDbParams();
   }
 
@@ -70,9 +69,21 @@ public class Datasource {
     }
     return conn;
   }
-  public ResultSet selectOne(String sqlstmt) {
+  public ResultSet selectAll(String table, String fields) {
     try {
       conn = this.connect();
+      String sqlstmt = "SELECT " + fields + " FROM " + table;
+      PreparedStatement pstmt = conn.prepareStatement(sqlstmt, ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+      rs = pstmt.executeQuery();
+    } catch (Exception ex) {
+      systemMessage(ex.getMessage());
+    }
+    return rs;
+  }
+  public ResultSet selectWhere(String table, String idkey, String idvalue, String fields) {
+    try {
+      conn = this.connect();
+      String sqlstmt = "SELECT " + fields + " FROM " + table + " WHERE " + idkey + " = " + idvalue;
       PreparedStatement pstmt = conn.prepareStatement(sqlstmt, ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
       rs = pstmt.executeQuery();
     } catch (Exception ex) {

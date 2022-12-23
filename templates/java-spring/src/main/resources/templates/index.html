@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <script type="text/javascript" src="/js/bootstrap.bundle.min.js}"></script>
+  <title>Spring Webapp Template</title>
+</head>
+<body>
+
+<div th:replace="~{base :: page-header(_,~{::li})}">
+  <li class="nav-item"><a class="nav-link" href="/login">LOGIN</a></li>
+</div>
+
+<div class="container">
+
+<div class="card">
+  <h1>Spring Web Application Template</h1>
+  <h3>Built with the following Spring features:</h3>
+    <p>Web MVC</p>
+    <p>Spring Security</p>
+    <p>JPA</p>
+    <p>REST</p>
+</div>
+
+</div>
+
+</body>
+</html>

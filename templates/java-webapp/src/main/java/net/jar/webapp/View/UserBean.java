@@ -67,7 +67,8 @@ public class UserBean {
   public String getUser(int usrid) {
     try {
       dbInstance = new Datasource();
-      rs = dbInstance.getUser(usrid);
+      String userid = "" + usrid;
+      rs = dbInstance.selectWhere("users", "id", userid, "*");
       user = new User();
       while (rs.next()) {
         user.setId(rs.getInt("id"));
@@ -83,7 +84,7 @@ public class UserBean {
   public ArrayList getUsers() {
     try {
       dbInstance = new Datasource();
-      rs = dbInstance.getUsers();
+      rs = dbInstance.selectAll("users", "*");
       users = new ArrayList<User>();
       while (rs.next()) {
       	user = new User();
