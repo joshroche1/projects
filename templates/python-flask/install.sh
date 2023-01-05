@@ -7,9 +7,12 @@ apt install -y python3 python3-pip \
         python3-wtforms python3-dotenv python3-psycopg2
 pip3 install flask-mobility
 #
+
+# SQLite3
+sqlite3 instance/app.sqlite < webapp1/sqlite3-schema.sql
+
 # POSTGRESQL
 apt install -y postgresql python3-psycopg2
-
 #
 sudo -u postgres createuser -l -P webapp
 sudo -u postgres createdb -O webapp webapp
