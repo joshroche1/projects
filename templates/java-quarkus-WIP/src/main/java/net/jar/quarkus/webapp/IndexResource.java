@@ -14,13 +14,13 @@ import io.quarkus.qute.TemplateInstance;
 @Path("/")
 public class IndexResource {
 
-    @Inject
-    Template index;
+  @Inject
+  Template index;
 
-    @GET
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance get(@RestQuery String name) {
-        return index.data("name", name);
-    }
+  @GET
+  @Produces(MediaType.TEXT_HTML)
+  public TemplateInstance get(@RestQuery String name) {
+    return index.data("name", name);
+  }
 
 }

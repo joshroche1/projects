@@ -1,4 +1,1 @@
-INSERT INTO user(id, name) VALUES (1, 'admin');
-INSERT INTO user(id, name) VALUES (2, 'manager');
-INSERT INTO user(id, name) VALUES (3, 'user');
-INSERT INTO user(id, name) VALUES (4, 'guest');
+INSERT INTO System(id, hostname, ipaddress) VALUES (0, 'localhost', '127.0.0.1');

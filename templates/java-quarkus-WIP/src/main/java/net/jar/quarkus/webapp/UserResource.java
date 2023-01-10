@@ -15,19 +15,19 @@ import io.quarkus.qute.TemplateInstance;
 @Path("users")
 public class UserResource {
 
-    @CheckedTemplate
-    static class Templates {
-        static native TemplateInstance users(List<User> users);
-    }
+  @CheckedTemplate
+  static class Templates {
+    static native TemplateInstance users(List<User> users);
+  }
 
-    @GET
-    @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance get() {
-        List<User> users = new ArrayList<>();
-        users.add(new User(1, "Apple"));
-        users.add(new User(2, "Pear"));
-        users.add(new User(3, "Orange"));
-        return Templates.users(users);
-    }
+  @GET
+  @Produces(MediaType.TEXT_HTML)
+  public TemplateInstance get() {
+    List<User> users = new ArrayList<>();
+    users.add(new User(1, "admin"));
+    users.add(new User(2, "user"));
+    users.add(new User(3, "guest"));
+    return Templates.users(users);
+  }
 
 }
