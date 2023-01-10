@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css">
+  <title>Webapp</title>
+</head>
+<body>
+
+<header>
+  <ul>
+    <li><a href="/">Webapp</a></li>
+    <li><a href="/users">Users</a></li>
+    <li><a href="/">Logout</a></li>
+  </ul>
+</header>
+
+<div class="row" style="margin-top:48px;">
+
+<div class="content">
+  <h1>User List</h1>
+</div>
+
+<div class="content">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th></th>
+    </tr>
+    {#for user in users}
+    <tr>
+      <td>{user.id}</td>
+      <td>{user.name}</td>
+      <td></td>
+    </tr>
+    {/for}
+  </table>
+</div>
+
+
+</div>
+
+</body>
+</html>

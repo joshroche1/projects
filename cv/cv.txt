@@ -28,7 +28,7 @@ AnyDesk Software, GmbH
 Stuttgart, Germany
 Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation. 
 
-    • Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers across the globe
+    • Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers including Hetzner, OVH, DataPacket, Global Secure Layer and Maxihost
     • Installed, managed, monitored, and updated 8 PostgreSQL databases
     • Installed, monitored, and maintained Apache Tomcat and NGINX application and web servers
     • Expanded and managed a worldwide distributed Icinga 2 monitoring system
