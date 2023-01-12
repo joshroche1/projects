@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+TEST - 1
+{% endblock %}
+
+
+{% block header %}
+TEST - Form
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+
+{% block content %}
+<div class="content flex-container">
+  <form>
+      <fieldset class="content col-5 col-s-12"><legend>User Info</legend>
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Username" autocomplete=off required>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required>
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" name="firstname" placeholder="First Name">
+        <label for="lastname">Last Name</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Last Name">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender">
+          <option selected disabled>Select an option</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="nonbinary">Non Binary</option>
+          <option value="fluid">Gender Fluid</option>
+          <option value="none">No Answer</option>
+        </select>
+        <label for="birthdate">Birthdate</label>
+        <input type="date" id="birthdate" name="birthdate">
+        <label for="telephone">Telephone</label>
+        <input type="tel" id="telephone" name="telephone">
+      </fieldset>
+      <fieldset class="content col-6 col-s-12"><legend>Additional Info</legend>
+        <textarea id="description" name="description" rows="23" placeholder="Enter any info you would like to include in this space"></textarea>
+        <div class="content bordered">
+          <label>Choose a Language</label><br>
+          <input type="radio" id="html" name="fav_language" value="HTML">
+          <label for="html">HTML</label><br>
+          <input type="radio" id="css" name="fav_language" value="CSS">
+          <label for="css">CSS</label><br>
+          <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+          <label for="javascript">JavaScript</label>
+        </div>
+        <input type="submit" value="SUBMIT">
+        <input type="reset">
+      </fieldset>
+  </form>
+</div>
+
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}

@@ -57,11 +57,13 @@ def login():
     user_name = request.form["username"]
     pass_word = request.form["password"]
     error = None
-    user = User.query.filter_by(username=user_name).one()
-    passhash = user.password
+    try:
+      user = User.query.filter_by(username=user_name).one()
+    except:
+      user = None
     if user is None:
       error = "Incorrect username."
-    elif not check_password_hash(passhash, pass_word):
+    elif not check_password_hash(user.password, pass_word):
       error = "Incorrect password."
     if error is None:
       # store the user id in a new session and return to the index

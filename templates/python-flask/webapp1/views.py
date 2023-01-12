@@ -12,3 +12,11 @@ bp = Blueprint('views', __name__, url_prefix='/')
 @bp.route('/')
 def index():
   return render_template('index.html')
+
+@bp.route('/test_1')
+def test_1():
+  return render_template('test1.html')
+
+@bp.route('/test_2')
+def test_2():
+  return render_template('test2.html')
