@@ -69,10 +69,10 @@ input[type=text], input[type=password], input[type=datetime-local], input[type=d
   resize: vertical;
 }
 input[type=button], input[type=submit], input[type=reset] {
-  background-color: #3CB371; /* MEDIUMSEAGREEN */
+/*  background-color: #3CB371;  MEDIUMSEAGREEN */
   border: none;
   border-radius: 4px;
-  color: #fff; /* WHITE */
+/*  color: #fff;  WHITE */
   text-decoration: none;
   cursor: pointer;
 }
@@ -143,6 +143,7 @@ li.dropdown {
 .dropdown-content {
   display: none;
   position: absolute;
+  padding: 8px;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -165,6 +166,37 @@ li.dropdown {
 .bordered {
   border: 1px solid #d3d3d3;
   border-radius: 8px;
+}
+.button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  background-color: #3CB371;
+  padding: 8px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75em;
+}
+.color-red {
+  background-color: #FF0000;
+  color: #fff;
+}
+.color-orange {
+  background-color: #FFA500;
+  color: #fff;
+}
+.color-yellow {
+  background-color: #FFFF00;
+  color: #000;
+}
+.color-green {
+  background-color: #008000;
+  color: #fff;
+}
+.color-blue {
+  background-color: #0000FF;
+  color: #fff;
 }
 
 /* For mobile phones: */

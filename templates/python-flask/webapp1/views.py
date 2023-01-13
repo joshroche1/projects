@@ -20,3 +20,11 @@ def test_1():
 @bp.route('/test_2')
 def test_2():
   return render_template('test2.html')
+
+@bp.route('/test_3')
+def test_3():
+  return render_template('test3.html')
+
+@bp.route('/test_4')
+def test_4():
+  return render_template('test4.html')

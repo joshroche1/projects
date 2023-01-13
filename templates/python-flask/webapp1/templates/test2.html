@@ -15,47 +15,154 @@ TEST - Form
 
 
 {% block content %}
+<div class="content">
+  <h1>Create System</h1>
+</div>
 <div class="content flex-container">
   <form>
-      <fieldset class="content col-5 col-s-12"><legend>User Info</legend>
+    <fieldset class="content col-5 col-s-12"><legend>Connection Settings</legend>
+      <label for="hostname">Hostname</label>
+      <input type="text" id="hostname" name="hostname" placeholder="Hostname" required>
+      
+      <label for="ipaddress">IP Address</label>
+      <input type="text" id="ipaddress" name="ipaddress" placeholder="IP Address" required>
+      
+      <div class="content bordered">
+        <label for="sshpubkey">SSH Public Key for Host Connection</label>
+        <input type="file" id="sshpubkey" name="sshpubkey">
+        <br>
+        
+        <input type="checkbox" id="userlogin" name="userlogin" value="userlogin">
+        <label for="userlogin">Username/Password Login</label>
+        <br>
+        
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Username" autocomplete=off required>
+        
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Password" required>
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Email Address" required>
-        <label for="firstname">First Name</label>
-        <input type="text" id="firstname" name="firstname" placeholder="First Name">
-        <label for="lastname">Last Name</label>
-        <input type="text" id="lastname" name="lastname" placeholder="Last Name">
-        <label for="gender">Gender</label>
-        <select id="gender" name="gender">
-          <option selected disabled>Select an option</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="nonbinary">Non Binary</option>
-          <option value="fluid">Gender Fluid</option>
-          <option value="none">No Answer</option>
-        </select>
-        <label for="birthdate">Birthdate</label>
-        <input type="date" id="birthdate" name="birthdate">
-        <label for="telephone">Telephone</label>
-        <input type="tel" id="telephone" name="telephone">
-      </fieldset>
-      <fieldset class="content col-6 col-s-12"><legend>Additional Info</legend>
-        <textarea id="description" name="description" rows="23" placeholder="Enter any info you would like to include in this space"></textarea>
-        <div class="content bordered">
-          <label>Choose a Language</label><br>
-          <input type="radio" id="html" name="fav_language" value="HTML">
-          <label for="html">HTML</label><br>
-          <input type="radio" id="css" name="fav_language" value="CSS">
-          <label for="css">CSS</label><br>
-          <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-          <label for="javascript">JavaScript</label>
-        </div>
-        <input type="submit" value="SUBMIT">
-        <input type="reset">
-      </fieldset>
+      </div>
+      
+      <label for="category">Category</label>
+      <select id="category" name="category">
+        <option selected disabled>Select an option</option>
+        <optgroup label="Bare Metal">
+          <option value="Desktop">Desktop</option>
+          <option value="Laptop">Laptop</option>
+          <option value="Server">Server</option>
+          <option value="Hypervisor">Hypervisor</option>
+        </optgroup>
+        <optgroup label="Cloud Hosted">
+          <option value="AWSec2">AWS EC2</option>
+          <option value="GCPcompute">GCP Compute</option>
+          <option value="AzureCompute">Azure Compute</option>
+          <option value="CloudOther">Other Cloud</option>
+        </optgroup>
+        <optgroup label="Virtual">
+          <option value="VM">VM</option>
+          <option value="ContainerDocker">Container - Docker</option>
+          <option value="ContainerK8S">Container - Kubernetes</option>
+          <option value="ContainerLXC">Container - LXC</option>
+        </optgroup>
+        <optgroup label="Mobile">
+          <option value="TabletApple">Tablet - Apple</option>
+          <option value="TabletAndroid">Tablet - Android</option>
+          <option value="TabletOther">Tablet - Other</option>
+          <option value="CellPhoneApple">Cell Phone - Apple</option>
+          <option value="CellPhoneAndroid">Cell Phone - Android</option>
+          <option value="CellPhoneOther">Cell Phone - Other</option>
+          <option value="MobileOther">Mobile - Other</option>
+        </optgroup>
+        <optgroup label="IOT">
+          <option value="SmartTV">Smart TV</option>
+          <option value="Router">Router</option>
+          <option value="IOTOther">IOT - Other</option>
+        </optgroup>
+        <option value="other">Other</option>
+      </select>
+      <input type="text" id="categoryother" name="categoryother" placeholder="Description for Other option">
+      
+      <label for="group">Category</label>
+      <select id="group" name="group">
+        <option selected disabled>Select an option</option>
+        <option value="GroupA">Group A</option>
+        <option value="GroupB">Group B</option>
+        <option value="GroupC">Group C</option>
+        <option value="other">Other</option>
+      </select>
+    </fieldset>
+    
+    <fieldset class="content col-5 col-s-12"><legend>System Configuration</legend>
+      <div class="content">
+        <label>CPU Type</label>
+        <br>
+        <input type="radio" id="intel" name="cputype" value="Intel">
+        <label for="x86">x86</label><br>
+        <input type="radio" id="amd" name="cputype" value="AMD">
+        <label for="amd64">amd64</label><br>
+        <input type="radio" id="other" name="cputype" value="Other">
+        <label for="armhf">armhf</label>
+      </div>
+      
+      <label for="cpucores">Cores</label>
+      <input type="number" id="cpucores" name="cpucores">
+      
+      <label for="memory">Memory</label>
+      <input type="text" id="memory" name="memory" placeholder="Memory in GB">
+      
+      <label for="disknumber">Number of Disks</label>
+      <input type="number" id="disknumber" name="disknumber">
+      
+      <label for="disksize">Primary Disk Size</label>
+      <input type="text" id="disksize" name="disksize" placeholder="Disk Size in GB">
+      
+      <div class="content bordered">
+        <label>Architecture</label>
+        <br>
+        <input type="radio" id="x8664" name="cpuarch" value="x8664">
+        <label for="x8664">x86/64</label><br>
+        <input type="radio" id="amd64" name="cpuarch" value="amd64">
+        <label for="amd64">amd64</label><br>
+        <input type="radio" id="armhf" name="cpuarch" value="armhf">
+        <label for="armhf">armhf</label>
+        <input type="radio" id="arm64" name="cpuarch" value="arm64">
+        <label for="arm64">arm64</label>
+      </div>
+      
+      <label for="os">Operating System</label>
+      <select id="os" name="os">
+        <option selected disabled>Select an option</option>
+        <optgroup label="Linux">
+          <option value="Ubuntu">Ubuntu</option>
+          <option value="Debian">Debian</option>
+          <option value="CentOS">CentOS</option>
+          <option value="RHEL">RHEL</option>
+          <option value="AlpineLinux">Alpine Linux</option>
+          <option value="OtherLinux">Other Linux</option>
+        </optgroup>
+        <optgroup label="Windows">
+          <option value="Windows1011">Windows 10/11</option>
+          <option value="WindowsServer1619">Windows Server 2016/19</option>
+          <option value="WindowsServer2012">Windows Server 2012</option>
+        </optgroup>
+        <optgroup label="macOS">
+          <option value="macOS">macOS</option>
+        </optgroup>
+        <optgroup label="Mobile">
+          <option value="iOS">iOS</option>
+          <option value="Android">Android</option>
+        </optgroup>
+        <option value="CiscoIOS">Cisco IOS</option>
+        <option value="other">Other</option>
+      </select>
+      
+      <div class="container">
+        <textarea id="description" name="description" rows="10" placeholder="Enter a description or any notes for this system"></textarea>
+      </div>
+      
+      <input type="submit" value="SUBMIT">
+      <input type="reset">
+    </fieldset>
   </form>
 </div>
 

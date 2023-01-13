@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+TEST - Settings
+{% endblock %}
+
+
+{% block header %}
+TEST - Settings
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+
+{% block content %}
+<div class="content">
+  <h1>SETTINGS</h1>
+</div>
+<div class="content flex-container">
+  <div class="content col-10 col-s-12">
+    <table>
+      <tr>
+        <td>Python Version</td>
+        <td>Python 3.10.6</td>
+      </tr>
+      <tr>
+        <td>Flask Version</td>
+        <td>
+Python 3.10.6
+Flask 2.2.2
+Werkzeug 2.2.2
+        </td>
+      </tr>
+      <tr>
+        <td>Ansible-Runner Version</td>
+        <td>2.2.1</td>
+      </tr>
+      <tr>
+        <td>Database Vendor</td>
+        <td>SQLite3</td>
+      </tr>
+      <tr>
+        <td>Database Name</td>
+        <td>app.sqlite</td>
+      </tr>
+      <tr>
+        <td>Database User</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Upload Directory</td>
+        <td>/opt/smc/upload</td>
+      </tr>
+    </table>
+  </div>
+  <div class="content col-10 col-s-12">
+    <h2>Ansible</h2>
+    <form action="" method="">
+    <table>
+      <tr>
+        <th></th>
+        <th style="width: 40%;">Current</th>
+        <th>Update</th>
+      </tr>
+      <tr>
+        <td>Ansible Version</td>
+        <td>ansible 2.10.8</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Base Directory</td>
+        <td>/opt/smc/ansible</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Playbook Directory</td>
+        <td>/opt/smc/ansible/playbooks</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Ansible Configuration</td>
+        <td>/etc/ansible/ansible.cfg</td>
+        <td><textarea id="ansiblecfg" name="ansiblecfg" rows="10" placeholder="
+[defaults]
+host_key_checking = False
+command_warnings=False
+          "></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>Ansible Hosts File</td>
+        <td>/etc/ansible/hosts</td>
+        <td>
+<textarea id="ansiblehosts" name="ansiblehosts" rows="10" placeholder="
+[all:vars]
+ansible_user=root
+ansible_ssh_port=22
+ansible_ssh_private_key_file=/etc/ansible/.ssh/ansible
+
+[all]
+localhost ansible_host=127.0.0.1
+          "></textarea>
+        </td>
+      </tr>
+      
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <input type="submit" value="UPDATE">
+          <input type="reset">
+        </td>
+      </tr>
+    </table>
+    </form>
+  </div>
+  
+  <div class="content col-10 col-s-12">
+    <h2>Users</h2>
+    <table>
+      <tr>
+        <td>admin</td>
+        <td><a href="mailto:admin@admin.adm" class="button">admin@admin.adm</a></td>
+        <td>
+          <form action="" method=""><input type="submit" value="DELETE" class="color-red"></form>
+        </td>
+      </tr>
+    </table>
+    <form action="" method="">
+      <h3>Add User</h3>
+      <table>
+        <tr>
+          <td>Username</td>
+          <td><input type="text" id="username" name="username" placeholder="Username" autocomplete=off required></td>
+        </tr>
+        <tr>
+          <td>Password</td>
+          <td><input type="password" id="password" name="password" placeholder="Password" required></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" id="email" name="email" placeholder="Email Address" required></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input type="submit" value="ADD USER">
+            <input type="reset">
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
