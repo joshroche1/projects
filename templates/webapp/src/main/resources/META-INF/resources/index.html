@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <script src="bootstrap.bundle.min.js"></script>
+  <!-- Load AngularJS -->
+  <script src="js/angular.min.js"></script>
+  <script src="js/fruitmanagement.module.js"></script>
+  <title>CRUD Mission - Quarkus</title>
+</head>
+<body ng-app="FruitManagement" ng-controller="FruitManagementController">
+
+<header>
+  <ul>
+    <li><a href="/">Webapp</a></li>
+    <li><a href="/users">Users</a></li>
+    <li><a href="/login.html">Login</a></li>
+  </ul>
+</header>
+
+<div class="container">
+
+<div class="card">
+  <h1>CRUD Mission - Quarkus</h1>
+  <p>This application demonstrates how a Quarkus application implements a CRUD endpoint to manage fruits.
+This management interface invokes the CRUD service endpoint, which interacts with a database using JPA and several other well known libraries.
+  </p>
+  <div>Behind the scenes, we have:
+    <ul>
+      <li>Hibernate ORM taking care of all CRUD operations</li>
+      <li>RESTEasy powering the REST API</li>
+      <li>ArC, a CDI based dependency injection framework</li>
+      <li>the Narayana Transaction Manager coordinating all transactions</li>
+      <li>Agroal, the high performance Datasource implementation</li>
+      <li>Infinispan used as Hibernate 2nd level caching: enabled on both entities and queries</li>
+      <li>The Undertow webserver</li>
+      <li>Some magic bytecode generation plugged in the compiler...</li>
+    </ul>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Add/Edit a fruit</h3>
+  <form ng-submit="update()">
+    <div class="row">
+      <div class="col-6"><input type="text" placeholder="Name" ng-model="form.name" size="60"/></div>
+    </div>
+    <input type="submit" value="Save"/>
+  </form>
+</div>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr ng-repeat="fruit in fruits">
+      <td>{{ fruit.id }}</td>
+      <td>{{ fruit.name }}</td>
+      <td>
+        <a ng-click="edit( fruit )" class="btn">Edit</a>
+        <a ng-click="remove( fruit )" class="btn">Remove</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
+  <h3>Fruit List</h3>
+  <div class="row">
+    <div class="col-2">Name</div>
+  </div>
+  <div class="row" ng-repeat="fruit in fruits">
+    <div class="col-2">{{ fruit.name }}</div>
+    <div class="col-8"><a ng-click="edit( fruit )" class="btn">Edit</a> <a ng-click="remove( fruit )" class="btn">Remove</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
