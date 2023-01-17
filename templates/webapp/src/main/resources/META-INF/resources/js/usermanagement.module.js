@@ -1,10 +1,10 @@
-var app = angular.module("FruitManagement", []);
+var app = angular.module("UserManagement", []);
 
 //Controller Part
-app.controller("FruitManagementController", function ($scope, $http) {
+app.controller("UserManagementController", function ($scope, $http) {
 
 //Initialize page with default data which is blank in this example
-$scope.fruits = [];
+$scope.users = [];
 
 $scope.form = {
   id: -1,
@@ -14,25 +14,23 @@ $scope.form = {
 //Now load the data from server
 _refreshPageData();
 
-//HTTP POST/PUT methods for add/edit fruits
+//HTTP POST/PUT methods for add/edit users
 $scope.update = function () {
   var method = "";
   var url = "";
   var data = {};
   if ($scope.form.id == -1) {
-    //Id is absent so add fruits - POST operation
+    //Id is absent so add users - POST operation
     method = "POST";
-    url = '/fruits';
+    url = '/users';
     data.name = $scope.form.name;
-    data.category = $scope.form.category;
-    data.notes = $scope.form.notes;
+    data.email = $scope.form.email;
   } else {
     //If Id is present, it's edit operation - PUT operation
     method = "PUT";
-    url = '/fruits/' + $scope.form.id;
+    url = '/users/' + $scope.form.id;
     data.name = $scope.form.name;
-    data.category = $scope.form.category;
-    data.notes = $scope.form.notes;
+    data.email = $scope.form.email;
   }
 
   $http({
@@ -45,20 +43,37 @@ $scope.update = function () {
   }).then(_success, _error);
 };
 
-//HTTP DELETE- delete fruit by id
-$scope.remove = function (fruit) {
+//User Login
+$scope.userlogin = function () {
+  var method = "POST";
+  var url = "/users/login";
+  var data = {};
+  data.name = $scope.form.name;
+  data.password = $scope.form.password;
+
+  $http({
+    method: method,
+    url: url,
+    data: angular.toJson(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(_success, _error);
+};
+
+//HTTP DELETE- delete user by id
+$scope.remove = function (user) {
   $http({
     method: 'DELETE',
-      url: '/fruits/' + fruit.id
+      url: '/users/' + user.id
     }).then(_success, _error);
   };
 
   //In case of edit fruits, populate form with fruit data
-  $scope.edit = function (fruit) {
-    $scope.form.name = fruit.name;
-    $scope.form.category = fruit.category;
-    $scope.form.notes = fruit.notes;
-    $scope.form.id = fruit.id;
+  $scope.edit = function (user) {
+    $scope.form.name = user.name;
+    $scope.form.email = user.email;
+    $scope.form.id = user.id;
   };
 
   /* Private Methods */
@@ -66,9 +81,9 @@ $scope.remove = function (fruit) {
   function _refreshPageData() {
     $http({
       method: 'GET',
-      url: '/fruits'
+      url: '/users'
     }).then(function successCallback(response) {
-      $scope.fruits = response.data;
+      $scope.users = response.data;
     }, function errorCallback(response) {
       console.log(response.statusText);
     });
@@ -86,8 +101,7 @@ $scope.remove = function (fruit) {
   //Clear the form
   function _clearForm() {
     $scope.form.name = "";
-    $scope.form.category = "";
-    $scope.form.notes = "";
+    $scope.form.email = "";
     $scope.form.id = -1;
   }
 });

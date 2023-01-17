@@ -16,35 +16,45 @@ import javax.persistence.Table;
 @Cacheable
 public class Fruit {
 
-    @Id
-    @SequenceGenerator(name = "fruitsSequence", sequenceName = "known_fruits_id_seq", allocationSize = 1, initialValue = 10)
-    @GeneratedValue(generator = "fruitsSequence")
-    private Integer id;
+  @Id
+  @SequenceGenerator(name = "fruitsSequence", sequenceName = "known_fruits_id_seq", allocationSize = 1, initialValue = 10)
+  @GeneratedValue(generator = "fruitsSequence")
+  private Integer id;
 
-    @Column(length = 40, unique = true)
-    private String name;
+  @Column(length = 64, unique = true)
+  private String name;
+  
+  @Column(length = 64, unique = false)
+  private String category;
 
-    public Fruit() {
-    }
+  @Column(length = 512, unique = false)
+  private String notes;
 
-    public Fruit(String name) {
-        this.name = name;
-    }
+  public Fruit() {}
 
-    public Integer getId() {
-        return id;
-    }
+  public Fruit(String name, String category, String notes) {
+    this.name = name;
+    this.category = category;
+    this.notes = notes;
+  }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+  public Integer getId() { return id; }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(Integer id) { this.id = id; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
+  public String getName() { return name; }
+
+  public void setName(String name) { this.name = name; }
+  
+
+  public String getCategory() { return category; }
+
+  public void setCategory(String category) { this.category = category; }
+  
+
+  public String getNotes() { return notes; }
+
+  public void setNotes(String notes) { this.notes = notes; }
 
 }
