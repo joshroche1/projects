@@ -24,7 +24,7 @@ public class WebService {
   }
 
   @GET
-  @Path("index")
+  @Path("/")
   @Produces(MediaType.TEXT_HTML)
   public TemplateInstance get() {
     return Templates.index();

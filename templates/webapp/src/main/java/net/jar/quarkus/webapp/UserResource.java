@@ -99,8 +99,6 @@ public class UserResource {
     if (user.name == null) {
       throw new WebApplicationException("User Name was not set on request.", 422);
     }
-    System.out.println("USER OBJ: " + user.toString());
-    System.out.println("USER NAME: " + user.name);
     UserEntity entity = UserEntity.findByName(user.name);
 
     if (entity == null) {
