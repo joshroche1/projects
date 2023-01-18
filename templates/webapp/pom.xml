@@ -32,7 +32,7 @@
     <dependencies>
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-hibernate-orm</artifactId>
+            <artifactId>quarkus-hibernate-orm-panache</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -46,7 +46,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-postgresql</artifactId>
         </dependency>
@@ -54,8 +54,8 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.5.1</version>
-        </dependency>
-        <!-- <dependency>
+        </dependency> -->
+        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jdbc-h2</artifactId>
         </dependency>
@@ -63,7 +63,7 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>2.1.214</version>
-        </dependency> -->
+        </dependency>
 
         <!-- Testing: -->
         <dependency>

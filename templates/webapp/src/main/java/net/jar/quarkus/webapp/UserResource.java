@@ -19,15 +19,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import org.jboss.resteasy.reactive.RestCookie;
-import org.jboss.resteasy.reactive.RestForm;
-import org.jboss.resteasy.reactive.RestHeader;
-import org.jboss.resteasy.reactive.RestMatrix;
-import org.jboss.resteasy.reactive.RestPath;
-import org.jboss.resteasy.reactive.RestQuery;
-
 import org.hibernate.Query;
 import org.jboss.logging.Logger;
+import io.quarkus.panache.common.Sort;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -40,80 +34,77 @@ public class UserResource {
 
   private static final Logger LOGGER = Logger.getLogger(UserResource.class.getName());
 
-  @Inject
-  EntityManager entityManager;
-
   @GET
   public List<User> get() {
-    return entityManager.createNamedQuery("Users.findAll", User.class)
-      .getResultList();
+    return User.listAll(Sort.by("name"));
   }
-
+  
   @GET
   @Path("{id}")
   public User getSingle(Integer id) {
-    User entity = entityManager.find(User.class, id);
+    User entity = User.findById(id);
     if (entity == null) {
       throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
-      }
+    }
     return entity;
   }
-
+  
   @POST
   @Transactional
   public Response create(User user) {
-    if (user.getId() != null) {
+    if (user.id != null) {
       throw new WebApplicationException("Id was invalidly set on request.", 422);
     }
-
-    entityManager.persist(user);
+    user.persist();
     return Response.ok(user).status(201).build();
   }
-
+  
   @PUT
   @Path("{id}")
   @Transactional
   public User update(Integer id, User user) {
-    if (user.getName() == null) {
+    if (user.name == null) {
       throw new WebApplicationException("User Name was not set on request.", 422);
     }
 
-    User entity = entityManager.find(User.class, id);
+    User entity = User.findById(id);
 
     if (entity == null) {
       throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
     }
 
-    entity.setName(user.getName());
+    entity.name = user.name;
+    entity.email = user.email;
+    entity.password = user.password;
 
     return entity;
   }
-
+  
   @DELETE
   @Path("{id}")
   @Transactional
   public Response delete(Integer id) {
-    User entity = entityManager.getReference(User.class, id);
+    User entity = User.findById(id);
     if (entity == null) {
       throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
     }
-    entityManager.remove(entity);
+    entity.delete();
     return Response.status(204).build();
   }
-  
+
   @POST
   @Path("login")
   @Transactional
   public Object userlogin(User user) {
-    if (user.getName() == null) {
+    if (user.name == null) {
       throw new WebApplicationException("User Name was not set on request.", 422);
     }
     System.out.println("USER OBJ: " + user.toString());
-    System.out.println("USER NAME: " + user.getName());
-    Object entity = entityManager.createNativeQuery("SELECT u FROM User u WHERE u.name = :name", User.class).setParameter("name", user.getName()).getSingleResult();
+    System.out.println("USER NAME: " + user.name);
+    Object entity = User.findByName(user.name);
 
     if (entity == null) {
-      throw new WebApplicationException("User with username of " + user.getName() + " does not exist.", 404);
+      throw new WebApplicationException("User with username of " + user.name + " does not exist.", 404);
     }
 
     return entity;
@@ -143,8 +134,8 @@ public class UserResource {
       }
 
       return Response.status(code)
-            .entity(exceptionJson)
-            .build();
+        .entity(exceptionJson)
+        .build();
     }
 
   }

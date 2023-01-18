@@ -19,6 +19,7 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 import org.jboss.logging.Logger;
+import io.quarkus.panache.common.Sort;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -31,33 +32,28 @@ public class FruitResource {
 
   private static final Logger LOGGER = Logger.getLogger(FruitResource.class.getName());
 
-  @Inject
-  EntityManager entityManager;
-
   @GET
   public List<Fruit> get() {
-    return entityManager.createNamedQuery("Fruits.findAll", Fruit.class)
-      .getResultList();
+    return Fruit.listAll(Sort.by("name"));
   }
 
   @GET
   @Path("{id}")
   public Fruit getSingle(Integer id) {
-    Fruit entity = entityManager.find(Fruit.class, id);
+    Fruit entity = Fruit.findById(id);
     if (entity == null) {
       throw new WebApplicationException("Fruit with id of " + id + " does not exist.", 404);
-      }
+    }
     return entity;
   }
 
   @POST
   @Transactional
   public Response create(Fruit fruit) {
-    if (fruit.getId() != null) {
+    if (fruit.id != null) {
       throw new WebApplicationException("Id was invalidly set on request.", 422);
     }
-
-    entityManager.persist(fruit);
+    fruit.persist();
     return Response.ok(fruit).status(201).build();
   }
 
@@ -65,18 +61,18 @@ public class FruitResource {
   @Path("{id}")
   @Transactional
   public Fruit update(Integer id, Fruit fruit) {
-    if (fruit.getName() == null) {
+    if (fruit.name == null) {
       throw new WebApplicationException("Fruit Name was not set on request.", 422);
     }
 
-    Fruit entity = entityManager.find(Fruit.class, id);
+    Fruit entity = Fruit.findById(id);
 
     if (entity == null) {
       throw new WebApplicationException("Fruit with id of " + id + " does not exist.", 404);
     }
 
-    entity.setName(fruit.getName());
-
+    entity.name = fruit.name;
+    
     return entity;
   }
 
@@ -84,11 +80,11 @@ public class FruitResource {
   @Path("{id}")
   @Transactional
   public Response delete(Integer id) {
-    Fruit entity = entityManager.getReference(Fruit.class, id);
+    Fruit entity = Fruit.findById(id);
     if (entity == null) {
       throw new WebApplicationException("Fruit with id of " + id + " does not exist.", 404);
     }
-    entityManager.remove(entity);
+    entity.delete();
     return Response.status(204).build();
   }
 
