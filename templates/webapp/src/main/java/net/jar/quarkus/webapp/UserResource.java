@@ -35,14 +35,14 @@ public class UserResource {
   private static final Logger LOGGER = Logger.getLogger(UserResource.class.getName());
 
   @GET
-  public List<User> get() {
-    return User.listAll(Sort.by("name"));
+  public List<UserEntity> get() {
+    return UserEntity.listAll(Sort.by("name"));
   }
   
   @GET
   @Path("{id}")
-  public User getSingle(Integer id) {
-    User entity = User.findById(id);
+  public UserEntity getSingle(Long id) {
+    UserEntity entity = UserEntity.findById(id);
     if (entity == null) {
       throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
     }
@@ -51,7 +51,7 @@ public class UserResource {
   
   @POST
   @Transactional
-  public Response create(User user) {
+  public Response create(UserEntity user) {
     if (user.id != null) {
       throw new WebApplicationException("Id was invalidly set on request.", 422);
     }
@@ -62,12 +62,12 @@ public class UserResource {
   @PUT
   @Path("{id}")
   @Transactional
-  public User update(Integer id, User user) {
+  public UserEntity update(Long id, UserEntity user) {
     if (user.name == null) {
       throw new WebApplicationException("User Name was not set on request.", 422);
     }
 
-    User entity = User.findById(id);
+    UserEntity entity = UserEntity.findById(id);
 
     if (entity == null) {
       throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
@@ -83,8 +83,8 @@ public class UserResource {
   @DELETE
   @Path("{id}")
   @Transactional
-  public Response delete(Integer id) {
-    User entity = User.findById(id);
+  public Response delete(Long id) {
+    UserEntity entity = UserEntity.findById(id);
     if (entity == null) {
       throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
     }
@@ -95,13 +95,13 @@ public class UserResource {
   @POST
   @Path("login")
   @Transactional
-  public Object userlogin(User user) {
+  public UserEntity userlogin(UserEntity user) {
     if (user.name == null) {
       throw new WebApplicationException("User Name was not set on request.", 422);
     }
     System.out.println("USER OBJ: " + user.toString());
     System.out.println("USER NAME: " + user.name);
-    Object entity = User.findByName(user.name);
+    UserEntity entity = UserEntity.findByName(user.name);
 
     if (entity == null) {
       throw new WebApplicationException("User with username of " + user.name + " does not exist.", 404);

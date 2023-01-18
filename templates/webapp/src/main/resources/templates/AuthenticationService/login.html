@@ -114,58 +114,31 @@ $scope.remove = function (user) {
 {/pagehead}
 {#content}
 <div ng-app="UserManagement" ng-controller="UserManagementController">
-<div class="card m-3 p-3">
-  <h3>Add/Edit a User</h3>
-  <form ng-submit="update()">
-    <div class="m-3">
-      <label for="name" class="form-label">Name</label>
-      <input type="text" id="name" name="name" placeholder="Name" class="form-control" ng-model="form.name" />
-    </div>
-    <div class="m-3">
-      <label for="category" class="form-label">Email</label>
-      <input type="email" id="email" name="email" placeholder="Email" class="form-control" ng-model="form.email" />
-    </div>
-    <div class="m-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" id="password" name="password" placeholder="Password" class="form-control" ng-model="form.password" />
-    </div>
-    <div class="m-3">
-      <input type="submit" value="Save" /><input type="reset" />
-    </div>
-  </form>
-</div>
+
+<div class="row">
+<div class="col-3"></div>
+<div class="col-6">
 <div class="container">
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Password</th>
-      <th></th>
-    </tr>
-    
-    <tr ng-repeat="user in users">
-      <td>{{ user.id }}</td>
-      <td>{{ user.name }}</td>
-      <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
-      <td>{{ user.password }}</td>
-      <td>
-        <a ng-click="edit( user )" class="btn">Edit</a>
-        <a ng-click="remove( user )" class="btn">Remove</a>
-      </td>
-    </tr>
-  </table>
+  <div class="card m-3">
+    <form ng-submit="userlogin()">
+      <h2>Login</h2>
+      <div class="m-3">
+        <input type="text" id="username" name="username" placeholder="Username" class="form-control" ng-model="form.username" autocomplete="off" required>
+      </div>
+      <div class="m-3">
+        <input type="password" id="password" name="password" placeholder="Password" class="form-control" ng-model="form.password" required>
+      </div>
+      <div class="m-3">
+        <input type="submit" value="Login" class="btn btn-success">
+        <input type="reset" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
 </div>
-<div class="container">
-  <h1>List of Users</h1>
-  <ul>
-    {#for tuser in testusers}
-    <li>{tuser.name}</li>
-    <li>{tuser.email}</li>
-    <li>{tuser.password}</li>
-    {/for}
-  </ul>
 </div>
+<div class="col-3"></div>
+</div>
+
 </div>
 {/content}
 

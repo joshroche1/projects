@@ -15,23 +15,19 @@ import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateExtension;
 import io.quarkus.qute.TemplateInstance;
 
-@Path("users")
-public class UserService {
+@Path("/")
+public class WebService {
 
   @CheckedTemplate
   static class Templates {
-    static native TemplateInstance list(List<UserEntity> testusers);
+    static native TemplateInstance index();
   }
 
   @GET
-  @Path("list")
+  @Path("index")
   @Produces(MediaType.TEXT_HTML)
   public TemplateInstance get() {
-    List<UserEntity> testusers = new ArrayList<>();
-    testusers.add(new UserEntity("Jim", "jim@bob.joe", "JimBobJoe"));
-    testusers.add(new UserEntity("Bob", "bob@joe.jim", "bobJOEjim"));
-    testusers.add(new UserEntity("Joe", "joe@jim.bob", "jOEjIMbOB"));
-    return Templates.list(testusers);
+    return Templates.index();
   }
 
 }

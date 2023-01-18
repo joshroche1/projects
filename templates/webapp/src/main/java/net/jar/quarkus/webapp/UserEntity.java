@@ -12,7 +12,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 @Entity
 @Cacheable
-public class User extends PanacheEntity {
+public class UserEntity extends PanacheEntity {
 
   @Column(length = 40, unique = true)
   public String name;
@@ -24,20 +24,20 @@ public class User extends PanacheEntity {
   public String password;
 
 
-  public User() {}
+  public UserEntity() {}
   
-  public User(String name, String password) {
+  public UserEntity(String name, String password) {
     this.name = name;
     this.password = password;
   }
   
-  public User(String name, String email, String password) {
+  public UserEntity(String name, String email, String password) {
     this.name = name;
     this.email = email;
     this.password = password;
   }
   
-  public static User findByName(String name) {
+  public static UserEntity findByName(String name) {
     return find("name", name).firstResult();
   }
   

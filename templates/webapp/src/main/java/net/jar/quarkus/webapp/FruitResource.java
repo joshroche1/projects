@@ -39,7 +39,7 @@ public class FruitResource {
 
   @GET
   @Path("{id}")
-  public Fruit getSingle(Integer id) {
+  public Fruit getSingle(Long id) {
     Fruit entity = Fruit.findById(id);
     if (entity == null) {
       throw new WebApplicationException("Fruit with id of " + id + " does not exist.", 404);
@@ -60,7 +60,7 @@ public class FruitResource {
   @PUT
   @Path("{id}")
   @Transactional
-  public Fruit update(Integer id, Fruit fruit) {
+  public Fruit update(Long id, Fruit fruit) {
     if (fruit.name == null) {
       throw new WebApplicationException("Fruit Name was not set on request.", 422);
     }
@@ -79,7 +79,7 @@ public class FruitResource {
   @DELETE
   @Path("{id}")
   @Transactional
-  public Response delete(Integer id) {
+  public Response delete(Long id) {
     Fruit entity = Fruit.findById(id);
     if (entity == null) {
       throw new WebApplicationException("Fruit with id of " + id + " does not exist.", 404);
