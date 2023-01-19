@@ -1,7 +1,7 @@
 package net.jar.quarkus.webapp;
 
 import java.util.List;
-import javax.annotation.security.RolesAllowed;
+import javax.annotation.security.PermitAll;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -16,8 +16,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
@@ -33,33 +31,32 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 
-@Path("users")
+@Path("/")
 @ApplicationScoped
-public class UserResource {
+public class PublicResource {
 
-  private static final Logger LOGGER = Logger.getLogger(UserResource.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(PublicResource.class.getName());
 
   @CheckedTemplate
   static class Templates {
-    static native TemplateInstance list(List<UserEntity> userlist);
+    static native TemplateInstance index();
+    static native TemplateInstance login();
   }
   
   @GET
-  @Path("list")
-  @RolesAllowed("user")
+  @Path("/")
+  @PermitAll
   @Produces(MediaType.TEXT_HTML)
-  @Blocking
-  public TemplateInstance list() {
-    List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
-    return Templates.list(userlist);
+  public TemplateInstance index() {
+    return Templates.index();
   }
   
   @GET
-  @Path("me")
-  @RolesAllowed("user")
-  @Produces(MediaType.TEXT_PLAIN)
-  public String me(@Context SecurityContext securityContext) {
-    return securityContext.getUserPrincipal().getName();
+  @Path("/login")
+  @PermitAll
+  @Produces(MediaType.TEXT_HTML)
+  public TemplateInstance login() {
+    return Templates.login();
   }
 
 
