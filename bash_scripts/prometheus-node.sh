@@ -9,7 +9,7 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.4.0/node_e
 tar xvzf node_exporter-1.4.0.linux-amd64.tar.gz
 mv node_exporter-1.4.0.linux-amd64 node_exporter
 adduser --system --disabled-password --shell /usr/sbin/nologin --gecos "" prometheus
-
+chown -R prometheus: /opt/node_exporter/
 echo '
 [Unit]
 Description=Prometheus Node Exporter
