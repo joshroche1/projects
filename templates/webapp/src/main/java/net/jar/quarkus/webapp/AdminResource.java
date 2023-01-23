@@ -1,8 +1,7 @@
 package net.jar.quarkus.webapp;
 
 import java.util.List;
-import java.net.URI;
-import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -17,7 +16,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.SecurityContext;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
@@ -28,55 +28,38 @@ import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateExtension;
 import io.quarkus.qute.TemplateInstance;
 import io.smallrye.common.annotation.Blocking;
-import io.vertx.core.http.HttpServerResponse;
-import org.jboss.resteasy.reactive.RestResponse;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 
-@Path("/")
+@Path("admin")
 @ApplicationScoped
-public class PublicResource {
+public class AdminResource {
 
-  private static final Logger LOGGER = Logger.getLogger(PublicResource.class.getName());
-  
-  @ConfigProperty(name = "quarkus.http.auth.form.cookie-name")
-  String cookieName;
-  
-  @Inject
-  UriInfo uriInfo;
+  private static final Logger LOGGER = Logger.getLogger(AdminResource.class.getName());
 
-  @CheckedTemplate
+  /*@CheckedTemplate
   static class Templates {
-    static native TemplateInstance index();
-    static native TemplateInstance login();
-  }
+    static native TemplateInstance list(List<UserEntity> userlist);
+  }*/
   
   @GET
-  @Path("/")
-  @PermitAll
+  @Path("list")
+  @RolesAllowed("admin")
   @Produces(MediaType.TEXT_HTML)
-  public TemplateInstance index() {
-    return Templates.index();
+  @Blocking
+  public List<UserEntity> list() {
+    List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
+    return userlist;
   }
   
   @GET
-  @Path("/login")
-  @PermitAll
-  @Produces(MediaType.TEXT_HTML)
-  public TemplateInstance login() {
-    return Templates.login();
-  }
-  
-  @GET
-  @Path("/logout")
-  @PermitAll
-  public RestResponse<Object> logout(HttpServerResponse response) {
-    URI loginUri = uriInfo.getRequestUriBuilder().replacePath("/login").build();
-    response.removeCookie(cookieName, true);
-    return RestResponse.seeOther(loginUri);
+  @Path("me")
+  @RolesAllowed("admin")
+  @Produces(MediaType.TEXT_PLAIN)
+  public String me(@Context SecurityContext securityContext) {
+    return securityContext.getUserPrincipal().getName();
   }
 
 
