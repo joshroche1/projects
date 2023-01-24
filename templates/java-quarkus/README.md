@@ -10,16 +10,34 @@ Contains:
 
 ## Directory Structure
 
-- /mvnw
-- /pom.xml
+- mvnw
+- pom.xml
 - /src/
 - - /main/
 - - - /resources/
-- - - /java/
+- - - - application.properties
+- - - - import.sql
+- - - - /META-INF/resources/css|img|js/
+- - - - /templates/
+- - - - - base.html
+- - - - - base-user.html
+- - - - - /PublicResouce/
+- - - - - - index.html
+- - - - - - login.html
+- - - - - /UserResource/
+- - - - - - list.html
+- - - /java/net/jar/quarkus/webapp/
+- - - - - - - - PublicResource.java
+- - - - - - - - Startup.java
+- - - - - - - - UserEntity.java
+- - - - - - - - UserResource.java
 
-## Web Endpoints:
+## Web/REST Endpoints:
 
-<http://localhost:8080/index.html>
+<http://localhost:8080/>
+<http://localhost:8080/login>
+<http://localhost:8080/users/list>
+<http://localhost:8080/users/me>
 
 ## To Run in Developer Mode:
 
