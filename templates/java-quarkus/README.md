@@ -35,8 +35,11 @@ Contains:
 ## Web/REST Endpoints:
 
 <http://localhost:8080/>
+
 <http://localhost:8080/login>
+
 <http://localhost:8080/users/list>
+
 <http://localhost:8080/users/me>
 
 ## To Run in Developer Mode:
