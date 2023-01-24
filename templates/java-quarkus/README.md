@@ -1,6 +1,6 @@
 # Java Quarkus Webapp Template
 
-<quarkus.io>
+<http://quarkus.io>
 
 Contains:
  - RESTEasy Reactive Jackson
