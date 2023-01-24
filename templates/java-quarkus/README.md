@@ -1,5 +1,7 @@
 # Java Quarkus Webapp Template
 
+<quarkus.io>
+
 Contains:
  - RESTEasy Reactive Jackson
  - Qute templating
