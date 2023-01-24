@@ -29,6 +29,7 @@ Contains:
 - - - - - /UserResource/
 - - - - - - list.html
 - - - /java/net/jar/quarkus/webapp/
+- - - - - - - - AdminResource.java
 - - - - - - - - PublicResource.java
 - - - - - - - - Startup.java
 - - - - - - - - UserEntity.java
