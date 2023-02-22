@@ -1,44 +1,36 @@
 {#include base-user}
-  {#title}<title>Java Quarkus WebApp</title>{/title}
+  {#title}Java Quarkus WebApp{/title}
 
 {#content}
-<div class="card m-3 p-3">
-  <h3>Add/Edit a User</h3>
-  <form >
-    <div class="m-3">
-      <label for="name" class="form-label">Name</label>
-      <input type="text" id="name" name="name" placeholder="Name" class="form-control" />
-    </div>
-    <div class="m-3">
-      <label for="category" class="form-label">Email</label>
-      <input type="email" id="email" name="email" placeholder="Email" class="form-control" />
-    </div>
-    <div class="m-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password" id="password" name="password" placeholder="Password" class="form-control" />
-    </div>
-    <div class="m-3">
-      <input type="submit" value="Save" /><input type="reset" />
-    </div>
-  </form>
+<div id="usernav">
+  <div>
+    <a id ="userlistlink" href="/users/list">List</a>
+  </div>
+  <div>
+    <a id="usercreatelink" href="/users/create">Create</a>
+  </div>
 </div>
-<div class="container">
-  <table class="table">
+<div id="userlist">
+  <table>
     <tr>
       <th>ID</th>
       <th>Name</th>
+      <th>Email</th>
       <th>Password</th>
-      <th></th>
     </tr>
     {#for usr in userlist}
     <tr>
       <td>{usr.id}</td>
-      <td>{usr.username}</td>
-      <td>{usr.password}</td>
       <td>
-        <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-        <a href="#" class="btn btn-sm btn-danger">Remove</a>
+        <a id="userdetail" href="/users/detail/{usr.id}">
+        {usr.username}
+        </a>
       </td>
+      <td>
+        <a id="useremail" href="mailto:{usr.email}">M</a>
+        {usr.email}
+      </td>
+      <td>{usr.password}</td>
     </tr>
     {/for}
   </table>

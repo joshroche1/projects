@@ -11,6 +11,6 @@ public class Startup {
   @Transactional
   public void loadUsers(@Observes StartupEvent evt) {
     // reset and load all test users
-    UserEntity.add("user", "user", "user");
+    UserEntity.add("user", "user", "user", "user@user.usr");
   }
 }

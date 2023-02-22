@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <title>{#insert title}WEBAPP{/}</title>
+  {#insert pagehead}{/}
+</head>
+<body>
+
+<header>
+  <nav class="navbar navbar-expand-sm bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">HEADER</a>
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="/">Index</a></li>
+        {#insert navbar}{/}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Users</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/users/list">List</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/users">REST</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<div class="container-fluid">
+  {#insert content}CONTENT SECTION{/}
+</div>
+
+</body>
+</html>

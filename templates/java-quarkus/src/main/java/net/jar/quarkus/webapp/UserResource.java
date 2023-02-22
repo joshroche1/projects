@@ -42,6 +42,8 @@ public class UserResource {
   @CheckedTemplate
   static class Templates {
     static native TemplateInstance list(List<UserEntity> userlist);
+    static native TemplateInstance detail(UserEntity user);
+    static native TemplateInstance create();
   }
   
   @GET
@@ -53,6 +55,29 @@ public class UserResource {
     List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
     return Templates.list(userlist);
   }
+  
+  @GET
+  @Path("detail/{id}")
+  @RolesAllowed("user")
+  @Produces(MediaType.TEXT_HTML)
+  @Blocking
+  public TemplateInstance detail(Long id) {
+    UserEntity user = UserEntity.findById(id);
+    if (user == null) {
+      throw new WebApplicationException("User with id: " + id + " not found", 404);
+    }
+    return Templates.detail(user);
+  }
+  
+  @GET
+  @Path("create")
+  @RolesAllowed("user")
+  @Produces(MediaType.TEXT_HTML)
+  public TemplateInstance create() {
+    return Templates.create();
+  }
+  
+  /* REST Interface */
   
   @GET
   @Path("me")

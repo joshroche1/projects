@@ -22,13 +22,16 @@ public class UserEntity extends PanacheEntity {
   
   @Roles
   public String role;
+  
+  public String email;
 
 
-  public static void add(String username, String password, String role) {
+  public static void add(String username, String password, String role, String email) {
     UserEntity user = new UserEntity();
     user.username = username;
     user.password = BcryptUtil.bcryptHash(password);
     user.role = role;
+    user.email = email;
     user.persist();
   }
   
