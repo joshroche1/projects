@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+{% if g.user %}
+FastAPI Webapp
+{% else %}
+{% endif %}
+
+{% endblock %}
+
+
+{% block header %}
+
+{% if g.user %}
+FastAPI Webapp
+{% else %}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+{% if g.user %}
+<div class="container">
+  <div class="m-3 p-3">
+    <h1>FastAPI Web App</h1>
+  </div>  
+</div>
+
+{% else %}
+<div class="container">
+</div>
+{% endif %}
+
+{% endblock %}

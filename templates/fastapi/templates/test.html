@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+{% if g.user %}
+Test Page
+{% else %}
+{% endif %}
+
+{% endblock %}
+
+
+{% block header %}
+
+{% if g.user %}
+Test Page
+{% else %}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+  <h1>Test Page</h1>
+  
+  <div class="col">
+    <h3>User List</h3>
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Password</th>
+      </tr>
+      {% for user in userlist %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.password }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  
+  <div class="col">
+    <h3>G Items</h3>
+    {% for key, value in g.items()  %}
+    <p>{{ key }} - {{ value }}</p>
+      {%for ky, val in value.items() %}
+      <p>{{ ky }} - {{ val }}</p>
+      {% endfor %}
+    {% endfor %}
+  </div>
+  
+  <div class="col">
+    
+  </div>
+  
+</div>
+{% if g.user %}
+
+{% else %}
+<div class="container">
+</div>
+{% endif %}
+
+{% endblock %}
