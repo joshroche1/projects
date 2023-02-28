@@ -24,7 +24,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 messages = []
-infoboxes = []
 g = {}
 
 def get_db():
@@ -38,31 +37,18 @@ def message(message: str = ""):
   messages.clear()
   messages.append(message)
 
-def infobox(infobox: str = ""):
-  infoboxes.clear()
-  infoboxes.append(infobox)
-
 ### Routing
-
-@app.get("/token")
-async def token_auth(token: str = Depends(oauth2_scheme)):
-  return {"token": token}
-
-@app.get("/user")
-async def read_users_me(current_user: schema.User = Depends(get_current_user)):
-  return current_user
-#
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
   message()
-  return templates.TemplateResponse("index.html", {"request": request, "messages": messages, "infoboxes": infoboxes, "g": g})
+  return templates.TemplateResponse("index.html", {"request": request, "messages": messages, "g": g})
 
 @app.get("/test", response_class=HTMLResponse)
 async def test(request: Request, db: Session = Depends(get_db)):
   message()
   userlist = get_users(db)
-  return templates.TemplateResponse("test.html", {"request": request, "messages": messages, "infoboxes": infoboxes, "g": g, "userlist": userlist})
+  return templates.TemplateResponse("test.html", {"request": request, "messages": messages, "g": g, "userlist": userlist})
 
 @app.get("/login", response_class=HTMLResponse)
 async def loginpage(request: Request):
