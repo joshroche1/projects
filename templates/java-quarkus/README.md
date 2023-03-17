@@ -1,56 +1,71 @@
-# smc
+# Java Quarkus Web Application Template
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Dependencies:
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+- Quarkus Platform
+- Extensions:
+  - quarkus-agroal                                     Agroal - Database connection pool
+  - quarkus-container-image-docker                     Container Image Docker
+  - quarkus-container-image-jib                        Container Image Jib
+  - quarkus-hibernate-orm-panache                      Hibernate ORM with Panache
+  - quarkus-jdbc-h2                                    JDBC Driver - H2
+  - quarkus-kubernetes                                 Kubernetes
+  - quarkus-micrometer                                 Micrometer metrics
+  - quarkus-resteasy-reactive                          RESTEasy Reactive
+  - quarkus-resteasy-reactive-jackson                  RESTEasy Reactive Jackson
+  - quarkus-resteasy-reactive-qute                     RESTEasy Reactive Qute
+  - quarkus-security-jpa                               Security JPA
 
-## Running the application in dev mode
+To test in development mode:
+> quarkus dev
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
+To build image(set to Docker in application.properties):
+> quarkus build --no-tests
+
+### Docker / Kubernetes
+
+Build process should have automatically loaded image to local repository
+> docker image ls
+
+Check for Docker login info for Github repo:
+> cat ~/.docker/config.json
+
+Change tag for Github repo:
+```
+docker image tag LOCALREPO/IMAGE:TAG ghcr.io/USERNAME/IMAGE:TAG
+docker push ghcr.io/USERNAME/IMAGE:TAG
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
-
-## Packaging and running the application
-
-The application can be packaged using:
-```shell script
-./mvnw package
+Make sure credentials in Kubernetes:
 ```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
+kubectl create secret generic regcred \
+    --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
+    --type=kubernetes.io/dockerconfigjson
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+Kubernetes YAML file located in ../target/kubernetes/kubernetes.yml
 
-## Creating a native executable
+Make sure to change > image: ghcr.io/USERNAME/IMAGE:TAG
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
+So k8s can pull the image from ghcr.io, add this to Deployment:template:spec:
+```
+imagePullSecrets:
+- name: regcred
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
+Deploy the webapp to k8s:
+> kubectl create -f kubernetes.yml
+
+Check the deployment:
+> kubectl get deployments
+
+Check the service:
+> kubectl get services -A
+
+To use the native LoadBalancer, change Service:spec:type: ClusterIP => LoadBalancer
+
+To delete the resources:
 ```
-
-You can then execute your native executable with: `./target/smc-0.0.1-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Provided Code
-
-### RESTEasy Reactive
-
-Easily start your Reactive RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+kubectl delete deployment NAME
+kubectl delete service NAME
+```
