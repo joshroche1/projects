@@ -1,50 +1,46 @@
 package net.jar.quarkus.webapp;
 
 import java.util.List;
+import java.util.ArrayList;
 import java.net.URI;
+
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
-import javax.ws.rs.DELETE;
+
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import org.hibernate.Query;
-import org.jboss.logging.Logger;
 import io.quarkus.panache.common.Sort;
 import io.quarkus.qute.CheckedTemplate;
-import io.quarkus.qute.TemplateExtension;
 import io.quarkus.qute.TemplateInstance;
 import io.smallrye.common.annotation.Blocking;
+
 import io.vertx.core.http.HttpServerResponse;
+import org.jboss.logging.Logger;
 import org.jboss.resteasy.reactive.RestResponse;
+
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-
 @Path("/")
 @ApplicationScoped
 public class PublicResource {
-
+  
   private static final Logger LOGGER = Logger.getLogger(PublicResource.class.getName());
   
   @ConfigProperty(name = "quarkus.http.auth.form.cookie-name")
   String cookieName;
-  
+    
   @Inject
   UriInfo uriInfo;
 
@@ -52,6 +48,7 @@ public class PublicResource {
   static class Templates {
     static native TemplateInstance index();
     static native TemplateInstance login();
+    static native TemplateInstance test();
   }
   
   @GET
@@ -78,8 +75,16 @@ public class PublicResource {
     response.removeCookie(cookieName, true);
     return RestResponse.seeOther(loginUri);
   }
-
-
+  
+  @GET
+  @Path("/test")
+  @PermitAll
+  @Produces(MediaType.TEXT_HTML)
+  @Blocking
+  public TemplateInstance testpage() {
+    return Templates.test();
+  }
+  
   @Provider
   public static class ErrorMapper implements ExceptionMapper<Exception> {
 
@@ -109,4 +114,5 @@ public class PublicResource {
     }
 
   }
+  
 }

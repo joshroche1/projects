@@ -1,3 +1,6 @@
+Deployed containerized applications to cloud hosted Kubernetes systems ...
+PostgreSQL server installation, configuration, replication, and recovery ...
+
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 joshua.a.roche@gmail.com
@@ -296,3 +299,4 @@ Java
 Ansible
 PHP
 Python
+Kubernetes

@@ -5,35 +5,39 @@
   <link rel="stylesheet" href="/css/bootstrap.min.css"/>
   <link rel="shortcut icon" href="/img/favicon.ico">
   <script src="/js/bootstrap.bundle.min.js"></script>
-  <script src="/js/jquery-3.6.3.min.js"></script>
-  <script src="/js/style.js"></script>
-  <title>{#insert title}WEBAPP{/}</title>
+  <title>{#insert title}{/}</title>
   {#insert pagehead}{/}
 </head>
 <body>
 
 <header>
-  <nav>
-    <a id="navbarbrand" href="#">HEADER</a>
-    <ul>
-      <li><a href="/">Index</a></li>
-      {#insert navbar}{/}
-      <li>
-        <div>
-          <a href="#">Users</a>
-          <ul>
-            <li><a href="/users/list">List</a></li>
-            <li><hr></li>
-            <li><a href="/users">REST</a></li>
-          </ul>
-        </div>
-      </li>
-      <li ><a href="/logout">Logout</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-sm bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand dropdown" href="#">WEBAPP</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">{#insert header}{/}</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/user/list">User List</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/q/dev/">Docs</a></li>
+              <li><a class="dropdown-item" href="/test">Test</a></li>
+            </ul>
+          </li>
+          {#insert navbar}{/}
+          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+        </ul>
+      </div>
+
+    </div>
   </nav>
 </header>
 
-<div id="contentsection">
+<div class="container-fluid">
   {#insert content}CONTENT SECTION{/}
 </div>
 

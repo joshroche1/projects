@@ -1,31 +1,27 @@
 {#include base}
-  {#title}<title>Java Quarkus WebApp</title>{/title}
-
+{#title}WEBAPP{/title}
+{#header}Login{/header}
 {#content}
-<div id="login">
-
-<div></div>
-<div id="loginpart">
-<div>
-  <div>
+<div class="row">
+  <div class="col-12 col-sm-3"></div>
+  <div class="col-12 col-sm-6 card">
     <form action="/login" method="POST">
-      <h2>Login</h2>
-      <div>
-        <input type="text" id="username" name="username" placeholder="Username" autocomplete="off" required>
+      <div class="m-1 p-1">
+        <h2>Login</h2>
       </div>
-      <div>
-        <input type="password" id="password" name="password" placeholder="Password" required>
+      <div class="m-1 p-1">
+        <input type="text" id="username" name="username" placeholder="Username" class="form-control" autocomplete="off" required>
       </div>
-      <div>
-        <input id="submit" type="submit" value="Login">
-        <input id="reset" type="reset">
+      <div class="m-1 p-1">
+        <input type="password" id="password" name="password" placeholder="Password" class="form-control" required>
+      </div>
+      <div class="m-1 p-1">
+        <input id="submit" type="submit" value="Login" class="btn btn-sm btn-success m-1 p-1">
+        <input id="reset" type="reset" class="btn btn-sm btn-secondary m-1 p-1">
       </div>
     </form>
   </div>
-</div>
-</div>
-<div></div>
-
+  <div class="col-12 col-sm-3"></div>
 </div>
 {/content}
 

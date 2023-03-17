@@ -1,39 +1,64 @@
 {#include base-user}
-  {#title}Java Quarkus WebApp{/title}
-
+{#title}Users{/title}
+{#header}Users{/header}
 {#content}
-<div id="usernav">
-  <div>
-    <a id ="userlistlink" href="/users/list">List</a>
+
+<div class="card m-3 p-3">
+  <h3>User List</h3>
+  <div class="row">
+    
+    <div class="col-12 col-sm-6 col-md-6 col-lg-6 p-1">
+      <div class="card p-1">
+        <div class="card-body">
+          <form action="/user/create/form" method="post">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <input type="email" id="email" name="email" placeholder="Email Address" class="form-control" autocomplete="off" required />
+            </li>
+            <li class="list-group-item">
+              <input type="text" id="username" name="username" placeholder="Username" class="form-control" autocomplete="off" required />
+            </li>
+            <li class="list-group-item">
+              <input type="password" id="password" name="password" placeholder="Password" class="form-control" autocomplete="off" required />
+            </li>
+            <li class="list-group-item">
+              <input type="submit" value="Submit" class="btn btn-sm btn-success m-1 p-1">
+              <input type="reset" class="btn btn-sm btn-secondary m-1 p-1">
+            </li>
+          </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-12 col-sm-6 col-md-6 col-lg-6 p-1">
+      <div class="card table-resposive p-1">
+        <table class="table">
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
+          {#for user in userlist}
+          <tr>
+            <td>
+              <form action="/user/delete/form/{user.id}" method="post">
+                <div class="input-group">
+                  <a href="" class="btn btn-sm">{user.id}</a>
+                  <input type="submit" value="X" onclick="return confirm('Are you sure?');" class="btn btn-sm btn-danger">
+                </div>
+              </form>
+            </td>
+            <td><a href="" class="btn btn-sm">{user.username}</a></td>
+            <td><a href="" class="btn btn-sm">{user.email}</a></td>
+          </tr>
+          {/for}
+        </table>
+        
+      </div>
+    </div>
+      
   </div>
-  <div>
-    <a id="usercreatelink" href="/users/create">Create</a>
-  </div>
-</div>
-<div id="userlist">
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Password</th>
-    </tr>
-    {#for usr in userlist}
-    <tr>
-      <td>{usr.id}</td>
-      <td>
-        <a id="userdetail" href="/users/detail/{usr.id}">
-        {usr.username}
-        </a>
-      </td>
-      <td>
-        <a id="useremail" href="mailto:{usr.email}">M</a>
-        {usr.email}
-      </td>
-      <td>{usr.password}</td>
-    </tr>
-    {/for}
-  </table>
 </div>
 {/content}
 

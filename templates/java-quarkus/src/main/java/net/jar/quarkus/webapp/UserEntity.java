@@ -27,12 +27,16 @@ public class UserEntity extends PanacheEntity {
 
 
   public static void add(String username, String password, String role, String email) {
-    UserEntity user = new UserEntity();
-    user.username = username;
-    user.password = BcryptUtil.bcryptHash(password);
-    user.role = role;
-    user.email = email;
-    user.persist();
+    UserEntity usernamepresent = find("username", username).firstResult();
+    UserEntity emailpresent = find("email", email).firstResult();
+    if (usernamepresent == null && emailpresent == null) {
+      UserEntity user = new UserEntity();
+      user.username = username;
+      user.password = BcryptUtil.bcryptHash(password);
+      user.role = role;
+      user.email = email;
+      user.persist();
+    }
   }
   
 }
