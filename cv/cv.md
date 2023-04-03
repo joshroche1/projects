@@ -73,20 +73,20 @@ US Army Garrison, Rhineland-Pfalz, Smith Barracks, Baumholder, Germany
 Responsible for Tier II level support of 30 WIN-T satellite communications systems, supports Battalion Plans and Engineering section regarding Satellite Access Requests and Authorizations (SAR/SAA) and Army Service Requests and Authorizations (ASR/ASA) to the Regional SATCOM Support Center (RSSC) and Regional Cyber Center – Europe (RCC-E).
 
 Responsibilities include:
-    • Satellite/Gateway Access Request submission (SAR/GAR)
-    • Army Service Request submission (ASR) 
-    • Advanced troubleshooting for 30 WIN-T Inc 1 SATCOM systems
-    • WIN-T Inc 1 system upgrading/updating
-    • New Equipment Fielding/Training (NET/NEF) Unit level preparation and integration
-    • Virtual Infrastructure (VMware ESXi) system administration
-    • Configuration Management of Voice over IP (VoIP) and Video Teleconference (VTC) systems (Cisco Unified Communications Manager)
-    • Unit LandWarNet eUniversity Administration / Development
-    • Training product and custom user documentation development for online eUniversity
-    • Battalion level unit Microsoft SharePoint administration
-    • Server Infrastructure Administration / Management
+- Satellite/Gateway Access Request submission (SAR/GAR)
+- Army Service Request submission (ASR) 
+- Advanced troubleshooting for 30 WIN-T Inc 1 SATCOM systems
+- WIN-T Inc 1 system upgrading/updating
+- New Equipment Fielding/Training (NET/NEF) Unit level preparation and integration
+- Virtual Infrastructure (VMware ESXi) system administration
+- Configuration Management of Voice over IP (VoIP) and Video Teleconference (VTC) systems (Cisco Unified Communications Manager)
+- Unit LandWarNet eUniversity Administration / Development
+- Training product and custom user documentation development for online eUniversity
+- Battalion level unit Microsoft SharePoint administration
+- Server Infrastructure Administration / Management
 Achievements:
-    • Facilitated T2C2 unit level validation and training post NEF/NET for 5 systems/teams
-    • 5GTI system integration and troubleshooting for 30 systems
+- Facilitated T2C2 unit level validation and training post NEF/NET for 5 systems/teams
+- 5GTI system integration and troubleshooting for 30 systems
 
 #### SATCOM Operations NCO
 
@@ -96,10 +96,10 @@ US Army Garrison, Bavaria, Tower Barracks, Grafenwoehr, Germany
 Responsible for Tier I support of 13 WIN-T satellite communications systems for Joint Multinational Training Exercises and Continuing Operations throughout the European Theater. 
 
 Responsibilities include:
-    • Unit level SATCOM reporting for 13 systems
-    • Troubleshooting SATCOM systems
-    • Managing equipment/system updates and patches for 13 systems
-    • Training and Professional Development of 5 Soldiers
+- Unit level SATCOM reporting for 13 systems
+- Troubleshooting SATCOM systems
+- Managing equipment/system updates and patches for 13 systems
+- Training and Professional Development of 5 Soldiers
 
 #### Transmission Systems Team Chief
 
@@ -109,7 +109,7 @@ US Army Garrison, Bavaria, Tower Barracks, Grafenwoehr, Germany
 Responsible for the operation and maintenance of 1 AN/TTC-59C(V3) Joint Network Node (JNN), 1 AN/TSC-167F Satellite Transportable Trailer(STT), 1 AN/TSC-156D Phoenix, and 2 AN/TSC-198A SIPR/NIPR Access Point (SNAP) systems. 
 
 Responsibilities include:
-    • Training and Professional Development of 10 Soldiers 
+- Training and Professional Development of 10 Soldiers 
 
 #### Instructor/Writer for 25S Advanced Individual Training
 
