@@ -28,11 +28,9 @@ Focused and diligent DevOps professional specializing in Cloud systems and infra
 
 ### Operations Engineer
 
-1 March 2022 - Present (40hr/week)
-
-AnyDesk Software, GmbH
-
-Stuttgart, Germany
+> 1 March 2022 - Present (40hr/week)  
+> AnyDesk Software, GmbH  
+> Stuttgart, Germany
 
 Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation. 
 
