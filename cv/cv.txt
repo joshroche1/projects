@@ -1,7 +1,3 @@
-Deployed containerized applications to cloud hosted Kubernetes systems ...
-PostgreSQL server installation, configuration, replication, and recovery ...
-
-/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 joshua.a.roche@gmail.com
 www.linkedin.com/in/joshua-roche-77385b61 
@@ -11,11 +7,9 @@ Citizenship: US
 Federal Experience: Military
 Clearance: Active Secret 20110817
 
-!!!!!UPDATE!!!!!
 Skills Summary: 
-Focused and diligent DevOps professional specializing in Cloud systems and infrastructure with 20 years of US Military experience with Satellite Communications and Networking Systems in both Fixed and Mobile Environments. 
-I’ve worked with many different systems in diverse network architectures and leveraged resourcefulness and ingenuity to solve complex and time sensitive problems.
-!!!!!UPDATE!!!!!
+Focused and diligent DevOps professional specializing in Cloud systems and infrastructure with knowledge and experience for many different platforms and technologies. US Army Veteran with 20 years of US Military experience with Satellite Communications and Networking Systems in both Fixed and Mobile Environments. I’ve worked with many different systems in diverse network architectures and leveraged resourcefulness and ingenuity to solve complex and time sensitive problems.
+    • Deployed Cloud Native Enterprise Remote Desktop solutions for millions of customers worldwide
     • Provided Tier II technical support to DISA Europe and global customers for the GVS2 platform hosted on Amazon Web Services. 
     • Worked with deployed teams for advanced level troubleshooting on telecommunications systems delivering data, voice, and video services to supported US Army units throughout the European Theater.
     • Proficient in the administration and troubleshooting of the following systems: Linkway S2, EBEM, iDirect, MPM-1000/2000, Cisco IOS, Cisco Unified Communications Manager, Palo Alto NGFW, VMware vSphere/vCenter/ESXi, MIDAS.
@@ -24,7 +18,6 @@ I’ve worked with many different systems in diverse network architectures and l
     • Provided technical direction and training on T2C2 systems and MPE PacStar systems to teams in 44th Expeditionary Signal Battalion.
     • Managed strategic and tactical telecommunications links and circuits in a supervisory role as a SATCOM Shift NCOIC at Fort Buckner, Okinawa and Camp Roberts, CA.
     • Deployed with the 10th Mountain Division UHN/THN to OEF VII and OIF VI, providing tactical communications support for Division HQ and Warfighters throughout the CENTCOM theater.
-!!!!!UPDATE!!!!!
  
 Professional Experience 
 
@@ -34,10 +27,11 @@ AnyDesk Software, GmbH
 Stuttgart, Germany
 Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation. 
 
-    • Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers including Hetzner, OVH, DataPacket, Global Secure Layer and Maxihost
-    • Installed, managed, monitored, and updated 8 PostgreSQL databases
-    • Installed, monitored, and maintained Apache Tomcat and NGINX application and web servers
-    • Expanded and managed a worldwide distributed Icinga 2 monitoring system
+    • Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers including Hetzner, OVH, DataPacket, Global Secure Layer, Limestone, and Maxihost
+    • Installed, managed, monitored, and updated 8 PostgreSQL production database servers including replication and recovery
+    • Created production and staging cloud containerized applications utilizing Kubernetes and Docker
+    • Migrated a worldwide Icinga2 customized monitoring system to Prometheus, providing better insight into system dynamics and metrics
+    • Installed, monitored, and maintained Apache Tomcat, Wildfly, and NGINX application and web servers as well as Quarkus and FastAPI into our production environment
     • Developed automation for operational tasks using Ansible, Python, and Shell Scripting
     • Built internal websites used for custom application distribution designed for internal productivity
 
