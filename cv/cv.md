@@ -1,6 +1,7 @@
 # Joshua A. Roche
 
 joshua.a.roche@gmail.com
+
 www.linkedin.com/in/joshua-roche-77385b61 
 
 ## Professional Objectives
@@ -32,13 +33,13 @@ AnyDesk Software, GmbH
 Stuttgart, Germany
 Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation. 
 
-    • Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers including Hetzner, OVH, DataPacket, Global Secure Layer, Limestone, and Maxihost
-    • Installed, managed, monitored, and updated 8 PostgreSQL production database servers including replication and recovery
-    • Created production and staging cloud containerized applications utilizing Kubernetes and Docker
-    • Migrated a worldwide Icinga2 customized monitoring system to Prometheus, providing better insight into system dynamics and metrics
-    • Installed, monitored, and maintained Apache Tomcat, Wildfly, and NGINX application and web servers as well as Quarkus and FastAPI into our production environment
-    • Developed automation for operational tasks using Ansible, Python, and Shell Scripting
-    • Built internal websites used for custom application distribution designed for internal productivity
+- Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers including Hetzner, OVH, DataPacket, Global Secure Layer, Limestone, and Maxihost
+- Installed, managed, monitored, and updated 8 PostgreSQL production database servers including replication and recovery
+- Created production and staging cloud containerized applications utilizing Kubernetes and Docker
+- Migrated a worldwide Icinga2 customized monitoring system to Prometheus, providing better insight into system dynamics and metrics
+- Installed, monitored, and maintained Apache Tomcat, Wildfly, and NGINX application and web servers as well as Quarkus and FastAPI into our production environment
+- Developed automation for operational tasks using Ansible, Python, and Shell Scripting
+- Built internal websites used for custom application distribution designed for internal productivity
 
 ### Tier II AWS Systems Administrator
 
@@ -48,20 +49,16 @@ Vaihingen, Germany
 Provides Tier II user and infrastructure support on NIPR and SIPR DISA Global Video Services 2 (GVS2) platform for EUCOM and worldwide customers. Responsible for operation and maintenance of AWS Cloud Infrastructure for GVS2 systems globally and on premises site lab infrastructure, providing patching, updates, demand maintenance, change requests, and automation support for network and server components. 
 
 Responsibilities include:
-    • Utilized Amazon Web Services (AWS) to build virtual machines, add storage, configure 
-network adapters, and view performance metrics in a virtualized environment
-    • Knowledge of AWS CloudWatch, RDS, EFS, EC2, VDS
-    • Managed RHEL hosts, Apache Tomcat application servers, NGINX web servers
-    • Managed PKI certificates and keystores for TLS connectivity between systems and 
-endpoints
-    • Automated the hardening of host systems for compliance with DISA STIG using SCAP 
-tools and AWS System Manager components
-    • Tier II user support for DoD Global Video Services 2 (GVS2) platform 
-    • Amazon Web Services cloud infrastructure operation, maintenance, and troubleshooting
-    • On-Premises Classified infrastructure operation, maintenance, and troubleshooting
-    • Provide system updates, patching, demand maintenance, change request support, and 
-automation
-    • Create and update operational, technical, user documentation
+- Utilized Amazon Web Services (AWS) to build virtual machines, add storage, configure network adapters, and view performance metrics in a virtualized environment
+- Knowledge of AWS CloudWatch, RDS, EFS, EC2, VDS
+- Managed RHEL hosts, Apache Tomcat application servers, NGINX web servers
+- Managed PKI certificates and keystores for TLS connectivity between systems and endpoints
+- Automated the hardening of host systems for compliance with DISA STIG using SCAP tools and AWS System Manager components
+- Tier II user support for DoD Global Video Services 2 (GVS2) platform 
+- Amazon Web Services cloud infrastructure operation, maintenance, and troubleshooting
+- On-Premises Classified infrastructure operation, maintenance, and troubleshooting
+- Provide system updates, patching, demand maintenance, change request support, and automation
+- Create and update operational, technical, user documentation
 
 ### United States Army - Staff Sergeant
 
