@@ -119,26 +119,26 @@ Fort Gordon, GA
 Professional instruction of entry level US Army Soldiers for Advanced Individual Training (AIT) on the Military Occupational Specialty (MOS) 25S Satellite Communications Operator/Maintainer. 
 
 Responsibilities include:
-    • Instruct 25S AIT Soldiers in the following topics:
-        ◦ Basic Electronics
-        ◦ Electronic Timing Systems
-        ◦ Promina
-        ◦ MIDAS
-        ◦ Internetworking Concepts and Technologies, including:
-            ▪ IPv4/IPv6 Addressing / Subnetting
-            ▪ DHCP
-            ▪ Routing Protocols: RIP, OSPF, EIGRP, Static
-            ▪ VLAN
-            ▪ GRE Tunneling
-            ▪ Cisco IOS
-        ◦ Frequency Modulation
-        ◦ iDirect
-        ◦ Radio Frequency Propagation
-        ◦ MILSATCOM Administration
-    • Update and build instructional curriculum
+- Instruct 25S AIT Soldiers in the following topics:
+  - Basic Electronics
+  - Electronic Timing Systems
+  - Promina
+  - MIDAS
+  - Internetworking Concepts and Technologies, including:
+    - IPv4/IPv6 Addressing / Subnetting
+    - DHCP
+    - Routing Protocols: RIP, OSPF, EIGRP, Static
+    - VLAN
+    - GRE Tunneling
+    - Cisco IOS
+  - Frequency Modulation
+  - iDirect
+  - Radio Frequency Propagation
+  - MILSATCOM Administration
+- Update and build instructional curriculum
 Achievements:
-    • Instructed 230 AIT Soldiers over 3 years
-    • Facilitated the integration of iDirect systems into lab infrastructure and school curriculum 
+- Instructed 230 AIT Soldiers over 3 years
+- Facilitated the integration of iDirect systems into lab infrastructure and school curriculum 
 
 #### SATCOM Maintenance NCO
 
@@ -148,13 +148,13 @@ Fort Buckner, Ginowan, Okinawa
 Responsible for the installation, operation, configuration, troubleshooting, maintenance, and repair of 2 AN/GSC-39C MILSATCOM X-band terminals and 9 additional terminals to include 2 UHF, 3 US Navy EHF, 2 C-band and 2 Ku-band terminals, at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility. 
 
 Responsibilities include:
-    • Prepare maintenance tasks and documents for equipment operators
-    • Test Measurement Diagnostic Equipment (TMDE) Administration and Maintenance
-    • Prepare equipment for Depot level repair
-    • iDirect system administration
-    • Viasat Linkway S2 hub system administration 
-    • Advanced troubleshooting of SATCOM systems
-    • Training and Professional Development of 3 Soldiers
+- Prepare maintenance tasks and documents for equipment operators
+- Test Measurement Diagnostic Equipment (TMDE) Administration and Maintenance
+- Prepare equipment for Depot level repair
+- iDirect system administration
+- Viasat Linkway S2 hub system administration 
+- Advanced troubleshooting of SATCOM systems
+- Training and Professional Development of 3 Soldiers
 
 #### SATCOM Systems Supervisor
 
@@ -164,11 +164,11 @@ Fort Buckner, Ginowan, Okinawa
 Responsible for the operation and maintenance of 2 AN/GSC-39C MILSATCOM X-band terminals and 9 additional terminals to include 2 UHF, 3 US Navy EHF, 2 C-band and 2 Ku-band terminals, at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility. 
 
 Responsibilities include:
-    • Manage SATCOM telecommunication links for US Army, Navy, Marines Corps, and Air Force units in strategic and deployed environments
-    • iDirect hub system operations
-    • Viasat Linkway S2 hub system operations
-    • Manage Cryptographic systems and documentation
-    • Training and Professional Development of 7 Soldiers
+- Manage SATCOM telecommunication links for US Army, Navy, Marines Corps, and Air Force units in strategic and deployed environments
+- iDirect hub system operations
+- Viasat Linkway S2 hub system operations
+- Manage Cryptographic systems and documentation
+- Training and Professional Development of 7 Soldiers
 
 #### Information Management Officer
 
@@ -178,10 +178,10 @@ US Army Garrison, Yongsan, Seoul, South Korea
 Responsible for the operation of the Combined Operations and Intelligence Center (COIC) for Eighth US Army (EUSA) Special General Staff (SGS) and automations responsibilities connected to the EUSA Watch Office and Current Operations sections.
 
 Responsibilities include:
-    • Manage computer user accounts for 25 EUSA SGS personnel
-    • Manage tactical network access to NIPR, SIPR, CENTRIXS-K enclaves for automation systems
-    • Administration of Army Battle Command Systems (ABCS)
-    • Managed 4 KATUSA personnel
+- Manage computer user accounts for 25 EUSA SGS personnel
+- Manage tactical network access to NIPR, SIPR, CENTRIXS-K enclaves for automation systems
+- Administration of Army Battle Command Systems (ABCS)
+- Managed 4 KATUSA personnel
 
 #### SATCOM Operations NCO
 
