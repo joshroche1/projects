@@ -12,15 +12,16 @@ Clearance: Active Secret 20110817
 ### Skills Summary: 
 
 Focused and diligent DevOps professional specializing in Cloud systems and infrastructure with knowledge and experience for many different platforms and technologies. US Army Veteran with 20 years of US Military experience with Satellite Communications and Networking Systems in both Fixed and Mobile Environments. I’ve worked with many different systems in diverse network architectures and leveraged resourcefulness and ingenuity to solve complex and time sensitive problems.
-    • Deployed Cloud Native Enterprise Remote Desktop solutions for millions of customers worldwide
-    • Provided Tier II technical support to DISA Europe and global customers for the GVS2 platform hosted on Amazon Web Services. 
-    • Worked with deployed teams for advanced level troubleshooting on telecommunications systems delivering data, voice, and video services to supported US Army units throughout the European Theater.
-    • Proficient in the administration and troubleshooting of the following systems: Linkway S2, EBEM, iDirect, MPM-1000/2000, Cisco IOS, Cisco Unified Communications Manager, Palo Alto NGFW, VMware vSphere/vCenter/ESXi, MIDAS.
-    • Administered maintenance and repair activities for Fort Buckner STEP/Teleport facility.
-    • Trained and developed over 230 entry level Soldiers on Satellite Communications systems at Fort Gordon, GA.
-    • Provided technical direction and training on T2C2 systems and MPE PacStar systems to teams in 44th Expeditionary Signal Battalion.
-    • Managed strategic and tactical telecommunications links and circuits in a supervisory role as a SATCOM Shift NCOIC at Fort Buckner, Okinawa and Camp Roberts, CA.
-    • Deployed with the 10th Mountain Division UHN/THN to OEF VII and OIF VI, providing tactical communications support for Division HQ and Warfighters throughout the CENTCOM theater.
+
+- Deployed Cloud Native Enterprise Remote Desktop solutions for millions of customers worldwide
+- Provided Tier II technical support to DISA Europe and global customers for the GVS2 platform hosted on Amazon Web Services. 
+- Worked with deployed teams for advanced level troubleshooting on telecommunications systems delivering data, voice, and video services to supported US Army units throughout the European Theater.
+- Proficient in the administration and troubleshooting of the following systems: Linkway S2, EBEM, iDirect, MPM-1000/2000, Cisco IOS, Cisco Unified Communications Manager, Palo Alto NGFW, VMware vSphere/vCenter/ESXi, MIDAS.
+- Administered maintenance and repair activities for Fort Buckner STEP/Teleport facility.
+- Trained and developed over 230 entry level Soldiers on Satellite Communications systems at Fort Gordon, GA.
+- Provided technical direction and training on T2C2 systems and MPE PacStar systems to teams in 44th Expeditionary Signal Battalion.
+- Managed strategic and tactical telecommunications links and circuits in a supervisory role as a SATCOM Shift NCOIC at Fort Buckner, Okinawa and Camp Roberts, CA.
+- Deployed with the 10th Mountain Division UHN/THN to OEF VII and OIF VI, providing tactical communications support for Division HQ and Warfighters throughout the CENTCOM theater.
  
 ## Professional Experience 
 
