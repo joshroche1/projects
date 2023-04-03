@@ -204,13 +204,13 @@ Camp Roberts, CA
 Responsible for planning, development, resourcing, coordination, and execution of unit level training and Soldier Professional Military Education (PME) for 61 Soldiers. 
 
 Responsibilities include:
-    • Plan and develop unit level training objectives and events
-    • Coordinate range reservation and usage
-    • Resource training equipment
-    • PME requests and requirement management
-    • Manage unit training schedules
-    • Oversee and evaluate platoon level training execution
-    • Professional Development of 3 Soldiers
+- Plan and develop unit level training objectives and events
+- Coordinate range reservation and usage
+- Resource training equipment
+- PME requests and requirement management
+- Manage unit training schedules
+- Oversee and evaluate platoon level training execution
+- Professional Development of 3 Soldiers
 
 #### Tactical Satellite Systems Team Chief
 
@@ -220,12 +220,13 @@ Fort Drum, NY
 Responsible for the operation and maintenance of 1 AN/TSC-169A Unit Hub Node for 10th Mountain Division HQ.
 
 Responsibilities include:
-    • Manage telecommunications links for 10th Mountain Division systems during wartime operations and training exercises
-    • Viasat Linkway (version 7) hub administration and operation
-    • Training and Professional Development of 2 Soldiers
+- Manage telecommunications links for 10th Mountain Division systems during wartime operations and training exercises
+- Viasat Linkway (version 7) hub administration and operation
+- Training and Professional Development of 2 Soldiers
+
 Achievements:
-    • Managed a Linkway mesh network for 70 remote terminals during OIF VI
-    • Sent to Joint Base Lewis/McChord to prepare 34th ID for Relief in Place operations for OIF VII
+- Managed a Linkway mesh network for 70 remote terminals during OIF VI
+- Sent to Joint Base Lewis/McChord to prepare 34th ID for Relief in Place operations for OIF VII
 
 #### SATCOM Team Chief
 
@@ -235,8 +236,8 @@ Camp Carroll, Waegwan, South Korea
 Responsible for the operation and maintenance of 1 AN/TSC-93C terminal for training and warfighter support throughout the United States Forces Korea (USFK) theater.
 
 Responsibilities include:
-    • Manage telecommunications support for training exercises throughout the USFK theater. 
-    • Training and Professional Development of 3 Soldiers
+- Manage telecommunications support for training exercises throughout the USFK theater. 
+- Training and Professional Development of 3 Soldiers
  
 ## References
 
@@ -261,9 +262,9 @@ University of Maryland, Global Campus, Adelphi, Maryland
  
 ## Certifications
 
-    • CompTIA Security+ CE (30 August 2019)
-    • CompTIA Cloud+ (3 October 2020)
-    • AWS Certified Cloud Practitioner (21 November 2020)
+- CompTIA Security+ CE (30 August 2019)
+- CompTIA Cloud+ (3 October 2020)
+- AWS Certified Cloud Practitioner (21 November 2020)
 
 ## Technical Skills 
 
