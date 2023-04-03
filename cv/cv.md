@@ -6,11 +6,9 @@ www.linkedin.com/in/joshua-roche-77385b61
 
 ## Professional Objectives
 
-Citizenship: US
-
-Federal Experience: Military
-
-Clearance: Active Secret 20110817
+> Citizenship: US
+> Federal Experience: Military
+> Clearance: Active Secret 20110817
 
 ### Skills Summary: 
 
