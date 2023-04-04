@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+{% if g.user %}
+FastAPI Webapp
+{% else %}
+{% endif %}
+
+{% endblock %}
+
+
+{% block header %}
+
+{% if g.user %}
+FastAPI Webapp
+{% else %}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+{% if g.user %}
+<div class="container">
+  <div class="m-3 p-3">
+    <h1>Transactions</h1>
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>AMOUNT</th>
+        <th>CATEGORY</th>
+        <th>POSTED</th>
+        <th>DESCRIPTION</th>
+      </tr>
+      <tr>
+        <td><input type="submit" value="Add" class="btn btn-sm btn-success"><input type="reset" class="btn btn-sm btn-secondary"></td>
+        <td><input type="text" id="name" name="name" placeholder="Name" class="form-control"></td>
+        <td><input type="text" id="amount" name="amount" placeholder="Amount" class="form-control"></td>
+        <td><input type="text" id="category" name="category" placeholder="Category" class="form-control"></td>
+        <td><input type="datetimelocal" id="datetimestamp" name="datetimestamp" placeholder="Date/Time" class="form-control"></td>
+        <td><input type="text" id="description" name="description" placeholder="Description" class="form-control"></td>
+      </tr>
+      {% for txaction in transactions %}
+      <tr>
+        <td>{{ txaction.id }}</td>
+        <td>{{ txaction.name }}</td>
+        <td>{{ txaction.amount }}</td>
+        <td>{{ txaction.category }}</td>
+        <td>{{ txaction.posted }}</td>
+        <td>{{ txaction.description }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>  
+</div>
+
+{% else %}
+<div class="container">
+</div>
+{% endif %}
+
+{% endblock %}

@@ -9,7 +9,7 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from .database import SessionLocal, engine
-from . import models, schema
+from . import models, schema, transaction
 from .auth import authenticate_user, create_user, get_current_user, oauth2_scheme, get_users
 
 
@@ -38,6 +38,8 @@ def message(message: str = ""):
   messages.append(message)
 
 ### Routing
+
+app.include_router(transaction.router)
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
