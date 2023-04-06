@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+* {
+  box-sizing: border-box;
+}
+.row:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+[class*="col-"] {
+  float: left;
+  padding: 16px;
+}
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+header {
+  background-color: #fff;
+  position: fixed;
+  /*z-index: 1;*/
+  top: 0;
+  width: 100%;
+}
+header ul, footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+header li, footer li {
+  display: inline;
+  float: left;
+}
+header li a, footer li a {
+  color: #fff;
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  text-align: center;
+}
+header li a:hover, footer li a:hover {
+  background-color: #3CB371;
+}
+section {
+  margin: 16px;
+  padding: 8px;
+}
+label {
+  padding: 8px;
+  display: inline-block;
+}
+input {
+  padding: 8px;
+}
+select, textarea {
+  background-color: #f2f2f2;
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=text], input[type=password], input[type=datetime-local], input[type=date], input[type=month], input[type=week], input[type=time], input[type=email], input[type=number], input[type=url], input[type=tel] {
+  background-color: #f2f2f2;
+  width: 100%;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=button], input[type=submit], input[type=reset] {
+/*  background-color: #3CB371;  MEDIUMSEAGREEN */
+  border: none;
+  border-radius: 4px;
+/*  color: #fff;  WHITE */
+  text-decoration: none;
+  cursor: pointer;
+}
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover {
+  background-color: #fff;
+  color: #008000; /* GREEN */
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table td, table th {
+  border: 1px solid #808080; /* GRAY */
+  padding: 8px;
+}
+tr:nth-child(even){background-color: #f2f2f2;}
+tr:hover {background-color: #ddd;}
+th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: left;
+  background-color: #3CB371;
+  color: #fff;
+}
+footer {
+  background-color: #000;
+  color: #fff;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.flex-container > div {
+  margin: 8px;
+  padding: 16px;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.menu li a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;  
+}
+.menu li a:hover {
+  background-color: #3CB371;
+  color: #fff;
+}
+.dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+li.dropdown {
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  padding: 8px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.content {
+  margin: 4px;
+  padding: 8px;
+}
+.bordered {
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+}
+.button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  background-color: #3CB371;
+  padding: 8px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.75em;
+}
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+  </style>
+  <title>TITLE</title>
+</head>
+<body>
+
+
+<header>
+  <nav>
+    <ul>
+      <li><a href="">HEADER</a></li>
+      <li><a href="">LINK</a></li>
+    </ul>
+  </nav>
+</header>
+
+<br><br><br><br><br>
+
+<section>
+  <table>
+    <tr>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </table>
+</section>
+
+<section>
+  <form>
+    <fieldset><legend>Form</legend>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Username">
+      <input type="password" id="password" name="password" placeholder="Password">
+      <input type="email" id="email" name="email" placeholder="Email Address">
+      <input type="search" id="search" name="search" placeholder="Search">
+      <input type="url" id="url" name="url" placeholder="URL">
+      <input type="tel" id="telephone" name="telephone" placeholder="Telephone Number">
+      <input type="number" id="number" name="number" min="1" max="1000000" placeholder="Number">
+      <input type="range" id="range" name="range" min="1" max="100">
+      <input type="month" id="month" name="month">
+      <input type="week" id="week" name="week">
+      <input type="time" id="time" name="time">
+      <input type="date" id="date" name="date">
+      <input type="datetime-local" id="datetime" name="datetime">
+      <input type="color" id="color" name="color">
+      <input type="file" id="file" name="file">
+      <input type="image" id="image" name="image">
+
+      <input type="radio" id="radio1" name="radiogroup" value="1">
+      <label for="radio1">Radio 1</label>
+      <input type="radio" id="radio2" name="radiogroup" value="2">
+      <label for="radio2">Radio 2</label>
+      <input type="radio" id="radio3" name="radiogroup" value="3">
+      <label for="radio3">Radio 3</label>
+
+      <input type="checkbox" id="check1" name="check1" value="1">
+      <label for="check1">Check 1</label>
+      <input type="checkbox" id="check2" name="check2" value="2">
+      <label for="check2">Check 2</label>
+      <input type="checkbox" id="check3" name="check3" value="3">
+      <label for="check3">Check 3</label>
+
+      <select>
+        <option value="" disabled selected>Select an Option</option>
+        <option value="1">Select 1</option>
+        <option value="2">Select 2</option>
+        <option value="3">Select 3</option>
+      </select>
+
+      <textarea id="textarea" name="textarea" rows="3" placeholder="Text area"></textarea>
+      
+      <input list="browsers">
+      <datalist id="browsers">
+        <option value="Internet Explorer">
+        <option value="Firefox">
+        <option value="Chrome">
+        <option value="Opera">
+        <option value="Safari">
+      </datalist>
+
+      <input type="submit" value="Submit">
+      <input type="reset">
+    </fieldset>
+  </form>
+</section>
+
+<section>
+  <div class="flex-container">
+    <div>
+      1
+    </div>
+    <div>
+      2
+    </div>
+    <div>
+      3
+    </div>
+    <div>
+      4
+    </div>
+    <div>
+      5
+    </div>
+    <div>
+      6
+    </div>
+    <div>
+      7
+    </div>
+    <div>
+      8
+    </div>
+    <div>
+      9
+    </div>
+    <div>
+      10
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    FOOTER
+  </div>
+</footer>
+
+
+</body>
+</html>
