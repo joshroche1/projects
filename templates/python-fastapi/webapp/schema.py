@@ -9,10 +9,28 @@ class UserBase(BaseModel):
 
 
 class UserCreate(UserBase):
-  password: str
+  password: bytes
 
 
 class User(UserBase):
+  id: int
+
+  class Config:
+    orm_mode = True
+
+
+class TransactionBase(BaseModel):
+  name: str
+  amount: float
+  datetimestamp: str
+
+
+class TransactionCreate(TransactionBase):
+  category: str
+  description: str
+
+
+class Transaction(UserBase):
   id: int
 
   class Config:

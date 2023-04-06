@@ -4,7 +4,7 @@
 {% block title %}
 
 {% if g.user %}
-FastAPI Python Template
+FastAPI Webapp
 {% else %}
 {% endif %}
 
@@ -14,7 +14,7 @@ FastAPI Python Template
 {% block header %}
 
 {% if g.user %}
-FastAPI Python Template
+FastAPI Webapp
 {% else %}
 {% endif %}
 
@@ -26,115 +26,8 @@ FastAPI Python Template
 {% if g.user %}
 <div class="container">
   <div class="m-3 p-3">
-    <h1>FastAPI Python Template</h1>
-    
-    <div class="row">
-      
-      <div class="bordered card col-12 col-sm-5 m-1 p-1">
-        <h3>Form Exmaple</h3>
-        <form action="" method="post">
-          <div class="m-1 p-1">
-            <label for="text1">Username</label>
-            <input type="text" id="text1" name="text1" placeholder="Input text box" class="form-control" autocomplete="off" required>
-          </div>
-          <div class="m-1 p-1">
-            <label for="password1">Password</label>
-            <input type="password" id="password1" name="password1" placeholder="Input Password" class="form-control" autocomplete="off" required>
-          </div>
-          <div class="m-1 p-1">
-            <label for="text1">Email</label>
-            <input type="email" id="email1" name="email1" placeholder="Email input" class="form-control">
-          </div>
-          <div class="m-1 p-1">
-            <label for="text1">Number</label>
-            <input type="number" id="number1" name="number1" placeholder="Number input" class="form-control">
-          </div>
-          <div class="m-1 p-1">
-            <label for="select1">Select</label>
-            <select id="select1" name="select1" class="form-select">
-              <option value="" disabled selected>Please make a selection</option>
-              <option value="1">OPTION 1</option>
-              <option value="2">OPTION 2</option>
-              <option value="3">OPTION 3</option>
-            </select>
-          </div>
-          <div class="m-1 p-1">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="check1" name="check1" value="something" checked>
-              <label class="form-check-label">Check 1</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="check2" name="check2" value="something" >
-              <label class="form-check-label">Check 2</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="check3" name="check3" value="something" disabled>
-              <label class="form-check-label">Check 3</label>
-            </div>
-          </div>
-          <div class="m-1 p-1">
-            <div class="form-check">
-              <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Option 1
-              <label class="form-check-label" for="radio1"></label>
-            </div>
-            <div class="form-check">
-              <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Option 2
-              <label class="form-check-label" for="radio2"></label>
-            </div>
-            <div class="form-check">
-              <input type="radio" class="form-check-input" disabled>Option 3
-              <label class="form-check-label"></label>
-            </div>  
-          </div>
-          <div class="m-1 p-1">
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked>
-              <label class="form-check-label" for="mySwitch">Dark Mode</label>
-            </div>
-          </div>
-          <div class="m-1 p-1">
-            <input type="submit" value="SUBMIT" class="btn btn-sm btn-success">
-            <input type="reset" class="btn btn-sm btn-primary">
-          </div>
-        </form>
-      </div>
-      
-      <div class="bordered card col-12 col-sm-5 m-1 p-1">
-        <h3>Table</h3>
-        <table class="table table-hover">
-          <tr>
-            <th>A</th>
-            <th>B</th>
-            <th>C</th>
-            <th>D</th>
-            <th>E</th>
-          </tr>
-          <tr><td>1</td><td>!</td><td>{}</td><td>4</td><td>5</td></tr>
-          <tr><td>2</td><td>@</td><td>[]</td><td>4</td><td>5</td></tr>
-          <tr><td>3</td><td>#</td><td>:</td><td>4</td><td>5</td></tr>
-          <tr><td>4</td><td>$</td><td>;</td><td>4</td><td>5</td></tr>
-          <tr><td>5</td><td>%</td><td>"</td><td>4</td><td>5</td></tr>
-          <tr><td>6</td><td>^</td><td>'</td><td>4</td><td>5</td></tr>
-          <tr><td>7</td><td>+</td><td>\</td><td>4</td><td>5</td></tr>
-          <tr><td>8</td><td>*</td><td>/</td><td>4</td><td>5</td></tr>
-          <tr><td>9</td><td>()</td><td>?</td><td>4</td><td>5</td></tr>
-          <tr><td>10</td><td>-</td><td>.</td><td>4</td><td>5</td></tr>
-        </table>
-      </div>
-      
-      <div class="bordered card col-12 col-sm-5 m-1 p-1">
-        <h3>Box</h3>
-        <pre style="overflow-wrap: break-word;">
-          <code>
-          Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
-          </code>
-        </pre>
-      </div>
-      
-    </div>
-    
-  </div>
-  
+    <h1>FastAPI Web App</h1>
+  </div>  
 </div>
 
 {% else %}

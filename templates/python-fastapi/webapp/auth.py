@@ -1,3 +1,5 @@
+import bcrypt
+
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 
@@ -9,6 +11,8 @@ from . import models, schema
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 # token: str = Depends(oauth2_scheme)
 
+
+#
 
 def get_user(db: Session, user_id: int):
   return db.query(models.User).filter(models.User.id == user_id).first()
@@ -23,16 +27,31 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
   return db.query(models.User).offset(skip).limit(limit).all()
 
 def create_user(db: Session, user: schema.UserCreate):
-  fake_hashed_password = user.password + "notreallyhashed"
-  db_user = models.User(email=user.email, username=user.username, password=fake_hashed_password)
+  hashed_password = hash_password(user.password)
+  db_user = models.User(email=user.email, username=user.username, password=hashed_password)
   db.add(db_user)
   db.commit()
   db.refresh(db_user)
   return db_user
 
+#
+def hash_password(password: str):
+  bytestr = str.encode(password)
+  passhash = bcrypt.hashpw(bytestr, bcrypt.gensalt())
+  return passhash
+
 def authenticate_user(db: Session, username: str, password: str):
+  bpassword = str.encode(password)
   db_user = get_user_by_username(db, username)
-  return db_user
+  if db_user.username.find(username) < 0:
+    db_user = get_user_by_email(db, username)
+    if db_user.email.find(username) < 0:
+      raise HTTPException(status_code=400, detail="Username or password incorrect")
+#  if not db_user.password == password:
+  passcheck = db_user.password
+  if not bcrypt.checkpw(bpassword, passcheck):
+    raise HTTPException(status_code=400, detail="Username or password incorrect")
+  return {"access_token":username, "token_type":"bearer", "username": username}
 
 #
 def fake_decode_token(token):
@@ -41,14 +60,5 @@ def fake_decode_token(token):
 def get_current_user(token: str = Depends(oauth2_scheme)):
   user = fake_decode_token(token)
   return user
-
-def test_authenticate(db: Session, username: str, password: str):
-  db_user = get_current_user("TESTtoken")
-  if db_user.username.find(username) < 0:
-    raise HTTPException(status_code=400, detail="User not found") 
-  if not db_user.password == password:
-    msg = "Password is " + db_user.password + " but given: " + password
-    raise HTTPException(status_code=400, detail=msg) 
-  return {"access_token":username, "token_type":"bearer", "username": username}
 
 #

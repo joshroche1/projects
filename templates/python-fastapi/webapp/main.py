@@ -9,9 +9,8 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 from .database import SessionLocal, engine
-from . import models, schema
-from .auth import authenticate_user, create_user, get_current_user, oauth2_scheme, test_authenticate
-#from .module import ???
+from . import models, schema, transaction
+from .auth import authenticate_user, create_user, get_current_user, oauth2_scheme, get_users
 
 
 ### Initialization
@@ -40,20 +39,18 @@ def message(message: str = ""):
 
 ### Routing
 
-
-@app.get("/token")
-async def token_auth(token: str = Depends(oauth2_scheme)):
-  return {"token": token}
-
-@app.get("/user")
-async def read_users_me(current_user: schema.User = Depends(get_current_user)):
-  return current_user
-#
+app.include_router(transaction.router)
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
   message()
   return templates.TemplateResponse("index.html", {"request": request, "messages": messages, "g": g})
+
+@app.get("/test", response_class=HTMLResponse)
+async def test(request: Request, db: Session = Depends(get_db)):
+  message()
+  userlist = get_users(db)
+  return templates.TemplateResponse("test.html", {"request": request, "messages": messages, "g": g, "userlist": userlist})
 
 @app.get("/login", response_class=HTMLResponse)
 async def loginpage(request: Request):
@@ -63,8 +60,7 @@ async def loginpage(request: Request):
 @app.post("/login")
 async def loginform(request: Request, username: str = Form(), password: str = Form(), db: Session = Depends(get_db)):
   message()
-  #db_user = authenticate_user(db, username, password)
-  db_user = test_authenticate(db, username, password)
+  db_user = authenticate_user(db, username, password)
   if db_user is None:
     messages.append("User not found")
     return templates.TemplateResponse("login.html", {"request": request, "messages": messages, "g": g})
