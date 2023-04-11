@@ -6,9 +6,8 @@ wget https://github.com/prometheus/prometheus/releases/download/v2.37.5/promethe
 mkdir prometheus
 tar prometheus-2.37.5.linux-*.tar.gz
 mv prometheus-2.37.5.linux-* prometheus
-addgroup
 adduser --system --disabled-password --shell /usr/sbin/nologin --gecos "" prometheus
-chown -R prometheus:prometheus /opt/prometheus
+chown -R prometheus: /opt/prometheus
 cd /opt/prometheus
 mkdir tsdb
 
