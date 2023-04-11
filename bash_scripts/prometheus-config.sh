@@ -55,6 +55,6 @@ echo "groups:
       severity: 'critical'
 " > /opt/prometheus/rules.yml
 
-chown -R prometheus:prometheus /opt/prometheus
+chown -R prometheus: /opt/prometheus
 
 systemctl restart prometheus
