@@ -9,27 +9,18 @@ fetcharr[2]='https://github.com/hnlq715/nginx-vts-exporter/archive/refs/tags/v0.
 fetcharr[3]='https://github.com/Nordstrom/ssh_exporter/releases/download/v2.0.0/ssh_exporter-linux-amd64'
 fetcharr[4]='https://github.com/enix/x509-certificate-exporter/releases/download/v3.6.0-beta.2/x509-certificate-exporter-linux-amd64.tar.gz'
 
-# for fetchitem in ${fetcharr[@]}
-# do
-# done
-
 echo 'Fetching Exporters for Prometheus'
 for fetchitem in ${fetcharr[@]}
 do
   echo 'Fetching: $fetchitem'
   wget $fetchitem
-done
+#done
+echo
 
-git clone https://github.com/knyar/nginx-lua-prometheus.git
-git clone https://github.com/terradolor/prometheus-enviro-exporter.git
-
-#tar xvzf node_exporter-1.4.0.linux-amd64.tar.gz
-#mv node_exporter-1.4.0.linux-amd64 node_exporter
-
-#
-adduser --system --disabled-password --shell /usr/sbin/nologin --gecos "" prometheus
+# adduser --system --disabled-password --shell /usr/sbin/nologin --gecos "" prometheus
 echo 'Systemd service file template:'
-echo ''
+echo '=============================='
+echo
 echo '[Unit]'
 echo 'Description=Prometheus - NAME Exporter'
 echo 'After=network.target'
@@ -41,7 +32,21 @@ echo 'ExecStart=/opt/DIRECTORY/EXECUTABLE'
 echo ''
 echo '[Install]'
 echo 'WantedBy=multi-user.target'
-# cp node_exporter.service /etc/systemd/system/
-# systemctl daemon-reload
-# systemctl enable node_exporter.service
-# systemctl start node_exporter.service
+echo
+echo '=============================='
+echo
+echo '> Copy systemd service file to: /etc/systemd/system/'
+echo '> chown -R prometheus: /opt/DIRECTORY'
+echo '> systemctl daemon-reload'
+echo '> systemctl enable node_exporter.service'
+echo '> systemctl start node_exporter.service'
+echo
+echo '=============================='
+echo 'Exporters downloaded:'
+echo '=============================='
+for fileitem in $(ls /opt/prometheus_exporters/)
+do
+  echo $fileitem
+done
+echo
+echo 'Done'
