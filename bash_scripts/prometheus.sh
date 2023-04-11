@@ -3,17 +3,17 @@
 cd /opt
 wget https://github.com/prometheus/prometheus/releases/download/v2.37.5/prometheus-2.37.5.linux-amd64.tar.gz
 #wget https://github.com/prometheus/prometheus/releases/download/v2.37.1/prometheus-2.37.1.linux-arm64.tar.gz
-wget https://github.com/prometheus/alertmanager/releases/download/v0.25.0/alertmanager-0.25.0.linux-amd64.tar.gz
-wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
+mkdir prometheus
 tar prometheus-2.37.1.linux-*.tar.gz
 mv prometheus-2.37.1.linux-* prometheus
+addgroup
 adduser --system --disabled-password --shell /usr/sbin/nologin --gecos "" prometheus
 chown -R prometheus:prometheus /opt/prometheus
 cd /opt/prometheus
 mkdir tsdb
 
 # To run the server:
-sudo -u prometheus ./prometheus &
+# sudo -u prometheus ./prometheus &
 
 # If you want to use systemd to run the application:
 #
