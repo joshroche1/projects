@@ -26,11 +26,6 @@ scrape_configs:
           - scrape_configs/*.yml
     static_configs:
       - targets: ['localhost:9100']
-  - job_name: micrometer
-    honor_labels: true
-    metrics_path: /realms/master/metrics
-    static_configs:
-      - targets: ['10.0.0.15:8080']
 " > /opt/prometheus/prometheus.yml
 
 mkdir -p /opt/prometheus/scrape_configs
