@@ -3,11 +3,18 @@
 mkdir -p /opt/prometheus_exporters
 cd /opt/prometheus_exporters
 
-fetcharr[0]='https://github.com/prometheus-community/postgres_exporter/releases/download/v0.11.1/postgres_exporter-0.11.1.linux-amd64.tar.gz'
-fetcharr[1]='https://github.com/prometheus/haproxy_exporter/releases/download/v0.13.0/haproxy_exporter-0.13.0.linux-amd64.tar.gz'
-fetcharr[2]='https://github.com/hnlq715/nginx-vts-exporter/archive/refs/tags/v0.10.7.tar.gz'
-fetcharr[3]='https://github.com/Nordstrom/ssh_exporter/releases/download/v2.0.0/ssh_exporter-linux-amd64'
-fetcharr[4]='https://github.com/enix/x509-certificate-exporter/releases/download/v3.6.0-beta.2/x509-certificate-exporter-linux-amd64.tar.gz'
+# Blackbox exporter
+fetcharr[0]='https://github.com/prometheus/blackbox_exporter/releases/download/v0.23.0/blackbox_exporter-0.23.0.linux-amd64.tar.gz'
+# PostgreSQL exporter
+fetcharr[1]='https://github.com/prometheus-community/postgres_exporter/releases/download/v0.11.1/postgres_exporter-0.11.1.linux-amd64.tar.gz'
+# haproxy exporter
+fetcharr[2]='https://github.com/prometheus/haproxy_exporter/releases/download/v0.13.0/haproxy_exporter-0.13.0.linux-amd64.tar.gz'
+# nginx exporter
+fetcharr[3]='https://github.com/hnlq715/nginx-vts-exporter/archive/refs/tags/v0.10.7.tar.gz'
+# ssh exporter
+fetcharr[4]='https://github.com/Nordstrom/ssh_exporter/releases/download/v2.0.0/ssh_exporter-linux-amd64'
+# certificate exporter
+fetcharr[5]='https://github.com/enix/x509-certificate-exporter/releases/download/v3.6.0-beta.2/x509-certificate-exporter-linux-amd64.tar.gz'
 
 echo 'Fetching Exporters for Prometheus'
 for fetchitem in ${fetcharr[@]}
