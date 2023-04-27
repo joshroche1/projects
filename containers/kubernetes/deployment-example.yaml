@@ -2,18 +2,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: webapp-deployment
+  namespace: joshroche
+  labels:
+    app: webapp
 spec:
   selector:
     matchLabels:
-      app: nginx-app
+      app: webapp
   template:
     metadata:
       labels:
-        app: nginx-app
+        app: webapp
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
+      - name: webapp
+        # this image would be located in 'microk8s ctr image ls'
+        image: webapp:local
+        # make sure k8s only looks for the image locally
+        imagePullPolicy: Never
         ports:
-        - containerPort: 80
+        - containerPort: 8080

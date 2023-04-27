@@ -2,11 +2,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: webapp-service
+  namespace: joshroche
 spec:
+  # NodePort attaches the port to the Node's IP
+  #type: NodePort 
   selector:
-    app: nginx-app
+    app: webapp
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      # target port on the container
+      targetPort: 8080
+      #nodePort: 30080
