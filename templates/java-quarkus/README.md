@@ -2,7 +2,7 @@
 
 ## Dependencies:
 
-- <https://quarkus.io/>[Quarkus] Platform
+- Quarkus Platform [<https://quarkus.io/>]
 - Extensions:
   - quarkus-agroal                                     Agroal - Database connection pool
   - quarkus-container-image-docker                     Container Image Docker
