@@ -2,7 +2,7 @@
 
 ## Dependencies:
 
-- Quarkus Platform
+- <https://quarkus.io/>[Quarkus] Platform
 - Extensions:
   - quarkus-agroal                                     Agroal - Database connection pool
   - quarkus-container-image-docker                     Container Image Docker
@@ -15,6 +15,15 @@
   - quarkus-resteasy-reactive-jackson                  RESTEasy Reactive Jackson
   - quarkus-resteasy-reactive-qute                     RESTEasy Reactive Qute
   - quarkus-security-jpa                               Security JPA
+
+## Prerequisites
+
+For debian systems: 
+> sudo apt install -y default-jdk maven
+> curl -Ls https://sh.jbang.dev | bash -s - trust add https://repo1.maven.org/maven2/io/quarkus/quarkus-cli/
+> curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force quarkus@quarkusio
+
+#
 
 To test in development mode:
 > quarkus dev
