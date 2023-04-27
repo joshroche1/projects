@@ -1,13 +1,23 @@
+# kubernetes persistent volume
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: test-volume
-  labels:
-    type: local
+  name: local-pv
 spec:
   capacity:
-    storage: 1Gi
+    storage: 100Gi
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: /home/josh/microk8s/test/test-local/
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-storage
+  local:
+    path: /mnt/k8s
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - HOSTNAME
