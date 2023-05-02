@@ -16,7 +16,9 @@ After=network.target
 [Service]
 User=prometheus
 Type=simple
-ExecStart=/opt/alertmanager/alertmanager
+ExecStart=/opt/alertmanager/alertmanager \
+  --config.file="/opt/alertmanager/alertmanager.yml" \
+  --storage.path="/opt/alertmanager/data/"
 
 [Install]
 WantedBy=multi-user.target' > alertmanager.service
