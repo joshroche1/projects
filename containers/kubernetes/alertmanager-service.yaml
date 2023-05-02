@@ -1,0 +1,17 @@
+# kubernetes service
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager-service
+#  namespace: joshroche
+spec:
+  # NodePort attaches the port to the Node's IP
+  type: NodePort
+  selector:
+    app: alertmanager
+  ports:
+    - protocol: TCP
+      port: 9093
+      # target port on the container
+      targetPort: 9093
+      nodePort: 30093

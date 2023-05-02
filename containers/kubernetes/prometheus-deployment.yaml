@@ -1,0 +1,25 @@
+# kubernetes deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+#  namespace: joshroche
+  labels:
+    app: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        # this image would be located in 'microk8s ctr image ls'
+        image: prom.01a:local
+        # make sure k8s only looks for the image locally
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 9090

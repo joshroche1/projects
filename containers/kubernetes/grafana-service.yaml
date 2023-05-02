@@ -1,0 +1,17 @@
+# kubernetes service
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service-web
+#  namespace: joshroche
+spec:
+  # NodePort attaches the port to the Node's IP
+  type: NodePort
+  selector:
+    app: grafana
+  ports:
+    - protocol: TCP
+      port: 3000
+      # target port on the container
+      targetPort: 3000
+      nodePort: 30030
