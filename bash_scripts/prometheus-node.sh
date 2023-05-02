@@ -5,7 +5,7 @@ cd /opt
 wget https://github.com/prometheus/node_exporter/releases/download/v1.5.0/node_exporter-1.5.0.linux-amd64.tar.gz
 tar xvzf node_exporter-1.5.0.linux-amd64.tar.gz
 mv node_exporter-1.5.0.linux-amd64 node_exporter
-adduser --system --disabled-password --shell /usr/sbin/nologin --gecos "" prometheus
+/usr/sbin/adduser --system --disabled-password --shell /usr/sbin/nologin --gecos "" prometheus
 chown -R prometheus: /opt/node_exporter
 echo '
 [Unit]
@@ -19,6 +19,7 @@ ExecStart=/opt/node_exporter/node_exporter
 
 [Install]
 WantedBy=multi-user.target' > node_exporter.service
+chown -R prometheus: /opt/node_exporter
 cp node_exporter.service /etc/systemd/system/
 systemctl daemon-reload
 systemctl enable node_exporter.service
