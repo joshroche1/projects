@@ -35,7 +35,7 @@ echo "# LXD Containers
     job_name: pgsql
 " > /opt/prometheus/scrape_configs/lxc.yml
 
-mv rules.yml rules.yml.BAK
+touch rules.yml
 #rules.yml
 echo "groups:
 - name: AllInstances
