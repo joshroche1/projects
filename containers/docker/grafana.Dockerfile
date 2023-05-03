@@ -2,7 +2,7 @@
 
 FROM debian:11.6
 
-WORKDIR /usr/share/grafana
+WORKDIR /opt
 
 RUN apt-get update && apt-get install -y wget \
     apt-transport-https \
@@ -12,8 +12,9 @@ RUN echo "deb [signed-by=/usr/share/keyrings/grafana.key] https://apt.grafana.co
 
 RUN apt-get update && apt-get install -y grafana
 
-RUN grafana-cli --config /etc/grafana/grafana.ini admin reset-admin-password grafana
+#RUN grafana-cli --config /etc/grafana/grafana.ini admin reset-admin-password grafana
 
 EXPOSE 3000
 
-ENTRYPOINT ["/usr/sbin/grafana-server"]
+#ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/usr/sbin/grafana-server","--config=/etc/grafana/grafana.ini","--homepath=/usr/share/grafana"]
