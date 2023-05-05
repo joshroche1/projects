@@ -9,17 +9,17 @@ adduser --disabled-password --shell /usr/sbin/nologin --gecos "" keycloak
 cd keycloak/bin
 
 echo '
-export KEYCLOAK_ADMIN="admin"
-export KEYCLOAK_ADMIN_PASSWORD="admin"
+export KEYCLOAK_ADMIN=admin
+export KEYCLOAK_ADMIN_PASSWORD=admin
 ' > ../.env
 
-export KEYCLOAK_ADMIN="admin"
-export KEYCLOAK_ADMIN_PASSWORD="admin"
+export KEYCLOAK_ADMIN=admin
+export KEYCLOAK_ADMIN_PASSWORD=admin
 
 chown -R keycloak: /opt/keycloak
 
-# To run the server:
-# sudo -u keycloak ./kc.sh start-dev &
+# To run the development server:
+# sudo -u keycloak KEYCLOAK_ADMIN=admin KEYCLOAK_ADMIN_PASSWORD=admin /opt/keycloak/bin/kc.sh start-dev
 
 # If you want to use systemd to run the application:
 #
