@@ -1,21 +1,25 @@
 #!/bin/bash
 
 cd /opt
-wget https://github.com/keycloak/keycloak/releases/download/19.0.3/keycloak-19.0.3.tar.gz
-wget https://github.com/keycloak/keycloak/releases/download/19.0.3/keycloak-saml-wildfly-adapter-19.0.3.tar.gz
-tar keycloak-19.0.3.tar.gz
-mv keycloak-19.0.3 keycloak
+#wget https://github.com/keycloak/keycloak/releases/download/21.1.1/keycloak-21.1.1.tar.gz
+wget https://github.com/keycloak/keycloak/releases/download/21.1.1/keycloak-21.1.1.zip
+unzip keycloak-21.1.1.tar.gz
+mv keycloak-21.1.1 keycloak
 adduser --disabled-password --shell /usr/sbin/nologin --gecos "" keycloak
-chown -R keycloak:keycloak /opt/keycloak
 cd keycloak/bin
 
 echo '
-export KEYCLOAK_ADMIN=admin
-export KEYCLOAK_ADMIN_PASSWORD=admin
+export KEYCLOAK_ADMIN="admin"
+export KEYCLOAK_ADMIN_PASSWORD="admin"
 ' > ../.env
 
+export KEYCLOAK_ADMIN="admin"
+export KEYCLOAK_ADMIN_PASSWORD="admin"
+
+chown -R keycloak: /opt/keycloak
+
 # To run the server:
-sudo -u keycloak ./kc.sh start-dev &
+# sudo -u keycloak ./kc.sh start-dev &
 
 # If you want to use systemd to run the application:
 #
@@ -30,13 +34,22 @@ After=network-online.target
 Type=simple
 User=keycloak
 EnvironmentFile=/opt/keycloak/.env
-ExecStart=/opt/keycloak/bin/kc.sh start-dev
+ExecStart=/opt/keycloak/bin/kc.sh start
 Restart=always
 RestartSec=20
 
 [Install]
 WantedBy=multi-user.target' >> keycloak.service
 cp keycloak.service /etc/systemd/system
-#systemctl daemon-reload
-#systemctl start keycloak.service
-#systemctl enable keycloak.service
+systemctl daemon-reload
+echo
+echo '# Initialize the config by running:'
+echo
+echo '  /opt/keycloak/bin/kc.sh start-dev'
+echo
+echo '# Build configuration:'
+echo
+echo '  /opt/keycloak/bin/kc.sh build'
+echo
+echo '  systemctl start  keycloak.service  #  to Start Keycloak'
+echo '  systemctl enable keycloak.service  #  to enable Keycloak after restarts'
