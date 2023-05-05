@@ -11,7 +11,7 @@ cd keycloak/bin
 echo '
 export KEYCLOAK_ADMIN=admin
 export KEYCLOAK_ADMIN_PASSWORD=admin
-' > ../.env
+' > /opt/keycloak/.env
 
 export KEYCLOAK_ADMIN=admin
 export KEYCLOAK_ADMIN_PASSWORD=admin
