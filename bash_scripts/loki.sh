@@ -13,7 +13,7 @@ unzip loki-linux-amd64.zip
 #unzip loki-linux-arm64.zip
 unzip promtail-linux-amd64.zip
 #unzip promtail-linux-arm64.zip
-
+/usr/sbin/adduser --system --disabled-password --shell /usr/sbin/nologin --gecos "" prometheus
 chown -R prometheus: /opt/loki
 echo '[Unit]
 Description=Grafana Loki - Logging System
