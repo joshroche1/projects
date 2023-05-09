@@ -1,0 +1,13 @@
+---
+- hosts:
+  - all
+  become: yes
+  tasks:
+  - name: update and clean
+    apt:
+      update_cache: yes
+      autoclean: yes
+  - name: upgrade packages
+    apt:
+      name: "*"
+      state: latest
