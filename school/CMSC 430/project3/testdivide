@@ -1,7 +1,0 @@
--- test division
-
-function testadd returns integer;
-
-begin
-	6 / 2;
-end;

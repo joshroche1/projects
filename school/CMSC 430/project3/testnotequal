@@ -1,8 +1,0 @@
--- test not equal
-
-function testrelation returns boolean;
-	a: integer is 5;
-	b: integer is 6;
-begin
-	a != b;
-end;

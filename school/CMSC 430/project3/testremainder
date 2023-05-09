@@ -1,7 +1,0 @@
--- test remainder
-
-function testadd returns integer;
-
-begin
-	5 rem 2;
-end;

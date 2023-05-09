@@ -1,8 +1,0 @@
--- test greater
-
-function testrelation returns boolean;
-	a: integer is 5;
-	b: integer is 10;
-begin
-	b > a;
-end;
