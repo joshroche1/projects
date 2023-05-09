@@ -15,3 +15,9 @@ systemctl daemon-reload
 systemctl enable grafana-server
 
 grafana-cli admin reset-admin-password admin
+
+echo 'Grafana Dashboards:'
+echo
+echo '1860: Node Exporter'
+echo '13659: Blackbox Exporter (HTTP Prober)'
+echo '14055: Loki Metrics'
