@@ -58,7 +58,7 @@ async def loginpage(request: Request):
   return templates.TemplateResponse("login.html", {"request": request, "messages": messages, "g": g})
 
 @app.post("/login")
-async def loginform(request: Request, username: str = Form(), password: str = Form(), db: Session = Depends(get_db)):
+async def loginform(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
   message()
   db_user = authenticate_user(db, username, password)
   if db_user is None:
