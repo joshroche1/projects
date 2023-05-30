@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 import org.jboss.logging.Logger;
 import io.quarkus.runtime.StartupEvent;
 
+
 @Singleton
 public class Startup {
   
@@ -16,5 +17,6 @@ public class Startup {
     // Init objects    
     UserEntity.add("admin", "admin", "user", "admin@admin.adm");
     LOGGER.info("Added user entity");
+    
   }
 }

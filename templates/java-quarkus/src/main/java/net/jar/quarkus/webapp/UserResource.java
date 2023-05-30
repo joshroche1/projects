@@ -27,6 +27,8 @@ import io.quarkus.qute.CheckedTemplate;
 import io.quarkus.qute.TemplateInstance;
 import io.smallrye.common.annotation.Blocking;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -37,9 +39,15 @@ public class UserResource {
 
   private static final Logger LOGGER = Logger.getLogger(UserResource.class.getName());
   
+  @ConfigProperty(name="app.welcome")
+  String welcome_message;
+  
+  @ConfigProperty(name="quarkus.datasource.jdbc.url")
+  String jdbcurl;
+  
   @CheckedTemplate
   static class Templates {
-    static native TemplateInstance list(List<UserEntity> userlist);
+    static native TemplateInstance list(String msg, List<UserEntity> userlist);
   }
     
   @GET
@@ -48,8 +56,11 @@ public class UserResource {
   @Produces(MediaType.TEXT_HTML)
   @Blocking
   public TemplateInstance list() {
+    LOGGER.info(jdbcurl);
+    LOGGER.info(welcome_message);
+    String msg = welcome_message = " " + jdbcurl;
     List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
-    return Templates.list(userlist);
+    return Templates.list(msg,userlist);
   }
   
   @POST
@@ -59,9 +70,10 @@ public class UserResource {
   @Produces(MediaType.TEXT_HTML)
   @Transactional
   public TemplateInstance create_form(@FormParam("email") String email, @FormParam("username") String username, @FormParam("password") String password) {
+    String msg = "";
     UserEntity.add(username, password, "user", email);
     List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
-    return Templates.list(userlist);
+    return Templates.list(msg,userlist);
   }
   
   @POST
@@ -70,13 +82,14 @@ public class UserResource {
   @Produces(MediaType.TEXT_HTML)
   @Transactional
   public TemplateInstance delete_form(@PathParam("id") Long id) {
+    String msg = "";
     UserEntity entity = UserEntity.findById(id);
     if (entity == null) {
       throw new WebApplicationException("User with id: " + id + " not found", 404);
     }
     entity.delete();
     List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
-    return Templates.list(userlist);
+    return Templates.list(msg,userlist);
   }
   
   /* REST */

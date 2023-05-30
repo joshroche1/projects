@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-configs-pv
+  labels:
+    type: local
+    app: prometheus
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/tmp/kube/prometheus/configs"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-configs-pvc
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-targets-pv
+  labels:
+    type: local
+    app: prometheus
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/tmp/kube/prometheus/targets"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-targets-pvc
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus
+          image: prometheus:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9090
+          volumeMounts:
+            - mountPath: /opt/prometheus/targets
+              name: prometheus-targets
+            - mountPath: /opt/prometheus/configs
+              name: prometheus-configs
+      volumes:
+        - name: prometheus-targets
+          persistentVolumeClaim:
+            claimName: prometheus-targets-pvc
+        - name: prometheus-configs
+          persistentVolumeClaim:
+            claimName: prometheus-configs-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-service
+  labels:
+    app: prometheus
+spec:
+  type: ClusterIP
+  clusterIP: 10.152.183.100
+  ports:
+    - port: 9090
+      targetPort: 9090
+  selector:
+    app: prometheus
