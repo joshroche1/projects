@@ -33,6 +33,7 @@ VOLUME ["/opt/prometheus/targets", "/opt/prometheus/configs"]
 #
 
 EXPOSE 9090
+EXPOSE 9100
 
 #ENTRYPOINT ["/bin/bash"]
 ENTRYPOINT ["/opt/prometheus/prometheus", "--config.file=/opt/prometheus/configs/prometheus.0.1.yml"]

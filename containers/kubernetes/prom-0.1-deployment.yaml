@@ -74,6 +74,7 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort: 9090
+              containerPort: 9100
           volumeMounts:
             - mountPath: /opt/prometheus/targets
               name: prometheus-targets
