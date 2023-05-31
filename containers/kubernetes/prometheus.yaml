@@ -75,6 +75,7 @@ spec:
           ports:
             - containerPort: 9090
               containerPort: 9100
+              containerPort: 9115
           volumeMounts:
             - mountPath: /opt/prometheus/targets
               name: prometheus-targets
@@ -95,10 +96,16 @@ metadata:
   labels:
     app: prometheus
 spec:
-  type: ClusterIP
-  clusterIP: 10.152.183.100
+  type: NodePort
   ports:
     - port: 9090
       targetPort: 9090
+      nodePort: 30090
+    - port: 9100
+      targetPort: 9100
+      nodePort: 30100
+    - port: 9115
+      targetPort: 9115
+      nodePort: 30115
   selector:
     app: prometheus

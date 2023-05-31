@@ -25,7 +25,7 @@ scrape_configs:
     honor_labels: true
     file_sd_configs:
       - files:
-          - scrape_configs/*.yml
+          - /opt/prometheus/targets/*.yml
     static_configs:
       - targets: ['localhost:9100']
 

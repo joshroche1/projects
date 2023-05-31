@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: alertmanager-configs-pv
+  labels:
+    type: local
+    app: alertmanager
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Mi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/tmp/kube/alert_manager/configs"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: alertmanager-configs-pvc
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alertmanager-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alertmanager
+  template:
+    metadata:
+      labels:
+        app: alertmanager
+    spec:
+      containers:
+        - name: alertmanager
+          image: alertmanager:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 9093
+          volumeMounts:
+            - mountPath: /opt/alert_manager/configs
+              name: alertmanager-configs
+      volumes:
+        - name: alertmanager-configs
+          persistentVolumeClaim:
+            claimName: alertmanager-configs-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alertmanager-service
+  labels:
+    app: alertmanager
+spec:
+  type: NodePort
+  ports:
+    - port: 9093
+      targetPort: 9093
+      nodePort: 30093
+  selector:
+    app: alertmanager
