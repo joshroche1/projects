@@ -34,13 +34,13 @@ Stuttgart, Germany
 
 Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation. 
 
-- Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers including Hetzner, OVH, DataPacket, Global Secure Layer, Limestone, and Maxihost
+- Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers including AWS, Hetzner, OVH, DataPacket, Global Secure Layer, Limestone, and Maxihost
 - Installed, managed, monitored, and updated 8 PostgreSQL production database servers including replication and recovery
 - Created production and staging cloud containerized applications utilizing Kubernetes and Docker
 - Migrated a worldwide Icinga2 customized monitoring system to Prometheus, providing better insight into system dynamics and metrics
-- Installed, monitored, and maintained Apache Tomcat, Wildfly, and NGINX application and web servers as well as Quarkus and FastAPI into our production environment
-- Developed automation for operational tasks using Ansible, Python, and Shell Scripting
-- Built internal websites used for custom application distribution designed for internal productivity
+- Installed, monitored, and maintained Apache Tomcat, Wildfly, Quarkus, and NGINX application and web servers as well as Quarkus and FastAPI into our production environment
+- Developed automation for operational tasks using Ansible, Python, and BASH Scripting
+- Built web applications used for Scam prevention and response and application delivery for internal testing
 
 ### Tier II AWS Systems Administrator
 
