@@ -16,19 +16,28 @@ server:
   grpc_listen_port: 0
 
 positions:
-  filename: /tmp/positions.yaml
+  filename: /opt/promtail/positions.yaml
 
 clients:
   - url: http://192.168.2.206:3100/loki/api/v1/push
 
 scrape_configs:
-- job_name: system
+
+- job_name: syslog
   static_configs:
   - targets:
       - localhost
     labels:
-      job: varlogs
-      __path__: /var/log/*log
+      job: syslog
+      __path__: /var/log/syslog*
+
+- job_name: authlog
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: authlog
+      __path__: /var/log/auth.log*
 ' > promtail.yml
 echo '
 [Unit]
