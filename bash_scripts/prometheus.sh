@@ -13,6 +13,15 @@ mkdir tsdb
 # To run the server:
 # sudo -u prometheus ./prometheus &
 
+# For SSL/TLS monitoring
+mkdir -p /opt/prometheus/certs
+cd /opt/prometheus/certs
+openssl req -newkey rsa:4096 -nodes -keyout ca.key -x509 -out ca.crt -subj "/C=/ST=/L=/O=/OU=/CN=prometheus/"
+openssl genrsa -out monitoring.key 4096
+openssl req -new -key monitoring.key -out monitoring.csr -subj "/C=/ST=/L=/O=/OU=/CN=monitoring/"
+openssl x509 -req -in monitoring.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out monitoring.crt
+#
+
 # If you want to use systemd to run the application:
 #
 touch prometheus.service
@@ -29,8 +38,10 @@ ExecStart=/opt/prometheus/prometheus \
   --config.file /opt/prometheus/prometheus.yml \
   --storage.tsdb.path /opt/prometheus/tsdb/ \
   --web.console.templates=/opt/prometheus/consoles \
-  --web.console.libraries=/opt/prometheus/console_libraries
-Restart=always
+  --web.console.libraries=/opt/prometheus/console_libraries \
+  --storage.tsdb.retention.time=70d
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
 RestartSec=20
 
 [Install]

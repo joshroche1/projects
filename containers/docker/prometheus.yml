@@ -23,6 +23,12 @@ scrape_configs:
 
   - job_name: node
     honor_labels: true
+#    scheme: https
+#    tls_config:
+#      ca_file: /opt/prometheus/certs/ca.crt
+#      cert_file: /opt/prometheus/certs/monitoring.crt
+#      key_file: /opt/prometheus/certs/monitoring.key
+#      insecure_skip_verify: true
     file_sd_configs:
       - files:
           - /opt/prometheus/targets/*.yml
