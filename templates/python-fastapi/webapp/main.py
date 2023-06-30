@@ -10,19 +10,16 @@ from sqlalchemy.orm import Session
 
 from .database import SessionLocal, engine
 from . import models, schema, transaction
+from .transaction import get_transactions, get_transaction, create_transaction, delete_transaction
 from .auth import authenticate_user, create_user, get_current_user, oauth2_scheme, get_users
 
 
 ### Initialization
 
 models.Base.metadata.create_all(bind=engine)
-
 app = FastAPI()
-
 app.mount("/static", StaticFiles(directory="static"), name="static")
-
 templates = Jinja2Templates(directory="templates")
-
 messages = []
 g = {}
 
@@ -74,3 +71,25 @@ async def logout(request: Request):
   return templates.TemplateResponse("index.html", {"request": request, "messages": messages, "g": g})
 
 ###
+
+@app.get("/list", response_class=HTMLResponse)
+async def list_view(request: Request, db: Session = Depends(get_db)):
+  message()
+  transactions = await get_transactions(db)
+  return templates.TemplateResponse("transactions.html", {"request": request, "messages": messages, "g": g, "transactions": transactions})
+
+@app.post("/list/create_transaction", response_class=HTMLResponse)
+async def list_view_create_transaction(request: Request, name: str = Form(...), amount: str = Form(...), category: str = Form(...), datetimestamp: str = Form(...), description: str = Form(...), db: Session = Depends(get_db)):
+  error = ""
+  if name == "": error = "Name cannot be empty"
+  if amount == "": error = "Amount cannot be empty"
+  if category == "": category = "Default"
+  if datetimestamp == "": datetimestamp = "2023-01-01 00:00:00"
+  if description == "": description = " "
+  if error != "": 
+    message(error)
+  else:
+    amt = float(amount)
+    transaction = create_transaction(name, amt, category, datetimestamp, description, db)
+  transactions = await get_transactions(db)
+  return templates.TemplateResponse("transactions.html", {"request": request, "messages": messages, "g": g, "transactions": transactions})

@@ -51,5 +51,3 @@ async def delete_transaction(id: int, db: Session = Depends(get_db)):
   db.delete(transaction)
   db.commit()
   return {"message":"Successfully delete transaction item"}
-
-##

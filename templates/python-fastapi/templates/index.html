@@ -1,35 +1,45 @@
 {% extends 'base.html' %}
 
-
 {% block title %}
 
 {% if g.user %}
-FastAPI Webapp
+FastAPI Python Webapp
 {% else %}
 {% endif %}
 
 {% endblock %}
-
 
 {% block header %}
 
 {% if g.user %}
-FastAPI Webapp
+FastAPI Python Webapp
 {% else %}
 {% endif %}
 
 {% endblock %}
 
+{% block navbar %}
+<li class="nav-item"><a href="" class="nav-link btn btn-sm">LINK 1</a></li>
+<li class="nav-item"><a href="" class="nav-link btn btn-sm">LINK 2</a></li>
+<li class="nav-item"><a href="" class="nav-link btn btn-sm">LINK 3</a></li>
+{% endblock %}
 
 {% block content %}
 
 {% if g.user %}
-<div class="container">
-  <div class="m-3 p-3">
-    <h1>FastAPI Web App</h1>
-  </div>  
+<div class="row">
+  <div class="col-12 col-sm-3"></div>
+  <div class="card col-12 col-sm-6 m-3 p-3">
+    <h1 class="card-title">FastAPI Python Web App</h1>
+    <div class="container">
+      <ul class="list-group">
+        <li class="list-group-item">Python3</li>
+        <li class="list-group-item">FastAPI</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-12 col-sm-3"></div>
 </div>
-
 {% else %}
 <div class="container">
 </div>

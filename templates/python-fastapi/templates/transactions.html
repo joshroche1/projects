@@ -1,34 +1,31 @@
 {% extends 'base.html' %}
 
-
 {% block title %}
 
 {% if g.user %}
-FastAPI Webapp
+FastAPI Python Webapp
 {% else %}
 {% endif %}
 
 {% endblock %}
-
 
 {% block header %}
 
 {% if g.user %}
-FastAPI Webapp
+FastAPI Python Webapp
 {% else %}
 {% endif %}
 
 {% endblock %}
 
-
 {% block content %}
 
 {% if g.user %}
-<div class="container">
-  <div class="m-3 p-3">
-    <h1>Transactions</h1>
-    <table class="table">
-      <tr>
+<div class="m-3 p-3">
+  <h1>Transactions</h1>
+  <div class="table-responsive">
+    <table class="table table-hover table-sm">
+      <tr class="table-light">
         <th>ID</th>
         <th>NAME</th>
         <th>AMOUNT</th>
@@ -36,14 +33,17 @@ FastAPI Webapp
         <th>POSTED</th>
         <th>DESCRIPTION</th>
       </tr>
+      <form action="/list/create_transaction" method="post">
       <tr>
-        <td><input type="submit" value="Add" class="btn btn-sm btn-success"><input type="reset" class="btn btn-sm btn-secondary"></td>
+        <td><input type="submit" value="Add" class="btn btn-sm btn-success"></td>
         <td><input type="text" id="name" name="name" placeholder="Name" class="form-control"></td>
         <td><input type="text" id="amount" name="amount" placeholder="Amount" class="form-control"></td>
         <td><input type="text" id="category" name="category" placeholder="Category" class="form-control"></td>
         <td><input type="datetimelocal" id="datetimestamp" name="datetimestamp" placeholder="Date/Time" class="form-control"></td>
         <td><input type="text" id="description" name="description" placeholder="Description" class="form-control"></td>
       </tr>
+      </form>
+      
       {% for txaction in transactions %}
       <tr>
         <td>{{ txaction.id }}</td>
@@ -54,10 +54,10 @@ FastAPI Webapp
         <td>{{ txaction.description }}</td>
       </tr>
       {% endfor %}
+      
     </table>
-  </div>  
-</div>
-
+  </div>
+</div>  
 {% else %}
 <div class="container">
 </div>
