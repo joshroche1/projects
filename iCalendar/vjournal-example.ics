@@ -1,0 +1,8 @@
+BEGIN:VJOURNAL
+UID:20230505T123000Z-josh@roche
+DTSTAMP:20230505T123000Z
+DTSTART;VALUE=DATE:20230505
+SUMMARY:Daily Notes
+DESCRIPTION:Write a description of events or a journal \
+  entry. Some form of long form text.
+END:VJOURNAL
