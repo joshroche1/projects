@@ -1,161 +1,93 @@
 package net.jar.quarkus.webapp;
 
 import java.util.List;
-import javax.annotation.security.RolesAllowed;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Produces;
-import javax.ws.rs.FormParam;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.ext.ExceptionMapper;
-import javax.ws.rs.ext.Provider;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.ext.ExceptionMapper;
+import jakarta.ws.rs.ext.Provider;
 
 import org.jboss.logging.Logger;
-import io.quarkus.panache.common.Sort;
-import io.quarkus.qute.CheckedTemplate;
-import io.quarkus.qute.TemplateInstance;
-import io.smallrye.common.annotation.Blocking;
-
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import io.quarkus.panache.common.Sort;
 
 @Path("user")
 @ApplicationScoped
 public class UserResource {
-
+  
   private static final Logger LOGGER = Logger.getLogger(UserResource.class.getName());
   
-  @ConfigProperty(name="app.welcome")
-  String welcome_message;
-  
-  @ConfigProperty(name="quarkus.datasource.jdbc.url")
-  String jdbcurl;
-  
-  @CheckedTemplate
-  static class Templates {
-    static native TemplateInstance list(String msg, List<UserEntity> userlist);
-  }
-    
   @GET
-  @Path("list")
-  @RolesAllowed("user")
-  @Produces(MediaType.TEXT_HTML)
-  @Blocking
-  public TemplateInstance list() {
-    LOGGER.info(jdbcurl);
-    LOGGER.info(welcome_message);
-    String msg = welcome_message = " " + jdbcurl;
-    List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
-    return Templates.list(msg,userlist);
-  }
-  
-  @POST
-  @Path("create/form")
-  @RolesAllowed("user")
-  @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  @Produces(MediaType.TEXT_HTML)
-  @Transactional
-  public TemplateInstance create_form(@FormParam("email") String email, @FormParam("username") String username, @FormParam("password") String password) {
-    String msg = "";
-    UserEntity.add(username, password, "user", email);
-    List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
-    return Templates.list(msg,userlist);
-  }
-  
-  @POST
-  @Path("delete/form/{id}")
-  @RolesAllowed("user")
-  @Produces(MediaType.TEXT_HTML)
-  @Transactional
-  public TemplateInstance delete_form(@PathParam("id") Long id) {
-    String msg = "";
-    UserEntity entity = UserEntity.findById(id);
-    if (entity == null) {
-      throw new WebApplicationException("User with id: " + id + " not found", 404);
-    }
-    entity.delete();
-    List<UserEntity> userlist = UserEntity.listAll(Sort.by("username"));
-    return Templates.list(msg,userlist);
-  }
-  
-  /* REST */
-  
-  @GET
-  @Path("all")
-//  @RolesAllowed("user")
   @Produces(MediaType.APPLICATION_JSON)
-  @Blocking
-  public List<UserEntity> all() {
-    List<UserEntity> entitylist = UserEntity.listAll(Sort.by("username"));
-    return entitylist;
+  public List<UserEntity> get() {
+    return UserEntity.listAll(Sort.by("id"));
   }
   
   @GET
   @Path("{id}")
-//  @RolesAllowed("user")
   @Produces(MediaType.APPLICATION_JSON)
-  @Blocking
-  public UserEntity get(long id) {
+  public UserEntity getUser(Long id) {
     UserEntity entity = UserEntity.findById(id);
+    if (entity == null) {
+      throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
+    }
     return entity;
   }
   
   @POST
-  @Path("create")
-//  @RolesAllowed("user")
   @Consumes(MediaType.APPLICATION_JSON)
-  @Produces(MediaType.APPLICATION_JSON)
   @Transactional
-  public UserEntity create(UserEntity entity) {
+  public Response create(UserEntity entity) {
+    if (entity.id != null) {
+      throw new WebApplicationException("Id invalidly set on request.", 422);
+    }
+    entity.persist();
+    return Response.ok(entity).status(201).build();
+  }
+  
+  @PUT
+  @Path("{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Transactional
+  public UserEntity update(Long id, UserEntity updatedEntity) {
+    UserEntity entity = UserEntity.findById(id);
+    if (entity == null) {
+      throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
+    }
+    entity.username = updatedEntity.username;
+    entity.password = updatedEntity.password;
+    entity.role = updatedEntity.role;
+    entity.email = updatedEntity.email;
     entity.persist();
     return entity;
   }
   
-  @PUT
-  @Path("update/{id}")
-//  @RolesAllowed("user")
-  @Consumes(MediaType.APPLICATION_JSON)
-  @Produces(MediaType.APPLICATION_JSON)
+  @DELETE
+  @Path("{id}")
   @Transactional
-  public UserEntity update(Long id, UserEntity user) {
+  public Response delete(Long id) {
     UserEntity entity = UserEntity.findById(id);
     if (entity == null) {
-      throw new WebApplicationException("User with id: " + id + " not found", 404);
-    }
-    entity.username = user.username;
-    entity.password = user.password;
-    entity.role = user.role;
-    entity.email = user.email;
-    return entity;
-  }
-
-  @POST
-  @Path("delete/{id}")
-//  @RolesAllowed("user")
-  @Consumes(MediaType.APPLICATION_JSON)
-  @Produces(MediaType.APPLICATION_JSON)
-  @Transactional
-  public void delete(Long id) {
-    UserEntity entity = UserEntity.findById(id);
-    if (entity == null) {
-      throw new WebApplicationException("User with id: " + id + " not found", 404);
+      throw new WebApplicationException("User with id of " + id + " does not exist.", 404);
     }
     entity.delete();
-  }  
+    return Response.status(204).build();
+  }
   
   
   @Provider
@@ -185,6 +117,6 @@ public class UserResource {
         .entity(exceptionJson)
         .build();
     }
-
   }
+  
 }

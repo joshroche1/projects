@@ -1,0 +1,73 @@
+{#include base-user}
+{#title}
+WEBAPP
+{/title}
+{#header}
+WEBAPP
+{/header}
+{#navbar}
+<li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+{/navbar}
+{#content}
+<div class="container-fluid">
+  
+  <div class="m-1 p-1">
+    <h1>Users</h1>
+  </div>
+  <form action="/home" method="post">
+    <div class="row">
+      <div class="col">
+        <input type="text" id="username" name="username" placeholder="Username" class="form-control" required>
+      </div>
+      <div class="col">
+        <input type="password" id="password" name="password" placeholder="Password" class="form-control" required>
+      </div>
+      <div class="col">
+        <input type="email" id="email" name="email" placeholder="Email Address" class="form-control" required>
+      </div>
+      <div class="col">
+        <select id="role" name="role" class="form-select">
+          <option value="user" selected>Select a Role</option>
+          <option value="user">User</option>
+          <option value="admin" disabled>Admin</option>
+        </select>
+      </div>
+      <div class="col">
+        <input type="submit" value="Submit" onclick="return confirm('Add User?');" class="btn btn-sm btn-success">
+      </div>
+    </div>
+  </form>
+  
+  <div class="table-responsive">
+    
+    <table class="table table-hover">
+      
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th></th>
+      </tr>
+      
+      {#for user in userlist}
+      <tr>
+        <td>{user.id}</td>
+        <td>{user.username}</td>
+        <td><a href="mailto:{user.email}" class="btn btn-sm">{user.email}</a></td>
+        <td>{user.role}</td>
+        <td>
+          <form action="/home/{user.id}/delete" method="post">
+            <input type="submit" value="X" onclick="return confirm('Delete User?');" class="btn btn-sm btn-danger">
+          </form>
+        </td>
+      </tr>
+      {/for}
+      
+    </table>
+  </div>
+  
+</div>
+{/content}
+
+{/include}
