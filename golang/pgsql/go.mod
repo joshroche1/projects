@@ -1,6 +1,6 @@
-module jar/gopgsql
+module projects/github/projects/golang/pgsql
 
-go 1.18
+go 1.21.0
 
 require github.com/jackc/pgx/v5 v5.4.3
 

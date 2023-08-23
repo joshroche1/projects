@@ -1,17 +1,18 @@
 package main
 
 import (
-  "./db"
   "context"
   "fmt"
 //  "log"
   "os"
+  
+  "projects/github/projects/golang/pgsql/db/db"
 )
 
 
 func main() {
   fmt.Println("\nAll Items:\n")
-  items, _ := DB.getItems()
+  items, _ := db.getItems()
   fmt.Println(items)
 //  fmt.Println("\nGet Item 1:\n")
 //  itm, _ := getItem(1)
