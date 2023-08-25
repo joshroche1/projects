@@ -6,6 +6,12 @@
 
 <https://microk8s.io/docs>
 
+### Recommendations
+
+When using microk8s:
+
+- enable hostpath-storage, then create a folder, like /mnt/kubernetes/ with subfolders for pods/services, which will be used for PVCs for app configs, data files, ect...
+
 ### kubectl commands:
 
 > kubectl get all
