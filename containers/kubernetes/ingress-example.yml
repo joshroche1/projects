@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ NAME-FOR-INGRESS }}
+spec:
+  tls:
+    - hosts:
+      - {{ FQDN }}
+      secretName: {{ SECRET_NAME }}
+  ingressClassName: nginx   # this assumes you installed the NGINX Ingress Controller
+  rules:
+    - host: {{ FQDN }}
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: {{ SERVICE_NAME }}
+              port:
+                number: 80   # or whatever port serves HTTP

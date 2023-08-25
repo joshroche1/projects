@@ -1,10 +1,9 @@
-package main
+package db
 
 import (
   "database/sql"
   "context"
   "fmt"
-  "log"
   "os"
   "github.com/jackc/pgx/v5"
 )
@@ -21,7 +20,7 @@ type Item struct {
   Description string
 }
 
-func getItems() ([]Item, error) {
+func GetItems() ([]Item, error) {
   var items []Item
   conn, err := pgx.Connect(context.Background(), connStr)
 	if err != nil {
@@ -42,7 +41,7 @@ func getItems() ([]Item, error) {
   return items, nil
 }
 
-func getItem(itemId int) (Item, error) {
+func GetItem(itemId int) (Item, error) {
   var itm Item
   conn, err := pgx.Connect(context.Background(), connStr)
 	if err != nil {
@@ -56,7 +55,7 @@ func getItem(itemId int) (Item, error) {
   return itm, nil
 }
 
-func getItemByName(itemName string) (Item, error) {
+func GetItemByName(itemName string) (Item, error) {
   var itm Item
   conn, err := pgx.Connect(context.Background(), connStr)
 	if err != nil {
@@ -70,7 +69,7 @@ func getItemByName(itemName string) (Item, error) {
   return itm, nil
 }
 
-func addItem(itm Item) (int, error) {
+func AddItem(itm Item) (int, error) {
   conn, err := pgx.Connect(context.Background(), connStr)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
@@ -83,7 +82,7 @@ func addItem(itm Item) (int, error) {
   return 1, nil
 }
 
-func deleteItem(itemId int) (int, error) {
+func DeleteItem(itemId int) (int, error) {
   conn, err := pgx.Connect(context.Background(), connStr)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)

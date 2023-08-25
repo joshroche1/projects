@@ -12,7 +12,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/tmp/kube/prometheus/configs"
+    path: "/mnt/kubernetes/storage/prometheus/configs"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -40,7 +40,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/tmp/kube/prometheus/targets"
+    path: "/mnt/kubernetes/storage/prometheus/targets"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -96,16 +96,13 @@ metadata:
   labels:
     app: prometheus
 spec:
-  type: NodePort
+  type: ClusterIP
   ports:
     - port: 9090
-      targetPort: 9090
-      nodePort: 30090
+      name: prometheus-port-web
     - port: 9100
-      targetPort: 9100
-      nodePort: 30100
+      name: prometheus-port-node-exporter
     - port: 9115
-      targetPort: 9115
-      nodePort: 30115
+      name: prometheus-port-9115
   selector:
     app: prometheus
