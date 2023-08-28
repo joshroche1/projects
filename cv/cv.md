@@ -269,7 +269,7 @@ Responsibilities include:
 ## Education 
  
 Bachelor of Science in Computer Science  
-Graduated: Projected 2021  
+Graduated: December 2021  
 GPA: 3.25  
 University of Maryland, Global Campus, Adelphi, Maryland  
  
