@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+#    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+  name: ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - www.example.com
+      secretName: hello-world-tls
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: hello-world
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
