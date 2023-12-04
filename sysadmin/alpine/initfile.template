@@ -1,0 +1,26 @@
+#!/sbin/openrc-run
+#
+# Template for OpenRC init file
+
+# More info can be found: https://manpages.debian.org/testing/openrc/openrc-run.8.en.html
+
+# Set path for Working Directory
+directory="/path/to/working/dir/"
+
+# Location of base command
+command="/path/to/command"
+
+# Needed command argumentsa
+command_args="-x extra-arguments-for-command $FLAGS>&SUCH"
+
+# User to run command
+command_user="APP_USER"
+
+# Sets to run as daemon, MUST HAVE PIDFILE DEFINED
+command_background=true
+
+# Process name
+procname="APP_NAME"
+
+# PID File
+pidfile="/run/$APP_NAME.pid"
