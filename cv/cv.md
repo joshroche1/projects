@@ -39,7 +39,7 @@ Provides development and operational support to the AnyDesk remote desktop conne
 - Created production and staging cloud containerized applications utilizing Kubernetes and Docker
 - Migrated a worldwide Icinga2 customized monitoring system to Prometheus, providing better insight into system dynamics and metrics
 - Installed, monitored, and maintained Apache Tomcat, Wildfly, Quarkus, and NGINX application and web servers as well as Quarkus and FastAPI into our production environment
-- Developed automation for operational tasks using Ansible, Python, and BASH Scripting
+- Developed automation and monitoring tools for operational tasks using Ansible, Python, Go, and BASH Scripting
 - Built web applications used for Scam prevention and response and application delivery for internal testing
 
 ### Tier II AWS Systems Administrator
