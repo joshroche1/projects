@@ -303,6 +303,8 @@ Java
 Ansible  
 PHP  
 Python  
+Go Language
+Docker
 Kubernetes  
 
 ### MILSATCOM Systems: 
