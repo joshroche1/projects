@@ -1,0 +1,9 @@
+BINDHOST: "127.0.0.1"
+BINDPORT: 8000
+TLS_CERTFILE: ""
+TLS_KEYFILE: ""
+DB_VENDOR: sqlite3
+DB_CONN: ./db.sqlite
+SESSION_TOKEN: aaaabbbbccccdddd
+MODE: debug
+LOGFILE: gowebapp.log
