@@ -1,0 +1,8 @@
+BINDHOST: "127.0.0.1"
+BINDPORT: 8000
+TLS_KEYFILE: ""
+TLS_CERTFILE: ""
+DB_VENDOR: "sqlite3"
+DB_CONN: "./db.sqlite"
+SESSION_TOKEN: "SeCrEt-KeY"
+MODE: "debug"

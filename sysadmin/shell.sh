@@ -33,6 +33,11 @@ for cid in ${cids}; do
   ./query-sessions-table.py cid ${cid} 2022-08-25 2023-03-15
 done
 #
+#=====[Environment Variables]
+#
+# load env variables from a file
+export $(grep -v '^#' .env | xargs)
+#
 #=====[OpenSSH]
 #
 ssh -p 12345 -i ~/.ssh/id_rsa username@11.22.33.44

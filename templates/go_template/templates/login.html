@@ -1,0 +1,23 @@
+{{define "header"}}
+<li><a href="/login">Login</a></li>
+{{end}}
+
+{{define "menu"}}
+{{end}}
+
+{{define "content"}}
+<div class="col-3"></div>
+<div class="col-6 content">
+  <form action="/login" method="post">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Username" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Password" required>
+    <input type="submit" value="Login">
+  </form>
+</div>
+<div class="col-3"></div>
+{{end}}
+
+{{define "aside"}}
+{{end}}

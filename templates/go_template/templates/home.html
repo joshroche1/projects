@@ -1,0 +1,66 @@
+{{define "header"}}
+{{end}}
+
+{{define "menu"}}
+{{end}}
+
+{{define "content"}}
+<div class="content">
+{{range .messages}}
+<p>{{.}}</p>
+{{end}}
+</div>
+<div class="content">
+  <div style="overflow-x:auto;">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th></th>
+      </tr>
+      {{range .userlist}}
+      <tr>
+        <td>{{.ID}}</td>
+        <td>{{.Username}}</td>
+        <td><a href="mailto:{{.Email}}">{{.Email}}</a></td>
+        <td>{{.Password}}</td>
+        <td>
+          <form action="/user/delete/{{.ID}}" method="post">
+            <input type="submit" value="Delete" onclick="confirm('Are you sure you want to delete {{.Username}}');" class="danger">
+          </form>
+        </td>
+      </tr>
+      {{end}}
+    </table>
+  </div>
+</div>
+<div class="content bordered">
+  <form action="/user/checkpw" method="post">
+    <h3>Test Login</h3>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Username" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Password" required>
+    <input type="submit" value="Check">
+  </form>
+</div>
+{{end}}
+
+{{define "aside"}}
+<div class="content" style="background-color: aliceblue;">
+  <div class="content bordered">
+    <h3>Add User</h3>
+    <form action="/user" method="post">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Name">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Password">
+      <input type="submit" value="Add"><input type="reset">
+    </form>
+  </div>
+</div>
+{{end}}
