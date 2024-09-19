@@ -99,6 +99,7 @@ openssl req -newkey rsa:4096 -nodes -keyout client.key -out client.csr
 # Generate Signed Client certificate
 openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt
 #
+openssl dhparam -outform PEM -out dhparam.pem 4096
 openssl genrsa -out client.key 4096
 openssl req -new -key client.key -out client.csr
 openssl x509 -req -in client.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out client.crt
