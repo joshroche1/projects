@@ -96,4 +96,110 @@ keystone-manage bootstrap --bootstrap-password $ADMIN_PASS \
 /etc/apache2/apache2.conf:
 ServerName controller
 service apache2 restart
+#
+. admin-openrc
+openstack project create --domain default --description "Service Project" service
+openstack project create --domain default --description "Demo Project" myproject
+openstack user create --domain default --password-prompt myuser
+openstack role create myrole
+openstack role add --project myproject --user myuser myrole
+demo-openrc:
+export OS_PROJECT_DOMAIN_NAME=Default
+export OS_USER_DOMAIN_NAME=Default
+export OS_PROJECT_NAME=myproject
+export OS_USERNAME=myuser
+export OS_PASSWORD=openstack
+export OS_AUTH_URL=http://controller:5000/v3
+export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2
+...
+openstack token issue
+# glance
+openstack user create --domain default --password-prompt glance
+openstack role add --project service --user glance admin
+openstack service create --name glance --description "OpenStack Image" image
+openstack endpoint create --region RegionOne image public http://controller:9292
+openstack endpoint create --region RegionOne image internal http://controller:9292
+openstack endpoint create --region RegionOne image admin http://controller:9292
+openstack --os-cloud devstack-system-admin registered limit create --service glance --default-limit 1000 --region RegionOne image_size_total
+openstack --os-cloud devstack-system-admin registered limit create --service glance --default-limit 1000 --region RegionOne image_stage_total
+openstack --os-cloud devstack-system-admin registered limit create --service glance --default-limit 100 --region RegionOne image_count_total
+openstack --os-cloud devstack-system-admin registered limit create --service glance --default-limit 100 --region RegionOne image_count_uploading
+#
+apt install glance
+/etc/glance/glance-api.conf:
+[database]
+connection = mysql+pymysql://glance:glance@controller/glance
+[keystone_authtoken]
+www_authenticate_uri  = http://controller:5000
+auth_url = http://controller:5000
+memcached_servers = controller:11211
+auth_type = password
+project_domain_name = Default
+user_domain_name = Default
+project_name = service
+username = glance
+password = glance
+[paste_deploy]
+flavor = keystone
+[DEFAULT]
+enabled_backends=fs:file
+[glance_store]
+default_backend = fs
+[fs]
+filesystem_store_datadir = /var/lib/glance/images/
+[oslo_limit]
+auth_url = http://controller:5000
+auth_type = password
+user_domain_id = default
+username = glance
+system_scope = all
+password = glance
+endpoint_id = 03894d94be0d4c5291aad21d619b4ba7
+region_name = RegionOne
+...
+openstack endpoint list --service glance --region RegionOne # to get ENDPOINT_ID
+openstack role add --user glance --user-domain Default --system all reader
+su -s /bin/sh -c "glance-manage db_sync" glance
+service glance-api restart
+# verify
+wget http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+glance image-create --name "cirros" --file cirros-0.4.0-x86_64-disk.img --disk-format qcow2 --container-format bare --visibility=public
+glance image-list
+# placement
+openstack user create --domain default --password-prompt placement
+openstack role add --project service --user placement admin
+openstack service create --name placement --description "Placement API" placement
+openstack endpoint create --region RegionOne placement public http://controller:8778
+openstack endpoint create --region RegionOne placement internal http://controller:8778
+openstack endpoint create --region RegionOne placement admin http://controller:8778
+#
+apt install placement-api
+/etc/placement/placement.conf:
+[placement_database]
+# ...
+connection = mysql+pymysql://placement:placement@controller/placement
+[api]
+# ...
+auth_strategy = keystone
+# ...
+[keystone_authtoken]
+# ...
+auth_url = http://controller:5000/v3
+memcached_servers = controller:11211
+auth_type = password
+project_domain_name = Default
+user_domain_name = Default
+project_name = service
+username = placement
+password = placement
+#
+su -s /bin/sh -c "placement-manage db sync" placement
+service apache2 restart
+#
+
+
+
+
+
 
