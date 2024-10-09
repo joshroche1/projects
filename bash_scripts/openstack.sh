@@ -345,11 +345,121 @@ service nova-compute restart
 # ON CONTROLLER:
 openstack compute service list --service nova-compute
 su -s /bin/sh -c "nova-manage cell_v2 discover_hosts --verbose" nova
+# verify
+openstack compute service list
+openstack catalog list
+openstack image list
+nova-status upgrade check
+# neutron
+openstack user create --domain default --password-prompt neutron
+openstack role add --project service --user neutron admin
+openstack service create --name neutron --description "OpenStack Networking" network
+openstack endpoint create --region RegionOne network public http://controller:9696
+openstack endpoint create --region RegionOne network internal http://controller:9696
+openstack endpoint create --region RegionOne network admin http://controller:9696
 #
+apt install neutron-server neutron-plugin-ml2 neutron-openvswitch-agent neutron-l3-agent neutron-dhcp-agent neutron-metadata-agent
+/etc/neutron/neutron.conf:
+[database]
+# ...
+connection = mysql+pymysql://neutron:neutron@controller/neutron
+[DEFAULT]
+# ...
+core_plugin = ml2
+service_plugins = router
+[DEFAULT]
+# ...
+transport_url = rabbit://openstack:openstack@controller
+[DEFAULT]
+# ...
+auth_strategy = keystone
 
+[keystone_authtoken]
+# ...
+www_authenticate_uri = http://controller:5000
+auth_url = http://controller:5000
+memcached_servers = controller:11211
+auth_type = password
+project_domain_name = Default
+user_domain_name = Default
+project_name = service
+username = neutron
+password = neutron
+[DEFAULT]
+# ...
+notify_nova_on_port_status_changes = true
+notify_nova_on_port_data_changes = true
 
+[nova]
+# ...
+auth_url = http://controller:5000
+auth_type = password
+project_domain_name = Default
+user_domain_name = Default
+region_name = RegionOne
+project_name = service
+username = nova
+password = nova
+[oslo_concurrency]
+# ...
+lock_path = /var/lib/neutron/tmp
+...
+/etc/neutron/plugins/ml2/ml2_conf.ini:
+[ml2]
+# ...
+type_drivers = flat,vlan,vxlan
+[ml2]
+# ...
+tenant_network_types = vxlan
+[ml2]
+# ...
+mechanism_drivers = openvswitch,l2population
+[ml2]
+# ...
+extension_drivers = port_security
+[ml2_type_flat]
+# ...
+flat_networks = provider
+[ml2_type_vxlan]
+# ...
+vni_ranges = 1:1000
+...
+/etc/neutron/plugins/ml2/openvswitch_agent.ini:
+[ovs]
+bridge_mappings = provider:extnet
+local_ip = 192.168.2.220
+# ovs-vsctl add-br $PROVIDER_BRIDGE_NAME
+# ovs-vsctl add-port $PROVIDER_BRIDGE_NAME $PROVIDER_INTERFACE_NAME
+[agent]
+tunnel_types = vxlan
+l2_population = true
+[securitygroup]
+# ...
+enable_security_group = true
+firewall_driver = openvswitch
+#firewall_driver = iptables_hybrid
+/etc/neutron/l3_agent.ini:
+[DEFAULT]
+# ...
+interface_driver = openvswitch
+...
+/etc/neutron/dhcp_agent.ini:
+[DEFAULT]
+# ...
+interface_driver = openvswitch
+dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
+enable_isolated_metadata = true
+...
+#
+neutron net-create external_network --provider:network_type flat --provider:physical_network extnet  --router:external
+neutron subnet-create --name public_subnet --enable_dhcp=False --allocation-pool=start=192.168.2.50,end=192.168.2.99 --gateway=192.168.2.1 external_network 192.168.2.0/24
+neutron router-create homelab_router
+neutron router-gateway-set homelab_router external_network
+neutron net-create homelab_network
+neutron subnet-create --name homelab_subnet --gateway 192.168.100.1 --dns-nameserver 192.168.1.254 --dns-nameserver 8.8.8.8 --dns-nameserver 4.4.4.4  homelab_network 192.168.100.0/24
+neutron router-interface-add homelab_router homelab_subnet
 
-
+#
 
 
 
