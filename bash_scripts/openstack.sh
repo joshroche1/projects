@@ -299,6 +299,7 @@ user_domain_name = Default
 project_name = service
 username = nova
 password = NOVA_PASS
+
 [service_user]
 send_service_user_token = true
 auth_url = https://controller/identity
@@ -450,6 +451,33 @@ interface_driver = openvswitch
 dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq
 enable_isolated_metadata = true
 ...
+/etc/neutron/metadata_agent.ini
+[DEFAULT]
+# ...
+nova_metadata_host = controller
+metadata_proxy_shared_secret = METADATA_SECRET
+...
+/etc/nova/nova.conf:
+[neutron]
+# ...
+auth_url = http://controller:5000
+auth_type = password
+project_domain_name = Default
+user_domain_name = Default
+region_name = RegionOne
+project_name = service
+username = neutron
+password = NEUTRON_PASS
+service_metadata_proxy = true
+metadata_proxy_shared_secret = METADATA_SECRET
+...
+su -s /bin/sh -c "neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
+service nova-api restart
+service neutron-server restart
+service neutron-openvswitch-agent restart
+service neutron-dhcp-agent restart
+service neutron-metadata-agent restart
+service neutron-l3-agent restart
 #
 neutron net-create external_network --provider:network_type flat --provider:physical_network extnet  --router:external
 neutron subnet-create --name public_subnet --enable_dhcp=False --allocation-pool=start=192.168.2.50,end=192.168.2.99 --gateway=192.168.2.1 external_network 192.168.2.0/24
@@ -459,8 +487,80 @@ neutron net-create homelab_network
 neutron subnet-create --name homelab_subnet --gateway 192.168.100.1 --dns-nameserver 192.168.1.254 --dns-nameserver 8.8.8.8 --dns-nameserver 4.4.4.4  homelab_network 192.168.100.0/24
 neutron router-interface-add homelab_router homelab_subnet
 
+# COMPUTE NODE
+apt install neutron-openvswitch-agent
+/etc/neutron/neutron.conf:
+[DEFAULT]
+# ...
+transport_url = rabbit://openstack:RABBIT_PASS@controller
+[oslo_concurrency]
+# ...
+lock_path = /var/lib/neutron/tmp
+...
+/etc/neutron/plugins/ml2/openvswitch_agent.ini:
+[ovs]
+bridge_mappings = provider:PROVIDER_BRIDGE_NAME
+local_ip = OVERLAY_INTERFACE_IP_ADDRESS
+...
+# ovs-vsctl add-br $PROVIDER_BRIDGE_NAME
+# ovs-vsctl add-port $PROVIDER_BRIDGE_NAME $PROVIDER_INTERFACE_NAME
+[agent]
+tunnel_types = vxlan
+l2_population = true
+[securitygroup]
+# ...
+enable_security_group = true
+firewall_driver = openvswitch
+#firewall_driver = iptables_hybrid
+/etc/nova/nova.conf:
+[neutron]
+# ...
+auth_url = http://controller:5000
+auth_type = password
+project_domain_name = Default
+user_domain_name = Default
+region_name = RegionOne
+project_name = service
+username = neutron
+password = NEUTRON_PASS
+...
+service nova-compute restart
+service neutron-openvswitch-agent restart
+# horizon
+apt install openstack-dashboard
+/etc/openstack-dashboard/local_settings.py:
+OPENSTACK_HOST = "controller"
+ALLOWED_HOSTS = ['one.example.com', 'two.example.com']
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
+CACHES = {
+    'default': {
+         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+         'LOCATION': 'controller:11211',
+    }
+}
+OPENSTACK_KEYSTONE_URL = "http://%s/identity/v3" % OPENSTACK_HOST
+OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True
+OPENSTACK_API_VERSIONS = {
+    "identity": 3,
+    "image": 2,
+    "volume": 3,
+}
+OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "Default"
+OPENSTACK_KEYSTONE_DEFAULT_ROLE = "user"
+# provider networking option:
+OPENSTACK_NEUTRON_NETWORK = {
+    ...
+    'enable_router': False,
+    'enable_quotas': False,
+    'enable_ipv6': False,
+    'enable_distributed_router': False,
+    'enable_ha_router': False,
+    'enable_fip_topology_check': False,
+}
 #
-
-
-
-
+/etc/apache2/conf-available/openstack-dashboard.conf:
+WSGIApplicationGroup %{GLOBAL}
+...
+systemctl reload apache2.service
+http://192.168.2.220/horizon/
