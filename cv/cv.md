@@ -14,7 +14,7 @@
 
 ### Skills Summary: 
 
-Focused and diligent DevOps professional specializing in Cloud systems and infrastructure with knowledge and experience for many different platforms and technologies. US Army Veteran with 20 years of US Military experience with Satellite Communications and Networking Systems in both Fixed and Mobile Environments. I’ve worked with many different systems in diverse network architectures and leveraged resourcefulness and ingenuity to solve complex and time sensitive problems.
+*Focused and diligent DevOps professional specializing in Cloud systems and infrastructure with knowledge and experience for many different platforms and technologies. US Army Veteran with 20 years of US Military experience with Satellite Communications and Networking Systems in both Fixed and Mobile Environments. I’ve worked with many different systems in diverse network architectures and leveraged resourcefulness and ingenuity to solve complex and time sensitive problems.*
 
 - Deployed Cloud Native Enterprise Remote Desktop solutions for millions of customers worldwide
 - Provided Tier II technical support to DISA Europe and global customers for the GVS2 platform hosted on Amazon Web Services. 
@@ -34,7 +34,7 @@ Focused and diligent DevOps professional specializing in Cloud systems and infra
 > AnyDesk Software, GmbH  
 > Stuttgart, Germany
 
-Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation. 
+*Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation.*
 
 - Deployed, maintained, monitored, updated, and replaired over 600 cloud servers, bare metal, and virtual systems with over 20 different cloud hosting providers including AWS, Hetzner, OVH, DataPacket, Global Secure Layer, Limestone, and Maxihost
 - Installed, managed, monitored, and updated 8 PostgreSQL production database servers including replication and recovery
@@ -50,7 +50,7 @@ Provides development and operational support to the AnyDesk remote desktop conne
 > Superlative Technologies, Inc./JayCo Systems, GmbH  
 > Vaihingen, Germany
 
-Provides Tier II user and infrastructure support on NIPR and SIPR DISA Global Video Services 2 (GVS2) platform for EUCOM and worldwide customers. Responsible for operation and maintenance of AWS Cloud Infrastructure for GVS2 systems globally and on premises site lab infrastructure, providing patching, updates, demand maintenance, change requests, and automation support for network and server components. 
+*Provides Tier II user and infrastructure support on NIPR and SIPR DISA Global Video Services 2 (GVS2) platform for EUCOM and worldwide customers. Responsible for operation and maintenance of AWS Cloud Infrastructure for GVS2 systems globally and on premises site lab infrastructure, providing patching, updates, demand maintenance, change requests, and automation support for network and server components.*
 
 Responsibilities include:
 - Utilized Amazon Web Services (AWS) to build virtual machines, add storage, configure network adapters, and view performance metrics in a virtualized environment
@@ -75,7 +75,7 @@ MOS 25S - Satellite Communications Operator/Maintainer
 > Headquarters, Headquarters Company, 44th Expeditionary Signal Battalion  
 > US Army Garrison, Rhineland-Pfalz, Smith Barracks, Baumholder, Germany
 
-Responsible for Tier II level support of 30 WIN-T satellite communications systems, supports Battalion Plans and Engineering section regarding Satellite Access Requests and Authorizations (SAR/SAA) and Army Service Requests and Authorizations (ASR/ASA) to the Regional SATCOM Support Center (RSSC) and Regional Cyber Center – Europe (RCC-E).
+*Responsible for Tier II level support of 30 WIN-T satellite communications systems, supports Battalion Plans and Engineering section regarding Satellite Access Requests and Authorizations (SAR/SAA) and Army Service Requests and Authorizations (ASR/ASA) to the Regional SATCOM Support Center (RSSC) and Regional Cyber Center – Europe (RCC-E).*
 
 Responsibilities include:
 - Satellite/Gateway Access Request submission (SAR/GAR)
@@ -99,7 +99,7 @@ Achievements:
 > Bravo Company, 44th Expeditionary Signal Battalion  
 > US Army Garrison, Bavaria, Tower Barracks, Grafenwoehr, Germany 
 
-Responsible for Tier I support of 13 WIN-T satellite communications systems for Joint Multinational Training Exercises and Continuing Operations throughout the European Theater. 
+*Responsible for Tier I support of 13 WIN-T satellite communications systems for Joint Multinational Training Exercises and Continuing Operations throughout the European Theater.*
 
 Responsibilities include:
 - Unit level SATCOM reporting for 13 systems
@@ -113,7 +113,7 @@ Responsibilities include:
 > Bravo Company, 44th Expeditionary Signal Battalion  
 > US Army Garrison, Bavaria, Tower Barracks, Grafenwoehr, Germany 
 
-Responsible for the operation and maintenance of 1 AN/TTC-59C(V3) Joint Network Node (JNN), 1 AN/TSC-167F Satellite Transportable Trailer(STT), 1 AN/TSC-156D Phoenix, and 2 AN/TSC-198A SIPR/NIPR Access Point (SNAP) systems. 
+*Responsible for the operation and maintenance of 1 AN/TTC-59C(V3) Joint Network Node (JNN), 1 AN/TSC-167F Satellite Transportable Trailer(STT), 1 AN/TSC-156D Phoenix, and 2 AN/TSC-198A SIPR/NIPR Access Point (SNAP) systems.*
 
 Responsibilities include:
 - Training and Professional Development of 10 Soldiers 
@@ -124,7 +124,7 @@ Responsibilities include:
 > Bravo Company, 551st Signal Battalion  
 > Fort Gordon, GA 
 
-Professional instruction of entry level US Army Soldiers for Advanced Individual Training (AIT) on the Military Occupational Specialty (MOS) 25S Satellite Communications Operator/Maintainer. 
+*Professional instruction of entry level US Army Soldiers for Advanced Individual Training (AIT) on the Military Occupational Specialty (MOS) 25S Satellite Communications Operator/Maintainer.*
 
 Responsibilities include:
 - Instruct 25S AIT Soldiers in the following topics:
@@ -154,7 +154,7 @@ Achievements:
 > 333rd Signal Company, 78th Signal Battalion  
 > Fort Buckner, Ginowan, Okinawa
 
-Responsible for the installation, operation, configuration, troubleshooting, maintenance, and repair of 2 AN/GSC-39C MILSATCOM X-band terminals and 9 additional terminals to include 2 UHF, 3 US Navy EHF, 2 C-band and 2 Ku-band terminals, at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility. 
+*Responsible for the installation, operation, configuration, troubleshooting, maintenance, and repair of 2 AN/GSC-39C MILSATCOM X-band terminals and 9 additional terminals to include 2 UHF, 3 US Navy EHF, 2 C-band and 2 Ku-band terminals, at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility.*
 
 Responsibilities include:
 - Prepare maintenance tasks and documents for equipment operators
@@ -171,7 +171,7 @@ Responsibilities include:
 > 333rd Signal Company, 78th Signal Battalion  
 > Fort Buckner, Ginowan, Okinawa
 
-Responsible for the operation and maintenance of 2 AN/GSC-39C MILSATCOM X-band terminals and 9 additional terminals to include 2 UHF, 3 US Navy EHF, 2 C-band and 2 Ku-band terminals, at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility. 
+*Responsible for the operation and maintenance of 2 AN/GSC-39C MILSATCOM X-band terminals and 9 additional terminals to include 2 UHF, 3 US Navy EHF, 2 C-band and 2 Ku-band terminals, at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility.*
 
 Responsibilities include:
 - Manage SATCOM telecommunication links for US Army, Navy, Marines Corps, and Air Force units in strategic and deployed environments
@@ -186,7 +186,7 @@ Responsibilities include:
 > G33 Current Operations, Eighth US Army  
 > US Army Garrison, Yongsan, Seoul, South Korea
 
-Responsible for the operation of the Combined Operations and Intelligence Center (COIC) for Eighth US Army (EUSA) Special General Staff (SGS) and automations responsibilities connected to the EUSA Watch Office and Current Operations sections.
+*Responsible for the operation of the Combined Operations and Intelligence Center (COIC) for Eighth US Army (EUSA) Special General Staff (SGS) and automations responsibilities connected to the EUSA Watch Office and Current Operations sections.*
 
 Responsibilities include:
 - Manage computer user accounts for 25 EUSA SGS personnel
@@ -200,7 +200,7 @@ Responsibilities include:
 > 514th Signal Company, 302d Signal Battalion  
 > Camp Roberts, CA 
 
-Responsible for the operation and maintenance of 1 AN/FSC-78 and 1 AN/GSC-52 earth terminals at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility. 
+*Responsible for the operation and maintenance of 1 AN/FSC-78 and 1 AN/GSC-52 earth terminals at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility.*
 
 Responsibilities include:
     • Manage communication links for Army, Navy, Marines, Air Force units in strategic and deployed environments
@@ -214,7 +214,7 @@ Responsibilities include:
 > 514th Signal Company, 302d Signal Battalion  
 > Camp Roberts, CA 
 
-Responsible for planning, development, resourcing, coordination, and execution of unit level training and Soldier Professional Military Education (PME) for 61 Soldiers. 
+*Responsible for planning, development, resourcing, coordination, and execution of unit level training and Soldier Professional Military Education (PME) for 61 Soldiers.*
 
 Responsibilities include:
 - Plan and develop unit level training objectives and events
@@ -231,7 +231,7 @@ Responsibilities include:
 > Network Support Company, Division Special Troops Battalion, 10th Mountain Division  
 > Fort Drum, NY
 
-Responsible for the operation and maintenance of 1 AN/TSC-169A Unit Hub Node for 10th Mountain Division HQ.
+*Responsible for the operation and maintenance of 1 AN/TSC-169A Unit Hub Node for 10th Mountain Division HQ.*
 
 Responsibilities include:
 - Manage telecommunications links for 10th Mountain Division systems during wartime operations and training exercises
@@ -248,7 +248,7 @@ Achievements:
 > 229th Signal Company, 307th Signal Battalion, 1st Signal Brigade  
 > Camp Carroll, Waegwan, South Korea
 
-Responsible for the operation and maintenance of 1 AN/TSC-93C terminal for training and warfighter support throughout the United States Forces Korea (USFK) theater.
+*Responsible for the operation and maintenance of 1 AN/TSC-93C terminal for training and warfighter support throughout the United States Forces Korea (USFK) theater.*
 
 Responsibilities include:
 - Manage telecommunications support for training exercises throughout the USFK theater. 
@@ -260,9 +260,9 @@ Responsibilities include:
 > ezra.j.carr.civ@mail.mil  
 > Contact: Yes  
 
-> CW2 Steven M. Meyer  
+> Mr. Steven M. Meyer  
 > steve.m.meyer.mil@mail.mil  
->  Contact: YES  
+> Contact: YES  
 
 > Mr. Mario Camilla  
 > mario.camilla@gmail.com  
@@ -270,10 +270,10 @@ Responsibilities include:
 
 ## Education 
  
-Bachelor of Science in Computer Science  
-Graduated: December 2021  
-GPA: 3.25  
-University of Maryland, Global Campus, Adelphi, Maryland  
+> **Bachelor of Science in Computer Science**
+> Graduated: December 2021  
+> GPA: 3.25  
+> University of Maryland, Global Campus, Adelphi, Maryland  
  
 ## Certifications
 
