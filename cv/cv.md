@@ -1,9 +1,10 @@
 # Joshua A. Roche
-
 **Operations Engineer**
-| [joshua.a.roche@gmail.com](joshua.a.roche@gmail.com)
-| [www.linkedin.com/in/joshua-roche-77385b61](https://www.linkedin.com/in/joshua-roche-77385b61)
 
+[joshua.a.roche@gmail.com](joshua.a.roche@gmail.com)
+ | +49-151-7306-5567
+ | Laemmleshalde 74, 70376 Stuttgart DE
+ | [www.linkedin.com/in/joshua-roche-77385b61](https://www.linkedin.com/in/joshua-roche-77385b61)
 
 ## Professional Objectives
 
