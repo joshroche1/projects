@@ -1,7 +1,9 @@
 # Joshua A. Roche
 
 > **Operations Engineer**
+
 > [joshua.a.roche@gmail.com](joshua.a.roche@gmail.com)
+
 > [www.linkedin.com/in/joshua-roche-77385b61](https://www.linkedin.com/in/joshua-roche-77385b61)
 
 ## Professional Objectives
