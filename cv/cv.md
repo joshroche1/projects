@@ -6,9 +6,9 @@ www.linkedin.com/in/joshua-roche-77385b61
 
 ## Professional Objectives
 
-Citizenship: US  
-Federal Experience: Military  
-Clearance: Active Secret 20110817
+> Citizenship: US  
+> Federal Experience: Military  
+> Clearance: Active Secret 20110817
 
 ### Skills Summary: 
 
@@ -28,9 +28,9 @@ Focused and diligent DevOps professional specializing in Cloud systems and infra
 
 ### Operations Engineer
 
-1 March 2022 - Present (40hr/week)  
-AnyDesk Software, GmbH  
-Stuttgart, Germany
+> 1 March 2022 - Present (40hr/week)  
+> AnyDesk Software, GmbH  
+> Stuttgart, Germany
 
 Provides development and operational support to the AnyDesk remote desktop connection software backend global infrastructure and web application deployment and operation. 
 
@@ -39,14 +39,14 @@ Provides development and operational support to the AnyDesk remote desktop conne
 - Created production and staging cloud containerized applications utilizing Kubernetes and Docker
 - Migrated a worldwide Icinga2 customized monitoring system to Prometheus, providing better insight into system dynamics and metrics
 - Installed, monitored, and maintained Apache Tomcat, Wildfly, Quarkus, and NGINX application and web servers as well as Quarkus and FastAPI into our production environment
-- Developed automation and monitoring tools for operational tasks using Ansible, Python, Go, and BASH Scripting
+- Developed automation and monitoring tools for operational tasks using Ansible, Terraform, Python, Go, and BASH Scripting
 - Built web applications used for Scam prevention and response and application delivery for internal testing
 
 ### Tier II AWS Systems Administrator
 
-13 September 2021 – 1 March 2020 (40hr/week)  
-Superlative Technologies, Inc./JayCo Systems, GmbH  
-Vaihingen, Germany
+> 13 September 2021 – 1 March 2020 (40hr/week)  
+> Superlative Technologies, Inc./JayCo Systems, GmbH  
+> Vaihingen, Germany
 
 Provides Tier II user and infrastructure support on NIPR and SIPR DISA Global Video Services 2 (GVS2) platform for EUCOM and worldwide customers. Responsible for operation and maintenance of AWS Cloud Infrastructure for GVS2 systems globally and on premises site lab infrastructure, providing patching, updates, demand maintenance, change requests, and automation support for network and server components. 
 
@@ -69,9 +69,9 @@ MOS 25S - Satellite Communications Operator/Maintainer
  
 #### SATCOM Operations NCO
 
-April 2019 to September 2021 (40hr/week)  
-Headquarters, Headquarters Company, 44th Expeditionary Signal Battalion  
-US Army Garrison, Rhineland-Pfalz, Smith Barracks, Baumholder, Germany
+> April 2019 to September 2021 (40hr/week)  
+> Headquarters, Headquarters Company, 44th Expeditionary Signal Battalion  
+> US Army Garrison, Rhineland-Pfalz, Smith Barracks, Baumholder, Germany
 
 Responsible for Tier II level support of 30 WIN-T satellite communications systems, supports Battalion Plans and Engineering section regarding Satellite Access Requests and Authorizations (SAR/SAA) and Army Service Requests and Authorizations (ASR/ASA) to the Regional SATCOM Support Center (RSSC) and Regional Cyber Center – Europe (RCC-E).
 
@@ -93,9 +93,9 @@ Achievements:
 
 #### SATCOM Operations NCO
 
-July 2018 to April 2019 (40hr/week)  
-Bravo Company, 44th Expeditionary Signal Battalion  
-US Army Garrison, Bavaria, Tower Barracks, Grafenwoehr, Germany 
+> July 2018 to April 2019 (40hr/week)  
+> Bravo Company, 44th Expeditionary Signal Battalion  
+> US Army Garrison, Bavaria, Tower Barracks, Grafenwoehr, Germany 
 
 Responsible for Tier I support of 13 WIN-T satellite communications systems for Joint Multinational Training Exercises and Continuing Operations throughout the European Theater. 
 
@@ -107,9 +107,9 @@ Responsibilities include:
 
 #### Transmission Systems Team Chief
 
-February 2018 to July 2018 (40hr/week)  
-Bravo Company, 44th Expeditionary Signal Battalion  
-US Army Garrison, Bavaria, Tower Barracks, Grafenwoehr, Germany 
+> February 2018 to July 2018 (40hr/week)  
+> Bravo Company, 44th Expeditionary Signal Battalion  
+> US Army Garrison, Bavaria, Tower Barracks, Grafenwoehr, Germany 
 
 Responsible for the operation and maintenance of 1 AN/TTC-59C(V3) Joint Network Node (JNN), 1 AN/TSC-167F Satellite Transportable Trailer(STT), 1 AN/TSC-156D Phoenix, and 2 AN/TSC-198A SIPR/NIPR Access Point (SNAP) systems. 
 
@@ -118,9 +118,9 @@ Responsibilities include:
 
 #### Instructor/Writer for 25S Advanced Individual Training
 
-January 2015 to February 2018 (40hr/week)  
-Bravo Company, 551st Signal Battalion  
-Fort Gordon, GA 
+> January 2015 to February 2018 (40hr/week)  
+> Bravo Company, 551st Signal Battalion  
+> Fort Gordon, GA 
 
 Professional instruction of entry level US Army Soldiers for Advanced Individual Training (AIT) on the Military Occupational Specialty (MOS) 25S Satellite Communications Operator/Maintainer. 
 
@@ -148,9 +148,9 @@ Achievements:
 
 #### SATCOM Maintenance NCO
 
-September 2013 to January 2015 (40hr/week)  
-333rd Signal Company, 78th Signal Battalion  
-Fort Buckner, Ginowan, Okinawa
+> September 2013 to January 2015 (40hr/week)  
+> 333rd Signal Company, 78th Signal Battalion  
+> Fort Buckner, Ginowan, Okinawa
 
 Responsible for the installation, operation, configuration, troubleshooting, maintenance, and repair of 2 AN/GSC-39C MILSATCOM X-band terminals and 9 additional terminals to include 2 UHF, 3 US Navy EHF, 2 C-band and 2 Ku-band terminals, at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility. 
 
@@ -165,9 +165,9 @@ Responsibilities include:
 
 #### SATCOM Systems Supervisor
 
-September 2012 to September 2013 (45hr/week)  
-333rd Signal Company, 78th Signal Battalion  
-Fort Buckner, Ginowan, Okinawa
+> September 2012 to September 2013 (45hr/week)  
+> 333rd Signal Company, 78th Signal Battalion  
+> Fort Buckner, Ginowan, Okinawa
 
 Responsible for the operation and maintenance of 2 AN/GSC-39C MILSATCOM X-band terminals and 9 additional terminals to include 2 UHF, 3 US Navy EHF, 2 C-band and 2 Ku-band terminals, at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility. 
 
@@ -180,9 +180,9 @@ Responsibilities include:
 
 #### Information Management Officer
 
-September 2011 to September 2012 (40hr/week)  
-G33 Current Operations, Eighth US Army  
-US Army Garrison, Yongsan, Seoul, South Korea
+> September 2011 to September 2012 (40hr/week)  
+> G33 Current Operations, Eighth US Army  
+> US Army Garrison, Yongsan, Seoul, South Korea
 
 Responsible for the operation of the Combined Operations and Intelligence Center (COIC) for Eighth US Army (EUSA) Special General Staff (SGS) and automations responsibilities connected to the EUSA Watch Office and Current Operations sections.
 
@@ -194,9 +194,9 @@ Responsibilities include:
 
 #### SATCOM Operations NCO
 
-September 2010 to September 2011 (45hr/week)  
-514th Signal Company, 302d Signal Battalion  
-Camp Roberts, CA 
+> September 2010 to September 2011 (45hr/week)  
+> 514th Signal Company, 302d Signal Battalion  
+> Camp Roberts, CA 
 
 Responsible for the operation and maintenance of 1 AN/FSC-78 and 1 AN/GSC-52 earth terminals at a Standardized Tactical Entry Point (STEP) and DISA Teleport facility. 
 
@@ -208,9 +208,9 @@ Responsibilities include:
 
 #### Training Coordinator
 
-September 2009 to September 2010 (40hr/week)  
-514th Signal Company, 302d Signal Battalion  
-Camp Roberts, CA 
+> September 2009 to September 2010 (40hr/week)  
+> 514th Signal Company, 302d Signal Battalion  
+> Camp Roberts, CA 
 
 Responsible for planning, development, resourcing, coordination, and execution of unit level training and Soldier Professional Military Education (PME) for 61 Soldiers. 
 
@@ -225,9 +225,9 @@ Responsibilities include:
 
 #### Tactical Satellite Systems Team Chief
 
-September 2005 to September 2009 (40hr/week)  
-Network Support Company, Division Special Troops Battalion, 10th Mountain Division  
-Fort Drum, NY
+> September 2005 to September 2009 (40hr/week)  
+> Network Support Company, Division Special Troops Battalion, 10th Mountain Division  
+> Fort Drum, NY
 
 Responsible for the operation and maintenance of 1 AN/TSC-169A Unit Hub Node for 10th Mountain Division HQ.
 
@@ -242,9 +242,9 @@ Achievements:
 
 #### SATCOM Team Chief
 
-September 2002 to September 2005 (40hr/week)  
-229th Signal Company, 307th Signal Battalion, 1st Signal Brigade  
-Camp Carroll, Waegwan, South Korea
+> September 2002 to September 2005 (40hr/week)  
+> 229th Signal Company, 307th Signal Battalion, 1st Signal Brigade  
+> Camp Carroll, Waegwan, South Korea
 
 Responsible for the operation and maintenance of 1 AN/TSC-93C terminal for training and warfighter support throughout the United States Forces Korea (USFK) theater.
 
@@ -279,57 +279,59 @@ University of Maryland, Global Campus, Adelphi, Maryland
 - CompTIA Cloud+ (3 October 2020)
 - AWS Certified Cloud Practitioner (21 November 2020)
 
-## Technical Skills 
+## Technical Skills
 
 I have worked with the following military telecommunications systems and technologies.
 
 ### Software and Technologies:
 
-Cisco IOS  
-Cisco Unified Communications Manager version 10.5  
-Palo Alto Panorama version 8  
-Palo Alto PAN-OS / Panorama  
-VMware ESXi 6.0  
-Vmware vCenter Server (V3)  
-Red Hat Enterprise Linux (RHEL)  
-Microsoft SharePoint 2013/2016 Administration  
-CentOS 7 Administration  
-Ubuntu Server 20.04 Administration  
-Amazon Web Services EC2  
-Microsoft Azure Cloud Platform  
-Google Cloud Platform  
-Oracle Cloud Infrastructure  
-Java  
-Ansible  
-PHP  
-Python  
-Go Language
-Docker
-Kubernetes  
+- Debian Server Administration
+- Ubuntu Server 20.04 Administration
+- Red Hat Enterprise Linux (RHEL)
+- CentOS 7 Administration
+- Amazon Web Services
+- Microsoft Azure Cloud Platform
+- Google Cloud Platform
+- Oracle Cloud Infrastructure
+- Java
+- Ansible
+- Terraform
+- PHP
+- Python
+- Go Language
+- Docker
+- Kubernetes
+- VMware ESXi 6.0
+- Vmware vCenter Server (V3)
+- Cisco IOS
+- Cisco Unified Communications Manager version 10.5
+- Palo Alto Panorama version 8
+- Palo Alto PAN-OS / Panorama
+- Microsoft SharePoint 2013/2016 Administration
 
-### MILSATCOM Systems: 
+### MILSATCOM Systems:
 
-AN/TSC-167F STT  
-AN/TTC-59C(V3) JNN  
-AN/TSC1-56D Phoenix  
-AN/TTC-56C(V3) SSS  
-AN/TSC-154A SMART-T  
-AN/TTC-64C(V3) CPN  
-AN/TSC-198A SNAP  
-AN/TSC-233(V1) T2C2  
-AN/GSC-39C  
-AN/GSC-52  
-AN/FSC-78  
-AN/TSC-169A UHN  
-AN/TSC-93C  
+- AN/TSC-167F STT
+- AN/TTC-59C(V3) JNN
+- AN/TSC1-56D Phoenix
+- AN/TTC-56C(V3) SSS
+- AN/TSC-154A SMART-T
+- AN/TTC-64C(V3) CPN
+- AN/TSC-198A SNAP
+- AN/TSC-233(V1) T2C2
+- AN/GSC-39C
+- AN/GSC-52
+- AN/FSC-78
+- AN/TSC-169A UHN
+- AN/TSC-93C
 
 ### Other Military Communications Systems:
 
-AN/TYQ-167 Commercial Coalition Equipment  
-Mission Partner Environment (MPE) PacStar systems (PacStar 441, 443, 451)  
-Comtech DMD-2050E  
-EBEM  
-iDirect  
-Viasat Linkway S2  
-Promina  
-MIDAS  
+- AN/TYQ-167 Commercial Coalition Equipment
+- Mission Partner Environment (MPE) PacStar systems (PacStar 441, 443, 451)
+- Comtech DMD-2050E
+- EBEM
+- iDirect
+- Viasat Linkway S2
+- Promina
+- MIDAS
