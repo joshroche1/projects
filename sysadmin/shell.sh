@@ -93,7 +93,7 @@ openssl x509 -in CERTIFICATE.PEM -text
 openssl rand -hex 9
 #
 # Generate CA private key and certificate
-openssl req -x509 -sha256 -days 365 -newkey rsa:2048 -keyout ca.key -out ca.crt
+openssl req -x509 -sha256 -days 365 -newkey rsa:2048 -noenc -keyout ca.key -out ca.crt
 # Generate client key and CSR
 openssl req -newkey rsa:4096 -nodes -keyout client.key -out client.csr
 # Generate Signed Client certificate
