@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+FastAPI Python Simple Webapp
+{% endblock %}
+
+{% block htmlbody %}
+
+<div id="expagetop">
+<h1>
+Forms
+</h1>
+</div>
+
+<hr />
+
+<div>
+<form action="#">
+<fieldset>
+<legend>
+FastAPI Python Simple Webapp
+</legend>
+<label for="inputtext">Text</label><input type="text" id="inputtext" />
+<label for="inputpass">Password</label><input type="password" id="inputpass" />
+<label for="inputemail">Email</label><input type="email" id="inputemail" />
+<label for="inputsearch">Search</label><input type="search" id="inputsearch" />
+<label for="inputtel">Tel</label><input type="tel" id="inputtel" />
+<label for="inputurl">URL</label><input type="url" id="inputurl" />
+<label for="inputtime">Time</label><input type="time" id="inputtime" />
+<label for="inputweek">Week</label><input type="week" id="inputweek" />
+<label for="inputmonth">Month</label><input type="month" id="inputmonth" />
+<label for="inputdate">Date</label><input type="date" id="inputdate" />
+<label for="inputdatetimelocal">Datetime-Local</label><input type="datetime-local" id="inputdatetimelocal" />
+<label for="inputcheck">Checkbox</label><input type="checkbox" id="inputcheck" />
+<label for="inputcolor">Color</label><input type="color" id="inputcolor" />
+<label for="inputfile">File</label><input type="file" id="inputfile" />
+<label for="inputimage">Image</label><input type="image" id="inputimage" />
+<label for="inputnumber">Number</label><input type="number" id="inputnumber" />
+<label for="inputrange">Range</label><input type="range" id="inputrange" min="10" max="50" />
+<label for="inputradio1">Radio 1</label><input type="radio" id="inputradio1" name="radioinput" value="1" />
+<label for="inputradio2">Radio 2</label><input type="radio" id="inputradio2" name="radioinput" value="1" />
+<label for="inputradio3">Radio 3</label><input type="radio" id="inputradio3" name="radioinput" value="1" />
+<label for="selectgroup">Select</label>
+<select id="selectgroup">
+<optgroup label="Letters">
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+</optgroup>
+<optgroup label="Numbers">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</optgroup>
+</select>
+<label for="datalistinput">Datalist</label>
+<input list="datalistlist" id="datalistinput" />
+<datalist id="datalistlist">
+<option value="A" />
+<option value="B" />
+<option value="C" />
+</datalist>
+<label for="textareainput">Text Area</label>
+<textarea id="textareainput" rows="3" cols="30">FastAPI Python Simple Webapp</textarea>
+<input type="submit" />
+<input type="reset" />
+</fieldset>
+</form>
+</div>
+
+<a href="#expagetop">Top</a>
+
+{% endblock %}

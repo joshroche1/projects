@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+FastAPI Python Simple Webapp
+{% endblock %}
+
+{% block htmlbody %}
+
+<div id="expagetop">
+<h1>
+Graphics
+</h1>
+</div>
+
+<hr />
+
+<div>
+<canvas id="canvasview" width="200" height="100"></canvas>
+SVG
+<svg width="100" height="100">
+<circle cx="50" cy="50" r="40" stroke="red" stroke-width="3" fill="yellow" />
+</svg>
+<label for="meterview">Meter</label>
+<meter id="meterview" value="50" min="1" max="150">50</meter>
+<button type="button">BUTTON</button>
+</div>
+
+<a href="#expagetop">Top</a>
+
+{% endblock %}

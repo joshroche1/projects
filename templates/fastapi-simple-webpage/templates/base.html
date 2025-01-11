@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', path='/smpl.css') }}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<div class="row">
+<div id="pageheader" class="pageheader">
+<ul>
+<li><a href="/">Webpage</a></li>
+<li><a href="/lists">Lists</a></li>
+<li><a href="/tables">Tables</a></li>
+<li><a href="/forms">Forms</a></li>
+<li><a href="/graphics">Graphics</a></li>
+</ul>
+</div>
+</div>
+<br /><br />
+<div class="row">
+<div id="pagenav" class="col-3 col-s-12 pagenav">
+<p>Page Navigation</p>
+<ul>
+<li><a href="#">Top</a></li>
+<li><a href="#">Unordered List</a></li>
+<li><a href="#">Ordered List</a></li>
+<li><a href="#">Description List</a></li>
+<li><a href="#">Span</a></li>
+<li><a href="#">Table</a></li>
+<li><a href="#">Block Quote</a></li>
+<li><a href="#">Text Formatting</a></li>
+<li><a href="#">Semantics</a></li>
+<li><a href="#">Graphics</a></li>
+</ul>
+</div>
+
+<div id="maincontent" class="col-7 col-s-12 pagecontent">
+{% block htmlbody %}{% endblock %}
+</div>
+
+<div id="pageaside" class="col-2 col-s-12 pageaside">
+<fieldset>
+<legend>
+Page Aside
+</legend>
+</fieldset>
+</div>
+
+</div>
+
+</body>
+</html>
