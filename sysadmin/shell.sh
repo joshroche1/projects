@@ -92,6 +92,26 @@ openssl x509 -in CERTIFICATE.PEM -text
 # Random HEX number
 openssl rand -hex 9
 #
+# x509 v3 Extensions Config ~ x509.ext
+[ ca ]
+# X509 extensions for a ca
+keyUsage                = critical, cRLSign, keyCertSign
+basicConstraints        = CA:TRUE, pathlen:0
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always,issuer:always
+
+[ server ]
+# X509 extensions for a server
+keyUsage                = critical,digitalSignature,keyEncipherment
+extendedKeyUsage        = serverAuth,clientAuth
+basicConstraints        = critical,CA:FALSE
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid,issuer:always
+#
+openssl req -new -sha256 -nodes -newkey rsa:4096 -keyout CA.key -out CA.csr
+openssl x509 -req -sha256 -extfile x509.ext -extensions ca -in CA.csr -signkey CA.key -days 1095 -out CA.pem
+openssl req -new -sha256 -nodes -newkey rsa:4096 -keyout client.key -out client.csr
+openssl x509 -req -sha256 -CA CA.pem -CAkey CA.key -days 730 -CAcreateserial -CAserial CA.srl -extfile x509.ext -extensions server -in client.csr -out client.pem
 # Generate CA private key and certificate
 openssl req -x509 -sha256 -days 3650 -newkey rsa:4096 -noenc -keyout ca.key -out ca.crt
 # Generate client key and CSR
