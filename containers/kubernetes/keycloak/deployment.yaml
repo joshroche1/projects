@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+spec:
+  selector:
+    matchLabels:
+      app: keycloak
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+        - name: keycloak
+          image: keycloak/keycloak
+          args:
+            - "start"
+          ports:
+            - containerPort: 8080
+            - containerPort: 8443
+            - containerPort: 9000
+          env:
+            - name: KC_HTTP_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: http_enabled
+            - name: KC_HOSTNAME_STRICT
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: hostname_strict
+            - name: KC_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: db_vendor
+            - name: KC_DB_URL_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: db_host
+            - name: KC_DB_URL_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: db_port
+            - name: KC_DB_URL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: db_name
+            - name: KC_DB_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: db_username
+            - name: KC_DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: db_password
+            - name: KC_HEALTH_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: health_enabled
+            - name: KC_METRICS_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: metrics_enabled
+            - name: KC_HTTP_RELATIVE_PATH
+              valueFrom:
+                configMapKeyRef:
+                  name: keycloak-configmap
+                  key: http_relative_path
