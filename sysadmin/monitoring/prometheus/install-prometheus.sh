@@ -12,6 +12,7 @@ mv $PROMPKG prometheus
 mkdir -p /opt/prometheus/targets/hosts
 mkdir -p /opt/prometheus/tsdb
 mkdir -p /opt/prometheus/certs
+mkdir -p /opt/prometheus/scrape_configs
 
 cd /opt/prometheus/certs
 openssl req -newkey rsa:4096 -nodes -keyout ca.key -x509 -out ca.crt -subj "/C=/ST=/L=/O=/OU=/CN=prometheus/"
@@ -36,23 +37,8 @@ alerting:
 rules_files:
   - rules.yml
 
-scrape_configs:
-
-  - job_name: 'prometheus'
-    honor_labels: true
-    static_configs:
-      - targets: ['localhost:9090']
-
-  - job_name: 'localhost'
-    honor_labels: true
-    static_configs:
-      - targets: ['localhost:9100']
-
-  - job_name: 'hosts'
-    honor_labels: true
-    file_sd_configs:
-    - files:
-      - targets/hosts/*.yaml
+scrape_config_files:
+  - '/opt/prometheus/scrape_configs/*.yaml'
 " > /opt/prometheus/prometheus.yml
 
 echo "groups:
@@ -67,6 +53,17 @@ echo "groups:
     labels:
       severity: 'critical'
 " > /opt/prometheus/rules.yml
+
+echo "scrape_configs:
+
+  - job_name: 'prometheus'
+    honor_labels: true
+    static_configs:
+    - targets: ['localhost:9090']
+
+  - job_name: 'jarpi4b8'
+    static_configs:
+    - targets: ['localhost:9100']" > /opt/prometheus/scrape_configs/prometheus.yaml
 
 echo "[Unit]
 Description=Prometheus Monitoring Server
