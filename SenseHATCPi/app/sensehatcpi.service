@@ -1,0 +1,14 @@
+[Unit]
+Description=Sensor Data Collector for Waveshare Sense HAT(C) for Raspberry Pi
+After=network.target
+
+[Service]
+Type=simple
+User=josh
+WorkingDirectory=/opt/sensehatcpi/
+ExecStart=/usr/bin/python3 /opt/sensehatcpi/app/main.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
