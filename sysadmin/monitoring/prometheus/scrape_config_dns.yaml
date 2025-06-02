@@ -1,0 +1,15 @@
+scrape_configs:
+
+  - job_name: 'bind-dns'
+    scheme: https
+    tls_config:
+      cert_file: /opt/prometheus/certs/monitoring.crt
+      key_file: /opt/prometheus/certs/monitoring.key
+      insecure_skip_verify: true
+    dns_sd_configs:
+      - names:
+        - targets.home.local
+
+# Requires a DNS server with a SRV record(s) like the following (from bind9 Zone file config):
+### targets  IN  SRV  1  1  9100  HOSTNAME
+# This should give a target for each HOSTNAME.home.local (domain from example) like: https://HOSTNAME.home.local:9100/metrics
