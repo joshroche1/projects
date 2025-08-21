@@ -1,27 +1,21 @@
 --- SQL Schema EnviroPlus
 
 CREATE TABLE measurements (
-  dtime TIMESTAMP,
+  datetimestamp TIMESTAMP,
   temperature DECIMAL,
   pressure DECIMAL,
   humidity DECIMAL,
   light DECIMAL,
-  oxidised DECIMAL,
-  reduced DECIMAL,
-  nh3 DECIMAL,
-  pm1 DECIMAL,
-  pm25 DECIMAL,
-  pm10 DECIMAL
+  oxidising DECIMAL,
+  reducing DECIMAL,
+  nh3 DECIMAL
 );
 
 INSERT INTO measurements (
-  dtime,temperature,pressure,humidity,light,oxidised,reduced,nh3,pm1,pm25,pm10
+  datetimestamp,temperature,pressure,humidity,light,oxidising,reducing,nh3
 )
 VALUES (
-  '2000-01-01 00:00:00',
-  0.0,
-  0.0,
-  0.0,
+  '2025-01-01 00:00:00',
   0.0,
   0.0,
   0.0,

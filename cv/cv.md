@@ -295,12 +295,12 @@ I have worked with the following military telecommunications systems and technol
 - Microsoft Azure Cloud Platform
 - Google Cloud Platform
 - Oracle Cloud Infrastructure
-- Java
 - Ansible
 - Terraform
-- PHP
+- Terragrunt
 - Python
 - Go Language
+- Java
 - Docker
 - Kubernetes
 - VMware ESXi 6.0
