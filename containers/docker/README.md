@@ -9,3 +9,17 @@
 > docker build --tag NAME:VERSION .
 
 > docker image save IMAGE > OUTFILE.tar
+
+### Docker Compose
+
+```
+docker compose build --no-cache
+```
+
+```
+docker compose up -d 
+```
+
+```
+docker compose down
+```

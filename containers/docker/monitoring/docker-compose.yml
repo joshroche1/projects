@@ -1,0 +1,42 @@
+name: monitoring
+
+services:
+  prometheus:
+    build:
+      context: ./prometheus/
+    ports:
+      - 9090:9090
+    volumes:
+      - type: bind
+        source: ./prometheus/rules/
+        target: /etc/prometheus/rules/
+        read_only: true
+      - type: bind
+        source: ./prometheus/scrape_targets/
+        target: /etc/prometheus/scrape_targets/
+        read_only: true
+      - type: bind
+        source: ./prometheus/targets/
+        target: /etc/prometheus/targets/
+        read_only: true
+      - type: bind
+        source: ./prometheus/data/
+        target: /mnt/prometheus/
+        read_only: false
+
+  alertmanager:
+    build:
+      context: ./alertmanager/
+    ports:
+      - 9093:9093
+    volumes:
+      - type: bind
+        source: ./alertmanager/data/
+        target: /mnt/alertmanager/
+        read_only: false
+
+  blackbox_exporter:
+    build:
+      context: ./blackbox_exporter/
+    ports:
+      - 9115:9115
