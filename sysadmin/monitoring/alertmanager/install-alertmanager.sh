@@ -2,6 +2,8 @@
 
 AMURL=https://github.com/prometheus/alertmanager/releases/download/v0.28.1/alertmanager-0.28.1.linux-amd64.tar.gz
 AMPKG=alertmanager-0.28.1.linux-amd64
+#AMURL=https://github.com/prometheus/alertmanager/releases/download/v0.28.1/alertmanager-0.28.1.linux-arm64.tar.gz
+#AMPKG=alertmanager-0.28.1.linux-arm64
 
 cd /opt
 wget $AMURL
@@ -28,6 +30,8 @@ WantedBy=multi-user.target' > /opt/alertmanager/alertmanager.service
 chown -R alertmanager: /opt/alertmanager
 
 ln -s /opt/alertmanager/alertmanager.service /etc/systemd/system/alertmanager.service
+ln -s /opt/alertmanager/alertmanager /usr/local/bin/
+ln -s /opt/alertmanager/amtool /usr/local/bin/
 
 rm /opt/$AMPKG.tar.gz
 

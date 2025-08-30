@@ -2,6 +2,12 @@
 
 NODEURL=https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
 NODEPKG=node_exporter-1.9.1.linux-amd64
+#NODEURL=https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-arm64.tar.gz
+#NODEPKG=node_exporter-1.9.1.linux-arm64
+#NODEURL=https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-armv6.tar.gz
+#NODEPKG=node_exporter-1.9.1.linux-armv6
+#NODEURL=https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-armv5.tar.gz
+#NODEPKG=node_exporter-1.9.1.linux-armv5
 
 cd /opt
 wget $NODEURL

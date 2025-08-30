@@ -1,7 +1,9 @@
 #!/bin/bash
 
-PROMURL=https://github.com/prometheus/prometheus/releases/download/v2.53.4/prometheus-2.53.4.linux-amd64.tar.gz
-PROMPKG=prometheus-2.53.4.linux-amd64
+PROMURL=https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz
+PROMPKG=prometheus-3.5.0.linux-amd64
+#PROMURL=https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-arm64.tar.gz
+#PROMPKG=prometheus-3.5.0.linux-arm64
 
 /usr/sbin/adduser --disabled-password --disabled-login --no-create-home --gecos "" prometheus
 
@@ -34,7 +36,7 @@ alerting:
     - targets:
       - 'localhost:9093'
 
-rules_files:
+rule_files:
   - rules.yml
 
 scrape_config_files:
@@ -48,8 +50,8 @@ echo "groups:
     expr: up == 0
     for: 1m
     annotations:
-      title: 'Instance {{ $labels.instance }} down'
-      description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minute.'
+      title: 'Instance {{ \$labels.instance }} down'
+      description: '{{ \$labels.instance }} of job {{ \$labels.job }} has been down for more than 1 minute.'
     labels:
       severity: 'critical'
 " > /opt/prometheus/rules.yml
@@ -89,6 +91,8 @@ WantedBy=multi-user.target" > /opt/prometheus/prometheus.service
 chown -R prometheus: /opt/prometheus
 
 ln -s /opt/prometheus/prometheus.service /etc/systemd/system/prometheus.service
+ln -s /opt/prometheus/prometheus /usr/local/bin/
+ln -s /opt/prometheus/promtool /usr/local/bin/
 
 systemctl daemon-reload
 systemctl enable prometheus.service

@@ -2,6 +2,8 @@
 
 BBURL=https://github.com/prometheus/blackbox_exporter/releases/download/v0.26.0/blackbox_exporter-0.26.0.linux-amd64.tar.gz
 BBPKG=blackbox_exporter-0.26.0.linux-amd64
+#BBURL=https://github.com/prometheus/blackbox_exporter/releases/download/v0.27.0/blackbox_exporter-0.27.0.linux-arm64.tar.gz
+#BBPKG=blackbox_exporter-0.26.0.linux-arm64
 
 cd /opt
 wget $BBURL
