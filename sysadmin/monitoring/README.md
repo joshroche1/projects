@@ -9,6 +9,7 @@ This folder contains information and documents to set up monitoring applications
 
 # Downloads
 
+| | | |
 |--|--|--|
 | Prometheus | 3.5.0 | [x86_64](https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz) |
 | | | [arm64](https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-arm64.tar.gz) |
